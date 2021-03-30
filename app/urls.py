@@ -5,6 +5,7 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('inner',views.inner_page,name='inner'),
     path('business_profile',views.business_profile,name='business_profile'),
+    path('Business_Detail',views.Business_Detail,name='Business_Detail'),
     path('category/',views.category,name='category'),
     path('subcategories/',views.subcategories,name='subcategories'),
     path('all_classifieds_cat/',views.all_classifieds_cat,name='all_classifieds_cat'),
@@ -18,6 +19,7 @@ urlpatterns = [
     
     
     path('faq/',views.FAQ,name='faq'),
+    path('Activity/',views.Activity,name='Activity'),
     
 
     path('header/',views.header,name='header'),

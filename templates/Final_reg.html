@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static "/REG_LOG_FORGOT/css/reg.css"%}">
     <link rel="stylesheet" href="{% static "/REG_LOG_FORGOT/css/font-awesome.min.css"%}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <title>Registartions</title>
 </head>
 
@@ -20,15 +21,14 @@
             <div>
                 <!-- <label>User Name</label><br> -->
                 <span class="fa fa-user"></span>
-                <input type="text" name="username" id="name" placeholder="User Name" required=""/ {{ form.username }}<br><br>
-                {% comment %} {{ form.username }} {% endcomment %}
+                <input type="text" name="username" id="name" placeholder="User Name" required=""/>{{ form.Reg }}<br><br>
+                
             </div>
             <div>
                 <!-- <label>Email</label><br> -->
                 <span class="fa fa-envelope"></span>
-                <input type="email" name="email" id="name" placeholder="example@gmail.com" required=""/ {{ form.email }}<br><br>
-                {% comment %} {{ form.email }} {% endcomment %}
-            </div>
+                <input type="email" name="email" id="name" placeholder="example@gmail.com" required=""/>{{ form.Reg }}<br><br>
+                </div>
             <div>
                 <!-- <label>Enter Your Mobile Number</label><br> -->
                 <span class="fa fa-mobile"></span>
@@ -247,41 +247,41 @@
                     <option data-countryCode="YE" value="967">Yemen (South)(+967)</option>
                     <option data-countryCode="ZM" value="260">Zambia (+260)</option>
                     <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
+                    
                 </select>
-                <input type="tel" name="Mnum" placeholder="********09" id="mnum"  pattern="[1-9]{1}[0-9]{9}" required=""/ {{ form.phone_number }}<br><br>
-                {% comment %} {{ form.phone_number }} {% endcomment %}
-            </div>
+                <input type="tel" name="Mnum" placeholder="********09" id="mnum"  pattern="[1-9]{1}[0-9]{9}" required=""/>{{form.Reg}}<br><br>
+                </div>
             <div>
                 <!-- <label>Enter Your DOB</label><br> -->
                 <span class="fa fa-calendar"></span>
-                <input type="date" name="DOB" id="name" required=""/{{ form.birth_date }}<br><br>
-                {% comment %} {{ form.birth_date }} {% endcomment %}
-            </div>
+                <input type="date" id="name" name="DOB" required=""/>{{ form.Reg}}<br><br>
+                
+            </div> 
             <div>
                 <!-- <label>Select Your Gender</label><br> -->
                 <span class="fa fa-transgender-alt" ></span>
 
-                <input type="radio" id="ml" name="male" >{{ form.gender.choice }}
+                <input type="radio" id="ml" name="male" >
                 <span id="male">Male</span>&nbsp;
 
-                <input type="radio" id="ml" name="male"> {{ form.gender.choice }} 
+                <input type="radio" id="ml" name="male">  
                 <span id="other">Fe-male</span>&nbsp;
 
-                <input type="radio" id="ml" name="male" >{{ form.gender.choice }}
-                <span id="other">Other</span><br><br>
-                {% comment %} {{ form.gender }} {% endcomment %}
+                <input type="radio" id="ml" name="male" >
+                <span id="other">Other</span>
+                {{ form.Reg }}<br><br>
             </div>            
             <div>
                 <!-- <label>Password</label><br> -->
                 <span class="fa fa-lock"></span>
-                <input type="password" name="password" id="name" placeholder="Enter Your Password" required=""/ {{ form.password }}<br><br>
-                {% comment %} {{ form.password }} {% endcomment %}
+                <input type="password" name="password" id="name" placeholder="Enter Your Password" required=""/>{{ form.Reg }} <br><br>
+                
             </div>
             <div>
                 <!-- <label>Confirm Password</label><br> -->
                 <span class="fa fa-lock"></span>
-                <input type="password" name="pass" id="name" placeholder="Confirm Password" required=""/ {{ form.confirm_password }}<br><br>
-                {% comment %} {{ form.confirm_password }} {% endcomment %}
+                <input type="password" name="pass" id="name" placeholder="Confirm Password" required=""/>{{ form.Reg }}<br><br>
+                
             </div>
             <div class="login-check">
                 <label class="checkbox">

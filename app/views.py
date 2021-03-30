@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, HttpResponse
+from django.contrib.auth.models import User
 from .form import Reg
 from django.contrib import messages
 from django.contrib .auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import registartion
 from django.contrib.auth.hashers import make_password,check_password
+from .models import registartion
 
 
 # Create your views here.
@@ -27,6 +29,9 @@ def subcategories(request):
 
 def all_classifieds_cat(request):
     return render(request,'all-classifieds_cat.html')
+
+def Activity(request):
+    return render(request,'Activity.html')
 
 # Subcategory
 
@@ -53,6 +58,9 @@ def Pets(request):
 
 def Real_estate(request):
     return render(request,'real-estate.html')
+
+def Business_Detail(request):
+    return render(request,'Business_profile1.html')
 
 # Subcategory End
 
@@ -91,13 +99,10 @@ def FAQ(request):
 # Create your views here.
 
 
-
-
-# @login_required(login_url='final_log')
+@login_required(login_url='final_log')
 def index(request):
     name = request.user.username
     return render(request, 'index.html', {'username': name})
-
 
 
 def final_reg(request):
@@ -110,37 +115,30 @@ def final_reg(request):
     
     # print(make_password('12345'))
     # print(check_password('123g45','pbkdf2_sha256$216000$a3P8F75Ie3ZB$T1x+naAXj/yifcwSEUhvwL4v6eznnvkt3egiFfiK1Ps='))
-    if request.user.is_authenticated:
-        return('index')
-    else:
-        form = Reg()
-        if request.method == 'POST':
-            form = Reg(request.POST)
-            if form.is_valid():
-            # registartion.password = make_password('registartion.password')
-                # user.profile.birth_date = form.cleaned_data.get('birth_date')
-                form.save()
-                user = form.cleaned_data.get('username')
-                messages.success(request, "account was created for" + user)
-                return redirect('final_log')
-        context = {'form': form}
-        return render(request, 'final_reg.html', context)
+    form = Reg()
+    if request.method == 'POST':
+        form = Reg(request.POST)
+        if form.is_valid():
+            registartion.password = make_password('registartion.password')
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, "account was created for" + user)
+        return redirect('final_log')
+    context = {'form': form}
+    return render(request, 'final_reg.html', context)
+
 
 def final_log(request):
-    if request.user.is_authenticated:
-    	return redirect('index')
-    else:
-        if request.method == "POST":
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            
-            registartion = authenticate(request, username=username, password=password)
-            
-            if registartion is not None:
-                login(request, registartion)
-                return redirect('index')
-            else:
-                messages.info(request, 'username or password in wrong')
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        registartion = authenticate(request, username=username, password=password)
+        if registartion is not None:
+            login(request, registartion)
+            return redirect('index')
+        else:
+            messages.info(request, 'username or password in wrong')
     context = {}
     return render(request, 'final_log.html',context)
 
@@ -148,5 +146,8 @@ def final_log(request):
 def logoutuser(request):
     logout(request)
     return redirect('final_log')
+
+
+
 
 
