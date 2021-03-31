@@ -109,7 +109,7 @@
           </li>
 
           <li><a href="#">Activity</a></li>
-          <li ><a  href={% url 'about' %}>About</a></li>
+          <li ><a  href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'services' %}">Services</a></li>
 
 
@@ -390,7 +390,7 @@
             <div class="portfolio-wrap">
               <img src="{% static "/img/portfolio/tech3.jpg"%}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>Tech</h4>
+                <a href="{% url 'Tech_Portfolio' %}"><h4>Tech</h4></a>
                 <p>Technology</p>
                 <div class="portfolio-links">
                   <a href="{% static "//img/portfolio/tech3.jpg"%}" data-gall="portfolioGallery" class="venobox"
@@ -594,8 +594,8 @@
             <div class="contact-address">
               <i class="icofont-google-map"></i>
               <h3>Address</h3>
-            <address>Mota Bajar near Iscon Temple Anand,Gujrat,India
-            </address>
+           <a href="https://goo.gl/maps/Y5EtGEQFjKgkonR68" target="_blank"><address>Mota Bajar near Iscon Temple Anand,Gujrat,India
+            </address></a>
               
             </div>
           </div>

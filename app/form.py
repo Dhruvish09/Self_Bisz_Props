@@ -7,6 +7,10 @@ from .models import login
 from .models import forgot
 from .models import contact
 from .models import subscribe
+<<<<<<< Updated upstream
+=======
+from .models import slider
+>>>>>>> Stashed changes
 from .models import team
 
 class Reg(forms.ModelForm):
@@ -40,6 +44,16 @@ class Subscribe(forms.ModelForm):
     class meta:
         model = subscribe
         fields = ['email']
+        
+class slide(forms.ModelForm):
+    class meta:
+        model = slider
+        fields = ['photo']
+
+class Gang(forms.ModelForm):
+    class meta:
+        model = team
+        fields = ['name','position','photo']
   
 class Team(forms.ModelForm):
     class meta:

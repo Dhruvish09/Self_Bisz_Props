@@ -149,6 +149,9 @@ def logoutuser(request):
     logout(request)
     return redirect('final_log')
 
+def Tech_Portfolio(request):
+    return render(request,'Tech_Portfolio.html')
+
 
 
 

@@ -34,5 +34,6 @@ urlpatterns = [
     path('Kids/',views.Kids,name='Kids'),
     path('Pets/',views.Pets,name='Pets'),
     path('Real_estate/',views.Real_estate,name='Real_estate'),
+    path('Tech_Portfolio/',views.Tech_Portfolio,name='Tech_Portfolio'),
 ]
 
