@@ -122,18 +122,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-<<<<<<< Updated upstream
+# <<<<<<< Updated upstream
 MEDIA_ROOT = os.path.join(BASE_DIR, 'data/') # 'data' is my media folder
 MEDIA_URL = '/media/'
 
-
-
-=======
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
-
->>>>>>> Stashed changes
+# >>>>>>> Stashed changes
 STATICFILES_DIRS = [
     BASE_DIR / "static",
     '/var/www/static/',

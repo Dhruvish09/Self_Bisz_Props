@@ -1,9 +1,8 @@
 from django.contrib import admin
-<<<<<<< Updated upstream
+# <<<<<<< Updated upstream
 from .models import registartion,login,forgot,subscribe,contact,team
-=======
 from .models import registartion,login,forgot,subscribe,contact,slider,team
->>>>>>> Stashed changes
+# >>>>>>> Stashed changes
 # Register your models here.
 
 admin.site.register(registartion)
@@ -11,8 +10,7 @@ admin.site.register(login)
 admin.site.register(forgot)
 admin.site.register(subscribe)
 admin.site.register(contact)
-<<<<<<< Updated upstream
-=======
+# <<<<<<< Updated upstream
 admin.site.register(slider)
->>>>>>> Stashed changes
+# >>>>>>> Stashed changes
 admin.site.register(team)

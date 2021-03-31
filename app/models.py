@@ -45,7 +45,7 @@ class contact(models.Model):
 class subscribe(models.Model):
     email = models.CharField(max_length=30)
     
-<<<<<<< Updated upstream
+# <<<<<<< Updated upstream
 
 class team(models.Model):
     name = models.CharField(max_length=20)
@@ -59,26 +59,10 @@ class team(models.Model):
     
     def __str__(self):
         return self.name
-=======
+    
 class slider(models.Model):
     photo = models.ImageField(upload_to='media/slider/images')    
->>>>>>> Stashed changes
-    
-    
-    
-class team(models.Model):
-    name = models.CharField(max_length=20)
-    position = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to='media/team/images')    
-    
-    
-    @staticmethod
-    def get_all_teamdata():
-        return team.objects.all()
-    
-    def __str__(self):
-        return self.name
-    
+# >>>>>>> Stashed changes
 
 
 

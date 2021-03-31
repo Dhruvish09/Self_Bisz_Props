@@ -7,10 +7,9 @@ from .models import login
 from .models import forgot
 from .models import contact
 from .models import subscribe
-<<<<<<< Updated upstream
-=======
+# <<<<<<< Updated upstream
 from .models import slider
->>>>>>> Stashed changes
+# >>>>>>> Stashed changes
 from .models import team
 
 class Reg(forms.ModelForm):
