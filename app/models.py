@@ -45,6 +45,19 @@ class contact(models.Model):
 class subscribe(models.Model):
     email = models.CharField(max_length=30)
     
+
+class team(models.Model):
+    name = models.CharField(max_length=20)
+    position = models.CharField(max_length=20)
+    photo = models.ImageField(upload_to='media/team/images')
+  
+    
+    @staticmethod
+    def get_all_tmdata():
+        return team.objects.all()
+    
+    def __str__(self):
+        return self.name
     
     
     

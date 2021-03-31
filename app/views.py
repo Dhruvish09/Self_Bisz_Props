@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from .models import registartion
 from django.contrib.auth.hashers import make_password,check_password
 from .models import registartion
+from .models import team
 
 
 # Create your views here.
@@ -101,8 +102,9 @@ def FAQ(request):
 
 @login_required(login_url='final_log')
 def index(request):
+    teams = team.get_all_tmdata();
     name = request.user.username
-    return render(request, 'index.html', {'username': name})
+    return render(request, 'index.html', {'username': name},{'teams': teams})
 
 
 def final_reg(request):

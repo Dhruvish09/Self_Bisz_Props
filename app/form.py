@@ -7,6 +7,7 @@ from .models import login
 from .models import forgot
 from .models import contact
 from .models import subscribe
+from .models import team
 
 class Reg(forms.ModelForm):
     # forms.ModelForm
@@ -39,6 +40,11 @@ class Subscribe(forms.ModelForm):
     class meta:
         model = subscribe
         fields = ['email']
+  
+class Team(forms.ModelForm):
+    class meta:
+        model = team
+        fields = ['name','position','photo']
   
 
         
