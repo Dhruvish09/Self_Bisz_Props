@@ -15,6 +15,13 @@ class registartion(models.Model):
         ('o', 'other'),
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    
+    PROFILE_CHOICES = (
+        ('B', 'Businessman'),
+        ('C', 'Client'),
+    )
+    profile = models.CharField(max_length=1, choices=PROFILE_CHOICES)
+    
     phone_number = PhoneField(blank=True, help_text='Contact phone number')
     # phone_number = models.CharField(max_length=12)
     # phone_number = PhoneField(blank=True, help_text='Contact phone number')
@@ -51,12 +58,12 @@ class team(models.Model):
     name = models.CharField(max_length=20)
     position = models.CharField(max_length=20)
     photo = models.ImageField(upload_to='media/team/images')
-  
+    
     
     @staticmethod
     def get_all_tmdata():
         return team.objects.all()
-    
+
     def __str__(self):
         return self.name
     

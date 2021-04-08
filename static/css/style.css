@@ -673,6 +673,12 @@ section {
   position: relative;
 }
 
+.member img #dp{
+  height: 60px;
+  width: 100px;
+  position: relative;
+}
+
 .team .member .member-info {
   opacity: 0;
   display: flex;

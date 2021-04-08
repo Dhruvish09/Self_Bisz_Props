@@ -21,7 +21,7 @@ class Reg(forms.ModelForm):
     phone_number = PhoneField()
     class Meta:
         model = registartion
-        fields = ['email', 'username', 'password', 'confirm_password','bday','gender','phone_number']
+        fields = ['email', 'username', 'password', 'confirm_password','bday','gender','phone_number','profile']
     
 
 class Log(forms.ModelForm):
@@ -53,11 +53,12 @@ class Gang(forms.ModelForm):
     class meta:
         model = team
         fields = ['name','position','photo']
-  
-class Team(forms.ModelForm):
-    class meta:
+         
+class Team(forms.ModelForm):   
+    class Meta:
         model = team
-        fields = ['name','position','photo']
+        fields = ["name","position","photo"]
+
   
 
         

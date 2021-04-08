@@ -8,6 +8,7 @@ from .models import registartion
 from django.contrib.auth.hashers import make_password,check_password
 from .models import registartion
 from .models import team
+from .form import Subscribe
 
 
 # Create your views here.
@@ -68,8 +69,13 @@ def Business_Detail(request):
 def About(request):
     return render(request,'about.html')
 
+
 def Services(request):
     return render(request,'services.html')
+
+def Data(request):
+    teams = team.get_all_tmdata();
+    return render(request,'data.html',{'teams': teams})
 
 # def final_reg(request):
 #     return render(request,'final_reg.html')
@@ -100,11 +106,11 @@ def FAQ(request):
 # Create your views here.
 
 
-@login_required(login_url='final_log')
+# @login_required(login_url='final_log')
 def index(request):
-    teams = team.get_all_tmdata();
-    name = request.user.username
-    return render(request, 'index.html', {'username': name},{'teams': teams})
+    teams = team.get_all_tmdata()
+    # name = request.user.username
+    return render(request, 'index.html',{'teams':teams})
 
 
 def final_reg(request):
@@ -152,7 +158,25 @@ def logoutuser(request):
 def Tech_Portfolio(request):
     return render(request,'Tech_Portfolio.html')
 
+def subscribe(request):
+    form = Subscribe()
+    if request.method == 'POST':
+        form = Subscribe(request.POST)
+        form.save()
+        return redirect('index')
+    context = {'form': form}
+    return render(request, 'final_reg.html', context)
+
+def profile(request):
+    return render(request,'profile.html')
+
+def main_after(request):
+    return render(request,'main_after.html')
+
+def Dashboard(request):
+    return render(request,'Dashboard.html')
 
 
-
+def Dashboard1(request):
+    return render(request,'Dashboard1.html')
 

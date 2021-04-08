@@ -18,6 +18,11 @@ urlpatterns = [
     # path('reg/',views.reg,name='reg'),
     
     
+    path('main_after/',views.main_after,name='main_after'),
+    path('profile/',views.profile,name='profile'),
+    path('Dashboard/',views.Dashboard,name='Dashboard'),
+    path('Dashboard1/',views.Dashboard1,name='Dashboard1'),
+    path('Data/',views.Data,name='Data'),
     path('faq/',views.FAQ,name='faq'),
     path('Activity/',views.Activity,name='Activity'),
     

@@ -29,6 +29,20 @@
                 <span class="fa fa-envelope"></span>
                 <input type="email" name="email" id="name" placeholder="example@gmail.com" required=""/>{{ form.Reg }}<br><br>
                 </div>
+
+            
+            <div>
+                <!-- <label>Select Your Profile</label><br> -->
+                <span class="fa fa-user" ></span>
+
+                <input type="radio" id="ml" name="male" >
+                <span id="male">Businessman</span>&nbsp;
+
+                <input type="radio" id="ml" name="male">  
+                <span id="other">Client</span>&nbsp;
+               {{ form.Reg }}<br><br>
+            </div>
+            
             <div>
                 <!-- <label>Enter Your Mobile Number</label><br> -->
                 <span class="fa fa-mobile"></span>
@@ -270,7 +284,9 @@
                 <input type="radio" id="ml" name="male" >
                 <span id="other">Other</span>
                 {{ form.Reg }}<br><br>
-            </div>            
+            </div>
+            
+            
             <div>
                 <!-- <label>Password</label><br> -->
                 <span class="fa fa-lock"></span>

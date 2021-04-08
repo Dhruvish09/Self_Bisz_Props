@@ -487,23 +487,22 @@
     
     <section id="team" class="team">
       <div class="container">
-
         <div class="section-title">
           <h2>Team</h2>
           <p>Individual commitment to a group effort--that is what makes a team work, a company work, a society work, a civilization work.</p>
         </div>
-{% for tm in teams %}
+
+{% for teams in teams %}
         <div class="row">
+
 
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="member" >
-
-
-              <img src="{% static "/img/team/dhruv1.png"%}" class="img-fluid" alt="">
+              <img  id="dp" src="{% static "/img/team/dhruv1.png"%}" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>{{tm.name}}</h4>
-                  <span>{{tm.position}}</span>
+                  <h4>{{teams.name}}</h4>
+                  <span>{{teams.position}}</span>
                   <div class="social">
                     <a href=""><i class="icofont-twitter"></i></a>
                     <a href=""><i class="icofont-facebook"></i></a>
@@ -514,14 +513,15 @@
               </div>
             </div>
           </div>
+
 
           <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
             <div class="member">
               <img src="{% static "/img/team/sona1.jpg"%}" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                 <h4>{{tm.name}}</h4>
-                  <span>{{tm.position}}</span>
+                 <h4>{{teams.name}}</h4>
+                  <span>{{teams.position}}</span>
                   <div class="social">
                     <a href=""><i class="icofont-twitter"></i></a>
                     <a href=""><i class="icofont-facebook"></i></a>
@@ -533,13 +533,14 @@
             </div>
           </div>
 
+
           <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
             <div class="member">
               <img src="{% static "/img/team/liza1.jpg"%}" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                <h4>{{tm.name}}</h4>
-                  <span>{{tm.position}}</span>
+                <h4>{{teams.name}}</h4>
+                  <span>{{teams.position}}</span>
                   <div class="social">
                     <a href=""><i class="icofont-twitter"></i></a>
                     <a href=""><i class="icofont-facebook"></i></a>
@@ -558,8 +559,8 @@
               <img src="{% static "/img/team/raj1.jpg"%}" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                <h4>{{tm.name}}</h4>
-                  <span>{{tm.position}}</span>
+                <h4>{{teams.name}}</h4>
+                  <span>{{teams.position}}</span>
                   <div class="social">
                     <a href=""><i class="icofont-twitter"></i></a>
                     <a href=""><i class="icofont-facebook"></i></a>
@@ -570,10 +571,11 @@
               </div>
             </div>
           </div>
-{% endfor %}
         </div>
+{% endfor %}
 
       </div>
+
     </section>
 
     <!-- End Team Section -->
@@ -718,7 +720,8 @@
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Our Newsletter</h4>
             <p>#स्वदेशी #स्वदेश_प्रेम #aatamnirbharbharat #आत्मनिर्भरभारत #आत्मनिर्भर #in..</p>
-            <form action="" method="post">
+            
+            <form action="" method="POST">
               {% csrf_token %}
               <input type="email" name="email"><input type="submit" value="Subscribe">
                 {{form.Subscribe}}

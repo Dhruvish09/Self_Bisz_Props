@@ -2,6 +2,37 @@
 {% block title %}Services{% endblock  %}
 {% block body %}
 {% load static %}
+{% comment %} 
+{% for tm in teams %}
+
+    <h1>{{tm.name}}</h1>
+    <h1>{{tm.position}}</h1>
+
+{% endfor %} {% endcomment %}
+
+{% for teams in teams %}
+
+
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Position</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> {{teams.name}}</td>
+      <td> {{teams.position}}</td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+{% endfor %}
+
+
 
 
     <!-- ======= Services Section ======= -->
