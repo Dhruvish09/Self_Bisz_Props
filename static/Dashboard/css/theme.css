@@ -114,7 +114,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: #333333;
+    color: #e87d53;
     font-weight: 700;
     margin: 0;
     line-height: 1.2;
@@ -2817,6 +2817,8 @@ section {
     -moz-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    position: relative;
+    right: 2%;
 }
 
 .header__tool .notifi-dropdown {

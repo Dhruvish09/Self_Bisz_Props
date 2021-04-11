@@ -1,116 +1,94 @@
-
-{% extends 'cat_main.html' %}
-{% block title %}Tech Portfolio{% endblock  %}
-{% block body %}
 {% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  		<title>Tech Portfolio</title>
+<!-- 
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
+Highway Template
 
-body {
-  background-color: #f1f1f1;
-  padding: 20px;
-  font-family: Arial;
-}
+https://templatemo.com/tm-520-highway
 
-/* Center website */
-.main {
-  max-width: 1000px;
-  margin: auto;
-}
+-->
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-h1 {
-  font-size: 50px;
-  word-break: break-all;
-}
 
-.row {
-  margin: 8px -16px;
-}
+        <link rel="stylesheet" href="{% static "Sub_Portfolio/css/bootstrap.min.css"%}">
+        <link rel="stylesheet" href="{% static "Sub_Portfolio/css/bootstrap-theme.min.css"%}">
+        <link rel="stylesheet" href="{% static "Sub_Portfolio/css/fontAwesome.css"%}">
+        <link rel="stylesheet" href="{% static "Sub_Portfolio/css/light-box.css"%}">
+        <link rel="stylesheet" href="{% static "Sub_Portfolio/css/templatemo-style.css"%}">
 
-/* Add padding BETWEEN each column */
-.row,
-.row > .column {
-  padding: 8px;
-}
+        <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-/* Create four equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 25%;
-}
+        <script src="{% static "Sub_Portfolio/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"%}"></script>
+    </head>
 
-/* Clear floats after rows */ 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Content */
-.content {
-  background-color: white;
-  padding: 10px;
-}
-
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 900px) {
-  .column {
-    width: 50%;
-  }
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-  }
-}
-</style>
-</head>
 <body>
 
-<!-- MAIN (Center website) -->
-<div class="main">
-<hr>
 
-<!-- Portfolio Gallery Grid -->
-<div class="row">
-  <div class="column">
-    <div class="content">
-      <img src="{% static "/img/portfolio/tech3.jpg"%}" alt="Mountains" style="width:100%">
+    <div id="video-container">
+        <div class="video-overlay"></div>
+        <div class="video-content">
+            <div class="inner">
+              <h1>Welcome to <em>Tech-Port</em></h1>
+              {% comment %} <p>FREE CSS TEMPLATE by templatemo</p>
+              <p>Homepage with full-width image gallery</p> {% endcomment %}
+                <div class="scroll-icon">
+
+                    <a class="scrollTo" data-scrollTo="portfolio" href="#"><img src="{%static "Sub_Portfolio/img/scroll-icon.png"%}" alt=""></a>
+                </div>    
+            </div>
         </div>
-  </div>
-  <div class="column">
-    <div class="content">
-    <img src="{% static "/img/portfolio/tech3.jpg"%}"alt="Lights" style="width:100%">
-      
+        <video autoplay="" loop="" muted>
+        	<source src="{%static "Sub_Portfolio/highway-loop.mp4"%}" type="video/mp4" />
+        </video>
     </div>
-  </div>
-  <div class="column">
-    <div class="content">
-    <img src="{% static "/img/portfolio/tech3.jpg"%}" alt="Nature" style="width:100%">
+
+
+    <div class="full-screen-portfolio" id="portfolio">
+        <div class="container-fluid">
+
+
+
+{% for sub_portfolios in sub_portfolios %}
+
+            <div class="col-md-4 col-sm-6">
+                <div class="portfolio-item">
+                    <a href="{{ sub_portfolios.photo.url }}" data-lightbox="image-1"><div class="thumb">
+                        <div class="hover-effect">
+                            <div class="hover-content">
+                                <h1><em>Technology</em></h1>
+                                <p>Awesome Tech port Goes Here</p>
+                            </div>
+                        </div>
+                        <div class="image">
+                            <img src="{{ sub_portfolios.photo.url }}">
+                        </div>
+                    </div></a>
+                </div>
+            </div>
+        
+{% endfor %}
+
+
+        </div>
     </div>
-  </div>
-  <div class="column">
-    <div class="content">
-    <img src="{% static "/img/portfolio/tech3.jpg"%}" alt="Mountains" style="width:100%">
-     
-    </div>
-  </div>
-<!-- END GRID -->
-</div>
 
-<div class="content">
-  <img src="{% static "/img/portfolio/tech3.jpg"%}" alt="Bear" style="width:100%">
- </div>
 
-<!-- END MAIN -->
-</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    {% comment %} <script>window.jQuery || document.write('<script src="{% static "Sub_Portfolio/js/vendor/jquery-1.11.2.min.js"%}"><\/script>')</script> {% endcomment %}
 
+    <script src="{% static "Sub_Portfolio/js/vendor/bootstrap.min.js"%}"></script>
+
+    
+    <script src="{% static "Sub_Portfolio/js/plugins.js"%}"></script>
+    <script src="{% static "Sub_Portfolio/js/main.js"%}"></script>
+
+
+    
 </body>
-
-{% endblock  %}
+</html>

@@ -31,7 +31,9 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static "css/style.css"%}" rel="stylesheet">
-  <link href="{% static "Slider/style.css"%}" rel="stylesheet">
+  {% comment %} <link href="{% static "Slider/style.css"%}" rel="stylesheet"> {% endcomment %}
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <!-- =======================================================
   * Template Name: Groovin - v2.1.0
   * Template URL: https://bootstrapmade.com/groovin-free-bootstrap-theme/
@@ -40,7 +42,7 @@
   ======================================================== -->
   <link rel="stylesheet" href="{% static "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"%}"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <style>
+  {% comment %} <style>
     .carousel-inner {
       position: relative;
       width: 138%;
@@ -56,7 +58,48 @@
     }
 
     
+</style> {% endcomment %}
+
+<style media="screen">
+  .carousel-cell {
+    position: relative;
+    width: 100%;
+    top: 11%;
+    }
+
+    /* cell number */
+    .carousel-cell:before {
+      display: block;
+    }
+
+    .carousel-inner {
+      position: relative;
+      width: 138%;
+      overflow: hidden;
+      left: -250px;
+      height: 100%;
+    }
+    .map iframe{
+      width: 1110px;
+      height: 320px;
+      position: relative;
+      top: -26px;
+    }
+    .w3-image{
+      width: 100%;
+      height: 638px;
+    }
+
+  {% comment %} #main{
+    position: relative;
+    top: 11%;
+
+  } {% endcomment %}
+
 </style>
+
+
+
 </head>
 
 <body>
@@ -78,7 +121,7 @@
         <ul>
           <li class="active"><a href="{% url 'index' %}">Home</a></li>
 
-          <li class="drop-down"><a href="{% url 'subcategories' %}">Business</a>
+          <li class="drop-down"><a href="{% url 'category' %}">Business</a>
             <ul>
 
               <li><a href="{% url 'Technology' %}">Technology</a></li>
@@ -127,8 +170,32 @@
   </header>
   <!-- End Header -->
 
+  <main id="main">
+
 <!-- slider -->
-<div class="slider"> 
+
+    <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": true, "imagesLoaded":true }'>
+
+      {%for sliders in sliders %}
+      <div class="carousel-cell">
+        <img class="w3-image" src="{{ sliders.photo.url }}">
+      </div>
+      {% comment %} <div class="carousel-cell">
+        <img class="w3-image" src="{% static "/Slider/2.jpg"%}">
+      </div>
+      <div class="carousel-cell">
+        <img class="w3-image" src="{% static "/Slider/3.jpg"%}">
+      </div> {% endcomment %}
+      {% endfor %}
+    </div>
+
+
+
+<!-- End slider -->
+
+
+{% comment %} slider Backup {% endcomment %}
+{% comment %} <div class="slider"> 
 
 
 <input type="radio" id="trigger1" name="slider" checked autofocus>
@@ -151,8 +218,12 @@
 <label for="trigger5"></label>
 <div class="slide bg5"></div>
 
-</div>
-<!-- End slider -->
+</div> {% endcomment %}
+{% comment %} slider Backup {% endcomment %}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
 
 
@@ -253,35 +324,18 @@
 
         <div class="row">
 
+{%for clients in clients %}
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="{% static "/img/clients/tcs.png"%}" class="img-fluid" alt="">
+            <img src="{{ clients.photo.url }}" class="img-fluid" alt="">
             {% comment %} {% static "/img/portfolio/DLF-Logo.png"%} {% endcomment %}
           </div>
 
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+          {% comment %} <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
             <img src="{% static "/img/clients/book comp.png"%}" class="img-fluid" alt="">
-          </div>
+          </div>{% endcomment %}
 
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="{% static "/img/clients/tesla.jpg"%}" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="{% static "/img/clients/dmart.png"%}" class="img-fluid" alt="">
-          </div>
-
-{% comment %} <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="{% static "/img/portfolio/client-4.png"%}" class="img-fluid" alt="">
-          </div> {% endcomment %}
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="{% static "/img/clients/DLF-Logo.png"%}" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="{% static "/img/clients/agriculture.jpg"%}" class="img-fluid" alt="">
-          </div>
+          {%endfor%}
 
         </div>
 
@@ -370,7 +424,8 @@
             in iste officiis commodi quidem hic quas.</p>
         </div>
 
-        <div class="row">
+      <div class="row">
+      
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
@@ -386,96 +441,41 @@
 
         <div class="row portfolio-container">
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="{% static "/img/portfolio/tech3.jpg"%}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <a href="{% url 'Tech_Portfolio' %}"><h4>Tech</h4></a>
-                <p>Technology</p>
-                <div class="portfolio-links">
-                  <a href="{% static "//img/portfolio/tech3.jpg"%}" data-gall="portfolioGallery" class="venobox"
-                    title="App 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="{% static "/img/portfolio/auto.jpg"%}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Auto</h4>
-                <p>Automobile</p>
-                <div class="portfolio-links">
-                  <a href="{% static "/img/portfolio/auto.jpg"%}" data-gall="portfolioGallery" class="venobox"
-                    title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+{% comment %} {% for tech_portfolios in tech_portfolios %}
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="{% static "/img/portfolio/real estate.jpg"%}" class="img-fluid" alt="">
+              <img src="{{ tech_portfolios.photo.url }}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>Real Estate</h4>
-                <p>Real Estate</p>
+                <a href="{% url 'Tech_Portfolio' %}"><h4>{{ tech_portfolios.name }}</h4></a>
+                <p>{{ tech_portfolios.sub_name }}</p>
                 <div class="portfolio-links">
-                  <a href="{% static "/img/portfolio/real estate.jpg"%}" data-gall="portfolioGallery" class="venobox"
-                    title="App 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="{{ tech_portfolios.photo.url }}" data-gall="portfolioGallery" class="venobox"
+                    title="App 1"><a href="{{ tech_portfolios.photo.url }}"><i class="bx bx-plus"></i></a></a>
+                  <a href="portfolio-details.html" title="More" > <a href="{% url 'Tech_Portfolio' %}"> <i class="bx bx-link"></i></a></a>
                 </div>
               </div>
             </div>
           </div>
+{% endfor %}
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="{% static "/img/portfolio/retail.jpg"%}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Retail</h4>
-                <p>Retailer</p>
-                <div class="portfolio-links">
-                  <a href="{% static "/img/portfolio/retail.jpg"%}" data-gall="portfolioGallery" class="venobox"
-                    title="Card 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="{% static "/img/portfolio/book.jpeg"%}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Book</h4>
-                <p>Book-shop</p>
-                <div class="portfolio-links">
-                  <a href="{% static "/img/portfolio/book.jpeg"%}" data-gall="portfolioGallery" class="venobox"
-                    title="Web 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+{% for retail_portfolios in retail_portfolios %}
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="{% static "/img/portfolio/Furniture.jpeg"%}" class="img-fluid" alt="">
+              <img src="{{ retail_portfolios.photo.url }}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <h4>Furniture</h4>
-                <p>Furniture</p>
+                <a href="{% url 'Tech_Portfolio' %}"><h4>{{ retail_portfolios.name }}</h4></a>
+                <p>{{ retail_portfolios.sub_name }}</p>
                 <div class="portfolio-links">
-                  <a href="{% static "/img/portfolio/Furniture.jpeg"%}" data-gall="portfolioGallery" class="venobox"
-                    title="App 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="{{ retail_portfolios.photo.url }}" data-gall="portfolioGallery" class="venobox"
+                    title="App 1"><a href="{{ retail_portfolios.photo.url }}"><i class="bx bx-plus"></i></a></a>
+                  <a href="portfolio-details.html" title="More" > <a href="{% url 'Tech_Portfolio' %}"> <i class="bx bx-link"></i></a></a>
                 </div>
               </div>
             </div>
           </div>
-
+{% endfor %} {% endcomment %}
 
         </div>
 
@@ -484,99 +484,43 @@
     <!-- End Portfolio Section -->
 
     <!-- ======= Team Section ======= -->
-    
+  
+
     <section id="team" class="team">
       <div class="container">
         <div class="section-title">
-          <h2>Team</h2>
+               <h2>Team</h2>
           <p>Individual commitment to a group effort--that is what makes a team work, a company work, a society work, a civilization work.</p>
         </div>
 
-{% for teams in teams %}
         <div class="row">
 
-
+{% for teams in teams %}
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="member" >
-              <img  id="dp" src="{% static "/img/team/dhruv1.png"%}" class="img-fluid" alt="">
+              <img src="{{ teams.photo.url }}" class="img-fluid" alt="" />
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>{{teams.name}}</h4>
                   <span>{{teams.position}}</span>
                   <div class="social">
-                    <a href=""><i class="icofont-twitter"></i></a>
-                    <a href=""><i class="icofont-facebook"></i></a>
-                    <a href=""><i class="icofont-instagram"></i></a>
-                    <a href=""><i class="icofont-linkedin"></i></a>
+ 
+                  {% comment %} <a href="{{ teams.url }}" title="{{ teams.name }}"></a> {% endcomment %}
+                    <a href="{{ teams.twitter }}" title="{{ teams.name }}" target="_blank"><i class="icofont-twitter"></i></a>
+                    <a href="{{ teams.facebook }}" title="{{ teams.name }}"  target="_blank"><i class="icofont-facebook"></i></a>
+                    <a href="{{ teams.instagram }}" title="{{ teams.name }}"  target="_blank"><i class="icofont-instagram"></i></a> 
+                    <a href="{{ teams.linkedin }}" title="{{ teams.name }}"  target="_blank"><i class="icofont-linkedin"></i></a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
-            <div class="member">
-              <img src="{% static "/img/team/sona1.jpg"%}" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                 <h4>{{teams.name}}</h4>
-                  <span>{{teams.position}}</span>
-                  <div class="social">
-                    <a href=""><i class="icofont-twitter"></i></a>
-                    <a href=""><i class="icofont-facebook"></i></a>
-                    <a href=""><i class="icofont-instagram"></i></a>
-                    <a href=""><i class="icofont-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
-            <div class="member">
-              <img src="{% static "/img/team/liza1.jpg"%}" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                <h4>{{teams.name}}</h4>
-                  <span>{{teams.position}}</span>
-                  <div class="social">
-                    <a href=""><i class="icofont-twitter"></i></a>
-                    <a href=""><i class="icofont-facebook"></i></a>
-                    <a href=""><i class="icofont-instagram"></i></a>
-                    <a href=""><i class="icofont-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
-            <div class="member">
-              <img src="{% static "/img/team/raj1.jpg"%}" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                <h4>{{teams.name}}</h4>
-                  <span>{{teams.position}}</span>
-                  <div class="social">
-                    <a href=""><i class="icofont-twitter"></i></a>
-                    <a href=""><i class="icofont-facebook"></i></a>
-                    <a href=""><i class="icofont-instagram"></i></a>
-                    <a href=""><i class="icofont-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 {% endfor %}
 
+        </div>
       </div>
+   </section>
 
-    </section>
 
     <!-- End Team Section -->
 
