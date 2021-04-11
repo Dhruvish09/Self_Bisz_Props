@@ -441,41 +441,24 @@
 
         <div class="row portfolio-container">
 
-{% comment %} {% for tech_portfolios in tech_portfolios %}
+{% for portfolios in portfolios %}
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
-              <img src="{{ tech_portfolios.photo.url }}" class="img-fluid" alt="">
+              <img src="{{ portfolios.photo.url }}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <a href="{% url 'Tech_Portfolio' %}"><h4>{{ tech_portfolios.name }}</h4></a>
-                <p>{{ tech_portfolios.sub_name }}</p>
+                <a href="{% url 'Tech_Portfolio' %}"><h4>{{ portfolios.name }}</h4></a>
+                <p>{{ portfolios.sub_name }}</p>
                 <div class="portfolio-links">
-                  <a href="{{ tech_portfolios.photo.url }}" data-gall="portfolioGallery" class="venobox"
-                    title="App 1"><a href="{{ tech_portfolios.photo.url }}"><i class="bx bx-plus"></i></a></a>
+                  <a href="{{ portfolios.photo.url }}" data-gall="portfolioGallery" class="venobox"
+                    title="App 1"><a href="{{ portfolios.photo.url }}"><i class="bx bx-plus"></i></a></a>
                   <a href="portfolio-details.html" title="More" > <a href="{% url 'Tech_Portfolio' %}"> <i class="bx bx-link"></i></a></a>
                 </div>
               </div>
             </div>
           </div>
+
 {% endfor %}
-
-{% for retail_portfolios in retail_portfolios %}
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="{{ retail_portfolios.photo.url }}" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <a href="{% url 'Tech_Portfolio' %}"><h4>{{ retail_portfolios.name }}</h4></a>
-                <p>{{ retail_portfolios.sub_name }}</p>
-                <div class="portfolio-links">
-                  <a href="{{ retail_portfolios.photo.url }}" data-gall="portfolioGallery" class="venobox"
-                    title="App 1"><a href="{{ retail_portfolios.photo.url }}"><i class="bx bx-plus"></i></a></a>
-                  <a href="portfolio-details.html" title="More" > <a href="{% url 'Tech_Portfolio' %}"> <i class="bx bx-link"></i></a></a>
-                </div>
-              </div>
-            </div>
-          </div>
-{% endfor %} {% endcomment %}
 
         </div>
 

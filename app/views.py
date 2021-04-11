@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib .auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password,check_password
-from .models import registartion,team,portfolio,slider,category,cat_profile,client,tech_portfolio,auto_portfolio,book_portfolio,retail_portfolio,real_portfolio,furniture_portfolio
+from .models import registartion,team,portfolio,slider,category,cat_profile,client,portfolio,tech_portfolio,auto_portfolio,book_portfolio,retail_portfolio,real_portfolio,furniture_portfolio
 from .form import Subscribeform,Regform
 
 
@@ -96,6 +96,7 @@ def FAQ(request):
 # @login_required(login_url='final_log')
 def index(request):
     teams = team.get_all_tmdata()
+    portfolios = portfolio.get_all_portdata()
     tech_portfolios = tech_portfolio.get_all_techportdata()
     auto_portfolios = auto_portfolio.get_all_autoportdata()
     book_portfolios = book_portfolio.get_all_bookportdata()
@@ -105,7 +106,7 @@ def index(request):
     sliders = slider.get_all_slidedata()
     clients = client.get_all_clntdata()
     # name = request.user.username
-    return render(request, 'index.html',{'teams':teams,'tech_portfolios':tech_portfolios,'auto_portfolios':auto_portfolios,'book_portfolios':book_portfolios,'retail_portfolios':retail_portfolios,'furniture_portfolios':furniture_portfolios,'sliders':sliders,'clients':clients})
+    return render(request, 'index.html',{'teams':teams,'portfolios':portfolios,'tech_portfolios':tech_portfolios,'auto_portfolios':auto_portfolios,'book_portfolios':book_portfolios,'retail_portfolios':retail_portfolios,'furniture_portfolios':furniture_portfolios,'sliders':sliders,'clients':clients})
 
 
 def final_reg(request):
