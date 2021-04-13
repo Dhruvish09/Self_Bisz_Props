@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan</title>
+    {% comment %} <link rel="stylesheet" href="loan1.css"> {% endcomment %}
+    <link href="  {% static "/css/loan.css"%}" rel="stylesheet">
+
+</head>
+
+<body>
+    <table>
+        <thead>
+          <tr>
+            <th>Bank Name</th>
+            <th>Loan Type</th>
+            <th>Interest Rate</th>
+            <th>Loan Amount</th>
+            <th>Re-payment Period</th>       
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+         
+{%for Loans in Loans%}
+          <tr>
+            <td><strong>{{Loans.Bank_name}}</strong></td>
+            <td>{{Loans.Loan_Type}}</td>
+            <td>{{Loans.Interest_Rate}}</td>
+            <td>₹ {{Loans.Loan_Amount}}</td>
+            <td>{{Loans.Re_payment_Period}} Month</td>
+ 
+
+            <td data-title="Link">
+                <a href="{{Loans.Address}}" target="_blank">{{Loans.Bank_name}}</a>
+            </td>
+            
+          </tr>
+{% endfor %}
+
+        </tbody>
+      </table>
+</body>
+
+</html>

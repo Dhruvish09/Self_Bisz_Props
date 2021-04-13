@@ -1,7 +1,7 @@
 from django.db import models
 from phone_field import PhoneField
 from django import forms
-
+from phonenumber_field.modelfields import PhoneNumberField
 #   Start Index .........................................
 
 class slider(models.Model):
@@ -30,6 +30,7 @@ class team(models.Model):
 
 class client(models.Model):
     photo = models.ImageField(upload_to='media/client/images') 
+    Web=models.URLField(max_length = 2000)
     
     @staticmethod
     def get_all_clntdata():
@@ -63,71 +64,17 @@ class portfolio(models.Model):
     
 #  Start Sub_portfolio.........................................
     
-class tech_portfolio(models.Model):
+class sub_portfolio(models.Model):
     name = models.CharField(max_length=20)
+    sub_name = models.CharField(max_length=20)
     photo = models.ImageField(upload_to='media/sub_portfolio/tech_portfolio/images')
-    
     @staticmethod
-    def get_all_techportdata():
-        return tech_portfolio.objects.all()
+    def get_all_subportdata():
+        return sub_portfolio.objects.all()
 
     def __str__(self):
         return self.name
     
-class auto_portfolio(models.Model):
-    name = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to='media/sub_portfolio/auto_portfolio/images')
-    
-    @staticmethod
-    def get_all_autoportdata():
-        return auto_portfolio.objects.all()
-
-    def __str__(self):
-        return self.name
-
-class book_portfolio(models.Model):
-    name = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to='media/sub_portfolio/book_portfolio/images')
-    
-    @staticmethod
-    def get_all_bookportdata():
-        return book_portfolio.objects.all()
-
-    def __str__(self):
-        return self.name
-    
-class retail_portfolio(models.Model):
-    name = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to='media/sub_portfolio/retail_portfolio/images')
-    
-    @staticmethod
-    def get_all_retailportdata():
-        return retail_portfolio.objects.all()
-
-    def __str__(self):
-        return self.name
-    
-class real_portfolio(models.Model):
-    name = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to='media/sub_portfolio/real_portfolio/real_portfolio/images')
-    
-    @staticmethod
-    def get_all_realportdata():
-        return real_portfolio.objects.all()
-
-    def __str__(self):
-        return self.name
-   
-class furniture_portfolio(models.Model):
-    name = models.CharField(max_length=20)
-    photo = models.ImageField(upload_to='media/sub_portfolio/real_portfolio/furniture_portfolio/images')
-    
-    @staticmethod
-    def get_all_furniportdata():
-        return furniture_portfolio.objects.all()
-
-    def __str__(self):
-        return self.name
   
 #  End Sub_portfolio.........................................
 
@@ -144,8 +91,8 @@ class registartion(models.Model):
     email = models.CharField(max_length=30)
     username=models.CharField(max_length=12)
     password=models.CharField(max_length=12)
-    confirm_password=models.CharField(max_length=12)
-    bday=models.DateField(auto_now=False, auto_now_add=False)    
+    # confirm_password=models.CharField(max_length=12)
+    birthdate=models.DateField(auto_now=False, auto_now_add=False)    
     # birth_date = models.DateField()
     GENDER_CHOICES = (
         ('M', 'Male'),
@@ -164,6 +111,13 @@ class registartion(models.Model):
     phone_number = PhoneField(max_length=10,blank=True, help_text='Contact phone number')
     # phone_number = models.CharField(max_length=12)
     # phone_number = PhoneField(blank=True, help_text='Contact phone number')
+    
+    @staticmethod
+    def get_all_ptdata(email):
+        try:
+            return registartion.object.get(email=email)
+        except:
+            return False
     
     def __str__(self):
         return self.username
@@ -363,4 +317,28 @@ class sub(models.Model):
 #   End Category..........................................
     
 
+class Client_Request(models.Model):
+    ID = models.CharField(max_length=10,primary_key=True)
+    email = models.CharField(max_length=30)
+    client_name=models.CharField(max_length=12)
+    Desc = models.TextField(max_length=300)
+    
+    
+class Loan(models.Model):
+        Bank_name=models.CharField(max_length=20)
+        Loan_Type=models.CharField(max_length=30)
+        Interest_Rate=models.CharField(max_length=50)
+        Loan_Amount=models.CharField(max_length=20)
+        Re_payment_Period=models.CharField(max_length=30)
+        Address=models.URLField(max_length = 2000)
+        
+        @staticmethod
+        def get_all_Loandata():
+            return Loan.objects.all()
+        
+        def __str__(self):
+            return self.Bank_name
+        
 
+        
+    

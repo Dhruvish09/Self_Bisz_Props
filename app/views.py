@@ -1,12 +1,25 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse,HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib .auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password,check_password
-from .models import registartion,team,portfolio,slider,category,cat_profile,client,portfolio,tech_portfolio,auto_portfolio,book_portfolio,retail_portfolio,real_portfolio,furniture_portfolio
+from .models import registartion,team,portfolio,slider,category,cat_profile,client,portfolio,sub_portfolio,Loan
+
 from .form import Subscribeform,Regform
 
+
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.models import User
+from django.template.loader import render_to_string
+from django.db.models.query_utils import Q
+from django.utils.http import urlsafe_base64_encode
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_bytes
+from django.core.mail import EmailMultiAlternatives
+from django import template
 
 # Create your views here.
 # def index(request):
@@ -97,19 +110,32 @@ def FAQ(request):
 def index(request):
     teams = team.get_all_tmdata()
     portfolios = portfolio.get_all_portdata()
-    tech_portfolios = tech_portfolio.get_all_techportdata()
-    auto_portfolios = auto_portfolio.get_all_autoportdata()
-    book_portfolios = book_portfolio.get_all_bookportdata()
-    retail_portfolios = retail_portfolio.get_all_retailportdata()
-    real_portfolios = real_portfolio.get_all_realportdata()
-    furniture_portfolios = furniture_portfolio.get_all_furniportdata()
+    sub_portfolios = sub_portfolio.get_all_subportdata()
     sliders = slider.get_all_slidedata()
     clients = client.get_all_clntdata()
-    # name = request.user.username
-    return render(request, 'index.html',{'teams':teams,'portfolios':portfolios,'tech_portfolios':tech_portfolios,'auto_portfolios':auto_portfolios,'book_portfolios':book_portfolios,'retail_portfolios':retail_portfolios,'furniture_portfolios':furniture_portfolios,'sliders':sliders,'clients':clients})
+    # name = request.user.username  
+    return render(request, 'index.html',{'teams':teams,'portfolios':portfolios,'sub_portfolios':sub_portfolios,'sliders':sliders,'clients':clients})
 
 
-def final_reg(request):
+# def final_reg(request):
+#     if request.method == "GET":
+#         return render(request,'Final_reg.html')
+#     else:
+#         try:
+#             if request.method == "POST":
+#                 email = request.POST.get('email')
+#                 username = request.POST.get('username')
+#                 password = request.POST.get('password')
+#                 birthdate = request.POST.get('birthdate')
+#                 gender = request.POST.get('gender')
+#                 phone_number = request.POST.get('phone')
+#                 profile = request.POST.get('profile')
+#                 hashedPassword = make_password(password=password)
+#                 user = (email=email,username=username,profile=profile,birthdate=birthdate,gender=gender,phone_number=phone_number, password=hashedPassword)
+#                 user.save()
+#                 return render(request, 'Final_log.html')
+#         except:
+#             return render(request,'Final_reg.html',{'error':"User Alredy Registered......."})
     
     # ency = make_password('12345')
     # print(ency)
@@ -119,17 +145,76 @@ def final_reg(request):
     
     # print(make_password('12345'))
     # print(check_password('123g45','pbkdf2_sha256$216000$a3P8F75Ie3ZB$T1x+naAXj/yifcwSEUhvwL4v6eznnvkt3egiFfiK1Ps='))
-    form = Regform()
-    if request.method == 'POST':
-        form = Regform(request.POST)
-        if form.is_valid():
-            registartion.password = make_password('registartion.password')
-            form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request, "account was created for" + user)
-        return redirect('final_log')
-    context = {'form': form}
-    return render(request, 'final_reg.html', context)
+    
+    
+    # form = Regform()
+    # if request.method == 'POST':
+    #     form = Regform(request.POST)
+    #     if form.is_valid():
+    #         registartion.password = make_password('registartion.password')
+    #         form.save()
+    #         user = form.cleaned_data.get('username')
+    #         messages.success(request, "account was created for" + user)
+    #     return redirect('final_log')
+    # context = {'form': form}
+    # return render(request, 'final_reg.html', context)
+
+class final_reg():
+    def get(self, request):
+        return render(request, "final_reg.html")
+    
+    def post(self, request):
+        postData = request.POST
+        email = postData.get('email')
+        username=postData.get('username')
+        password = postData.get('password')
+        birth_date = postData.get('birthdate')
+        gender = postData.get('gender')
+        phone_number = postData.get('phoneno')
+   
+        
+        #validation
+        Value = {
+               'email' : email,
+               'username' : username,
+               'password' : password,
+               'birth_date' : birth_date,
+               'gender' : gender,
+               'profile' : profile,
+               'phone_number' : phone_number,
+               }
+
+
+        #validations for model form done for more refer views.py
+        error_message = None
+
+        register = registartion(
+                             email = email, 
+                             username = username, 
+                             password = password,
+                             birth_date = birth_date,
+                             gender = gender,
+                             profile = profile,
+                             phone_number = phone_number
+                             )
+
+
+        error_message = self.validateCustomer(register)
+        #validations for model form done for more refer views.py
+
+        
+        if not error_message:
+            print(email,username,password,birth_date,gender,phone_number)
+            register.password = make_password(register.password)
+            register.register() 
+            
+            return redirect('index')
+        else:
+            data = {
+                'error' : error_message,
+                'values' : Value
+            }
+            return render(request,"final_reg.html",data)
 
 
 def final_log(request):
@@ -147,8 +232,43 @@ def final_log(request):
     return render(request, 'final_log.html',context)
 
 
-def final_forgot(request):
-    return render(request,'final_forgot.html')
+# def final_forgot(request):
+#     return render(request,'final_forgot.html')
+
+def password_reset_request(request):
+    if request.method == "POST":
+        password_reset_form = PasswordResetForm(request.POST)
+        if password_reset_form.is_valid():
+            data = password_reset_form.cleaned_data['email']
+            associated_users = User.objects.filter(Q(email=data)|Q(username=data))
+            if associated_users.exists():
+                for user in associated_users:
+                    subject = "Password Reset Requested"
+                    plaintext = template.loader.get_template('password_reset_email.txt')
+                    htmltemp = template.loader.get_template('reset.html')
+                    c = { 
+                        "email":user.email,
+					    'domain':'127.0.0.1:8000',
+					    'site_name': 'Website',
+					    "uid": urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+					    "user": user,
+					    'token': default_token_generator.make_token(user),
+					    'protocol': 'http',
+         }
+                    text_content = plaintext.render(c)
+                    html_content = htmltemp.render(c)
+                    try:
+                        msg = EmailMultiAlternatives(subject, text_content, 'Website <admin@example.com>', [user.email], headers = {'Reply-To': 'admin@example.com'})
+                        msg.attach_alternative(html_content, "text/html")
+                        msg.send()
+                        
+                    except BadHeaderError:
+                        return HttpResponse('Invalid header found.')
+                    messages.info(request, "Password reset instructions have been sent to the email address entered.")
+                    return redirect ("index")
+                
+                password_reset_form = PasswordResetForm()
+                return render(request=request, template_name="reset.html", context={"password_reset_form":password_reset_form})
 
 
 def logoutuser(request):
@@ -163,29 +283,9 @@ def logoutuser(request):
 
 # Start Sub_Portfolio
 
-def Tech_Portfolio(request):
-    tech_portfolios = tech_portfolio.get_all_techportdata()
-    return render(request,'Tech_Portfolio.html',{'tech_portfolios':tech_portfolios})
-
-def Retail_Portfolio(request):
-    retail_portfolios = retail_portfolio.get_all_retailportdata()
-    return render(request,'Retail_Portfolio.html',{'retail_portfolios':retail_portfolios})
-
-def Real_estate_Portfolio(request):
-    real_portfolios = real_portfolio.get_all_realportdata()
-    return render(request,'Real estate_Portfolio.html',{'real_portfolios':real_portfolios})
-
-def Furniture_Portfolio(request):
-    furniture_portfolios = furniture_portfolio.get_all_furniportdata()
-    return render(request,'Furniture_Portfolio.html',{'furniture_portfolios':furniture_portfolios})
-
-def Book_Portfolio(request):
-    book_portfolios = book_portfolio.get_all_bookportdata()
-    return render(request,'Book_Portfolio',{'book_portfolios':book_portfolios})
-
-def Auto_Portfolio(request):
-    auto_portfolios = auto_portfolio.get_all_autoportdata()
-    return render(request,'Auto_Portfolio.html',{'auto_portfolios':auto_portfolios})
+def Sub_Portfolio(request):
+    sub_portfolios = sub_portfolio.get_all_subportdata()
+    return render(request,'Sub_Portfolio.html',{'sub_portfolios':sub_portfolios})
 
 # End Sub_Portfolio
 
@@ -202,6 +302,9 @@ def subscribe(request):
 def profile(request):
     return render(request,'profile.html')
 
+def loan(request):
+    Loans = Loan.get_all_Loandata()
+    return render(request,'loan.html',{'Loans':Loans})
 
 
 def main_after(request):
@@ -209,9 +312,57 @@ def main_after(request):
 
 def Dashboard(request):
     # name = request.user.username
-    return render(request,'Dashboard.html')
+    data = Client_Request.objects.all()
+    return render(request,'Dashboard.html',{'data':data})
 
 
 def Dashboard1(request):
     return render(request,'Dashboard1.html')
 
+
+def Contactus(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        subject = request.POST['email']
+        email = request.POST['email']
+        message = request.POST['message']
+        contact(name = name,subject=subject,email=email,message=message).save()
+        msg="Data Stored Successfully"
+        return render(request,"index.html",{'msg':msg})
+    else:
+        return HttpResponse("<h1>404 - Not Found</h1>")
+
+def send(request):
+    if request.method == 'POST':
+        ID = request.POST['id']
+        Email = request.POST['email']
+        Client_Name = request.POST['client_name']
+        Client_Request(ID = ID,email=Email,client_name=Client_Name).save()
+        msg="Data Stored Successfully"
+        return render(request,"index.html",{'msg':msg})
+    else:
+        return HttpResponse("<h1>404 - Not Found</h1>")
+    
+def delete(request):
+    ID = request.GET['id']
+    Client_Request.objects.filter(ID=ID).delete()
+    return HttpResponseRedirect("show")
+
+def edit(request):
+    ID = request.GET['id']
+    Email = client_name = "Not Available"
+    for data in Client_Request.objects.filter(ID=ID):
+        email = data.email
+        client_name = client_name
+    return render(request,"edit.html",{'ID':ID,'email':Email,'client_name':client_name})
+
+def RecordEdited(request):
+    
+    if request.method == 'POST':
+        ID = request.POST['id']
+        Email = request.POST['email']
+        Client_Name = request.POST['client_name']
+        Client_Request.objects.filter(ID=ID).update(email=Email,client_name=Client_Name)
+        return HttpResponseRedirect("show")
+    else:
+        return HttpResponse("<h1>404 - Not Found</h1>")

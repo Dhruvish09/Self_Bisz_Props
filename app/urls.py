@@ -22,6 +22,8 @@ urlpatterns = [
     path('main_after/',views.main_after,name='main_after'),
     path('profile/',views.profile,name='profile'),
    
+    path('loan/',views.loan,name='loan'),
+    
     path('Data/',views.Data,name='Data'),
     path('faq/',views.FAQ,name='faq'),
     
@@ -46,7 +48,8 @@ urlpatterns = [
     
     path('final_reg/',views.final_reg,name='final_reg'),
     path('final_log/',views.final_log,name='final_log'),
-    path('final_forgot/',views.final_forgot,name='final_forgot'),
+    path('password_reset_request/',views.password_reset_request,name='password_reset_request'),
+    path('logoutuser/',views.logoutuser,name='logoutuser'),
     
     # Log Reg Forgot End
     
@@ -70,15 +73,21 @@ urlpatterns = [
     path('Real_estate/',views.Real_estate,name='Real_estate'),
     
     # sub_category..........
-    path('Tech_Portfolio/',views.Tech_Portfolio,name='Tech_Portfolio'),
-    path('Auto_Portfolio/',views.Auto_Portfolio,name='Auto_Portfolio'),
-    path('Book_Portfolio/',views.Book_Portfolio,name='Book_Portfolio'),
-    path('Furniture_Portfolio/',views.Furniture_Portfolio,name='Furniture_Portfolio'),
-    path('Real_estate_Portfolio/',views.Real_estate_Portfolio,name='Real_estate_Portfolio'),
-    path('Retail_Portfolio/',views.Retail_Portfolio,name='Retail_Portfolio'),
+    path('Sub_Portfolio/',views.Sub_Portfolio,name='Sub_Portfolio'),
+
     # End sub_category..........
     
     # End Category
     
     # ......................................................................
+    path('send',views.send),
+    path('delete',views.delete),
+    path('edit',views.edit),
+    path('RecordEdited',views.RecordEdited),
+  
+    
 ]
+
+
+
+

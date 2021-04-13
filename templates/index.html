@@ -42,24 +42,7 @@
   ======================================================== -->
   <link rel="stylesheet" href="{% static "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"%}"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  {% comment %} <style>
-    .carousel-inner {
-      position: relative;
-      width: 138%;
-      overflow: hidden;
-      left: -250px;
-      height: 100%;
-    }
-    .map iframe{
-      width: 1110px;
-      height: 320px;
-      position: relative;
-      top: -26px;
-    }
-
-    
-</style> {% endcomment %}
-
+      
 <style media="screen">
   .carousel-cell {
     position: relative;
@@ -105,10 +88,9 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
+<header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 <!-- <img src="/static/img/portfolio/logo.jpg" alt=""> -->
-{% comment %} {% static "img/LOGO2.JPG"%} {% endcomment %}
       <h1 class="logo mr-auto"><img src="{% static "img/LOGO2.JPG"%}" alt="" ></h1>
       <!-- <h1 class="logo mr-auto"><img src="/static/img/portfolio/logo2.jpg" alt="" ><a href="{% url 'index' %}">SBP</a></h1> -->
       <!-- Uncomment below if you prefer to use an image logo -->
@@ -136,22 +118,8 @@
             </ul>
 
           </li>
-
-          <li class="drop-down"><a href="">Client</a>
-            <ul>
-
-              <li><a href="#">Technology</a></li>
-              <li><a href="#">Retail</a></li>
-              <li><a href="#">Grosary</a></li>
-              <li><a href="#">HANDICRAFT</a></li>
-              <li><a href="#">FOOD PRODUCTION</a></li>
-              <li><a href="#">PHARMCY</a></li>
-
-            </ul>
-
-          </li>
-
-          <li><a href="#">Activity</a></li>
+        
+          <li><a href={% url 'loan' %}>Activity</a></li>
           <li ><a  href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'services' %}">Services</a></li>
 
@@ -159,11 +127,10 @@
 
         </ul>
       </nav><!-- .nav-menu -->
-      <a href="#about"  class="get-started-btn scrollto" id="story">Share Your Story</a>
+
       <a href="{% url 'final_log' %}" class="get-started-btn scrollto">Login</a>
       <a href="{% url 'final_reg' %}" class="get-started-btn scrollto">Registration</a>
-      {% comment %} <a href="https://form.jotform.com/210726122722445" class="get-started-btn scrollto" >Registration</a> {% endcomment %}
-      {% comment %} <a href="{% url 'reg' %}" class="get-started-btn scrollto" >Registration</a> {% endcomment %}
+
     </div>
     </div>
   
@@ -176,7 +143,7 @@
 
     <div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": true, "imagesLoaded":true }'>
 
-      {%for sliders in sliders %}
+{%for sliders in sliders %}
       <div class="carousel-cell">
         <img class="w3-image" src="{{ sliders.photo.url }}">
       </div>
@@ -186,7 +153,7 @@
       <div class="carousel-cell">
         <img class="w3-image" src="{% static "/Slider/3.jpg"%}">
       </div> {% endcomment %}
-      {% endfor %}
+{% endfor %}
     </div>
 
 
@@ -324,21 +291,15 @@
 
         <div class="row">
 
+
+
 {%for clients in clients %}
 
           <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="{{ clients.photo.url }}" class="img-fluid" alt="">
-            {% comment %} {% static "/img/portfolio/DLF-Logo.png"%} {% endcomment %}
+            <a href={{clients.Web}} target="_blank"><img src="{{ clients.photo.url }}" class="img-fluid" alt=""></a>
           </div>
-
-          {% comment %} <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-            <img src="{% static "/img/clients/book comp.png"%}" class="img-fluid" alt="">
-          </div>{% endcomment %}
-
-          {%endfor%}
-
+{%endfor%}
         </div>
-
       </div>
     </section>
     <!-- End Clients Section -->
@@ -355,12 +316,12 @@
         <div class="row">
           <div class="col-lg-4 col-md-6 icon-box">
             <div class="icon"><i class="icofont-computer"></i></div>
-            <h4 class="title"><a href="">Business-client contact</a></h4>
+            <h4 class="title"><a href={% url 'final_log' %}>Business-client contact</a></h4>
             <p class="description">Our website provide communication between unknow person who want to build business or sell idea of business</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box">
             <div class="icon"><i class="icofont-chart-bar-graph"></i></div>
-            <h4 class="title"><a href="">Loan</a></h4>
+            <h4 class="title"><a href={% url 'loan' %}>Loan</a></h4>
             <p class="description">We are provide some loan source for gather and build own business</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box">
@@ -413,15 +374,15 @@
       </div>
     </section><!-- End Why Us Section -->
 
+
     <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
+
+<section id="portfolio" class="portfolio">
       <div class="container">
 
         <div class="section-title">
           <h2>Portfolio</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-            in iste officiis commodi quidem hic quas.</p>
+          <p>We know that by simply changing our allocation between stocks and bonds, we can lessen the amount of volatility in our portfolio until we reach our comfortable sleep level.</p>
         </div>
 
       <div class="row">
@@ -430,11 +391,18 @@
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active">All</li>
               <li data-filter=".filter-app">Tech</li>
-              <li data-filter=".filter-card">Auto</li>
+              <li data-filter=".filter-web">Agriculture</li>
+              <li data-filter=".filter-app">Auto</li>
+              <li data-filter=".filter-app">Retail</li>
+              <li data-filter=".filter-app">real estate</li>
+              <li data-filter=".filter-app">Book</li>
+              <li data-filter=".filter-app">Furniture</li>
+
+              {% comment %} <li data-filter=".filter-card">Auto</li>
               <li data-filter=".filter-web">Retail</li>
               <li data-filter=".filter-web">real estate</li>
               <li data-filter=".filter-web">Book</li>
-              <li data-filter=".filter-web">Agriculture</li>
+              <li data-filter=".filter-web">Agriculture</li> {% endcomment %}
             </ul>
           </div>
         </div>
@@ -447,12 +415,14 @@
             <div class="portfolio-wrap">
               <img src="{{ portfolios.photo.url }}" class="img-fluid" alt="">
               <div class="portfolio-info">
-                <a href="{% url 'Tech_Portfolio' %}"><h4>{{ portfolios.name }}</h4></a>
+                <a href="#"><h4>{{ portfolios.name }}</h4></a>
                 <p>{{ portfolios.sub_name }}</p>
+                {{ portfolios.link }}
                 <div class="portfolio-links">
                   <a href="{{ portfolios.photo.url }}" data-gall="portfolioGallery" class="venobox"
                     title="App 1"><a href="{{ portfolios.photo.url }}"><i class="bx bx-plus"></i></a></a>
-                  <a href="portfolio-details.html" title="More" > <a href="{% url 'Tech_Portfolio' %}"> <i class="bx bx-link"></i></a></a>
+                  <a href="portfolio-details.html" title="More" > <a href="{% url 'Sub_Portfolio' %}"> <i class="bx bx-link"></i></a></a>
+                  
                 </div>
               </div>
             </div>
@@ -461,15 +431,16 @@
 {% endfor %}
 
         </div>
-
       </div>
-    </section>
+</section>
+
     <!-- End Portfolio Section -->
+
+
 
     <!-- ======= Team Section ======= -->
   
-
-    <section id="team" class="team">
+<section id="team" class="team">
       <div class="container">
         <div class="section-title">
                <h2>Team</h2>
@@ -502,12 +473,14 @@
 
         </div>
       </div>
-   </section>
-
+</section>
 
     <!-- End Team Section -->
 
+
+
     <!-- ======= Contact Section ======= -->
+
     <section id="contact" class="contact">
       <div class="container">
 
@@ -561,23 +534,23 @@
             <div class="form-row">
               <div class="col-md-6 form-group">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
-                  data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                  data-rule="minlen:4" data-msg="Please enter at least 4 chars">{{form.name}}
                 <div class="validate"></div>
               </div>
               <div class="col-md-6 form-group">
                 <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
-                  data-rule="email" data-msg="Please enter a valid email">
+                  data-rule="email" data-msg="Please enter a valid email">{{form.email}}
                 <div class="validate"></div>
               </div>
             </div>
             <div class="form-group">
               <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
-                data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />{{form.subject}}
               <div class="validate"></div>
             </div>
             <div class="form-group">
               <textarea class="form-control" name="message" rows="5" data-rule="required"
-                data-msg="Please write something for us" placeholder="Message"></textarea>
+                data-msg="Please write something for us" placeholder="Message"></textarea>{{form.message}}
               <div class="validate"></div>
             </div>
             <div class="mb-3">
@@ -587,17 +560,23 @@
             </div>
             
             <div class="text-center"><button type="submit">Send Message</button></div>
-                  {{form.contacts}}
+                 
           </form>
         </div>
 
       </div>
     </section>
+
     <!-- End Contact Section -->
+
+
 
   </main><!-- End #main -->
 
+
+
   <!-- ======= Footer ======= -->
+
   <footer id="footer">
     <div class="footer-top">
       <div class="container">
@@ -637,7 +616,7 @@
             <h4>Our Services</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Gov Politcy</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Bank Loan</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href={% url 'loan' %}>Bank Loan</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">News</a></li>
               <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li> -->
@@ -672,13 +651,18 @@
         Designed by <a href="#">DSLR</a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+
+  </footer>
+  
+  <!-- End Footer -->
+
+
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
   <!-- Vendor JS Files -->
  
-   <script src="{% static "/vendor/bootstrap/js/bootstrap.bundle.min.js"%}"></script>
+  <script src="{% static "/vendor/bootstrap/js/bootstrap.bundle.min.js"%}"></script>
   <script src="{% static "/vendor/jquery.easing/jquery.easing.min.js"%}"></script>
   <script src="{% static "/vendor/php-email-form/validate.js"%}"></script>
   <script src="{% static "/vendor/jquery/jquery.min.js"%}"></script>

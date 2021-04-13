@@ -54,19 +54,22 @@ https://templatemo.com/tm-520-highway
 
 
 
-{% for sub_portfolios in sub_portfolios %}
+
+
+
+{% for auto_portfolios in auto_portfolios %}
 
             <div class="col-md-4 col-sm-6">
                 <div class="portfolio-item">
-                    <a href="{{ sub_portfolios.photo.url }}" data-lightbox="image-1"><div class="thumb">
+                    <a href="{{ auto_portfolios.photo.url }}" data-lightbox="image-1"><div class="thumb">
                         <div class="hover-effect">
                             <div class="hover-content">
-                                <h1><em>Technology</em></h1>
-                                <p>Awesome Tech port Goes Here</p>
+                                <h1><em>Auto-Mobile</em></h1>
+                                <p>Awesome Auto port Goes Here</p>
                             </div>
                         </div>
                         <div class="image">
-                            <img src="{{ sub_portfolios.photo.url }}">
+                            <img src="{{ auto_portfolios.photo.url }}">
                         </div>
                     </div></a>
                 </div>

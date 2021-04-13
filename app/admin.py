@@ -1,5 +1,6 @@
 from django.contrib import admin
-from app.models import registartion,login,forgot,subscribe,team,contact,slider,portfolio,category,cat_profile,client,tech_portfolio,auto_portfolio,book_portfolio,retail_portfolio,real_portfolio,furniture_portfolio
+from app.models import registartion,login,forgot,subscribe,team,contact,slider,portfolio,category,cat_profile,client,sub_portfolio,Client_Request,Loan
+
 # Register your models here.
 
 admin.site.register(registartion)
@@ -15,10 +16,11 @@ admin.site.register(category)
 admin.site.register(cat_profile)
 admin.site.register(client)
 
-admin.site.register(tech_portfolio)
-admin.site.register(auto_portfolio)
-admin.site.register(book_portfolio)
-admin.site.register(retail_portfolio)
-admin.site.register(real_portfolio)
-admin.site.register(furniture_portfolio)
+admin.site.register(sub_portfolio)
+
+admin.site.register(Loan)
+
+
+admin.site.register(Client_Request)
+
 

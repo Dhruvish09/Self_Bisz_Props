@@ -110,6 +110,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-menu > ul {
   display: flex;
+  right: 38%;
+  position: relative;
 }
 
 .nav-menu > ul > li {

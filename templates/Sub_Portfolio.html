@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  		<title>Tech Portfolio</title>
+  		<title>Sub Portfolio</title>
 <!-- 
 
 Highway Template
@@ -34,7 +34,7 @@ https://templatemo.com/tm-520-highway
         <div class="video-overlay"></div>
         <div class="video-content">
             <div class="inner">
-              <h1>Welcome to <em>Tech-Port</em></h1>
+              <h1>Welcome to our <em>Portfolio</em></h1>
               {% comment %} <p>FREE CSS TEMPLATE by templatemo</p>
               <p>Homepage with full-width image gallery</p> {% endcomment %}
                 <div class="scroll-icon">
@@ -44,7 +44,7 @@ https://templatemo.com/tm-520-highway
             </div>
         </div>
         <video autoplay="" loop="" muted>
-        	<source src="{%static "Sub_Portfolio/highway-loop.mp4"%}" type="video/mp4" />
+        	<source src="{%static "Sub_Portfolio/tech.mp4"%}" type="video/mp4" />
         </video>
     </div>
 
@@ -61,8 +61,8 @@ https://templatemo.com/tm-520-highway
                     <a href="{{ sub_portfolios.photo.url }}" data-lightbox="image-1"><div class="thumb">
                         <div class="hover-effect">
                             <div class="hover-content">
-                                <h1><em>Technology</em></h1>
-                                <p>Awesome Tech port Goes Here</p>
+                                <h1><em>{{ sub_portfolios.name }}</em></h1>
+                                <p>Awesome {{ sub_portfolios.sub_name }} polaroid Goes Here</p>
                             </div>
                         </div>
                         <div class="image">

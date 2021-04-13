@@ -2,7 +2,7 @@ from django.forms import ModelForm, fields
 from phone_field import PhoneField
 from django import forms
 # from django .contrib.auth.models import User
-from .models import registartion,login,forgot,contact,slider,subscribe,team,portfolio,category,cat_profile,client,tech_portfolio,auto_portfolio,real_portfolio,retail_portfolio,book_portfolio,furniture_portfolio
+from .models import registartion,login,forgot,contact,slider,subscribe,team,portfolio,category,cat_profile,client,sub_portfolio,Client_Request,Loan
 
 
 # Start Reg , Log ,Forgot........................................................
@@ -15,7 +15,7 @@ class Regform(forms.ModelForm):
     phone_number = PhoneField()
     class Meta:
         model = registartion
-        fields = ['email', 'username', 'password', 'confirm_password','bday','gender','phone_number','profile']
+        fields = ['email', 'username', 'password','gender','phone_number','profile']
 
 class Logform(forms.ModelForm):
     class Meta:
@@ -41,7 +41,7 @@ class Slideform(forms.ModelForm):
 class Clientform(forms.ModelForm):
     class meta:
         model = client
-        fields = ['photo']
+        fields = ['photo','Web']
 
 class Contactform(forms.ModelForm):
     class meta:
@@ -58,6 +58,10 @@ class Teamform(forms.ModelForm):
         model = team
         fields = ['name','position','photo','twitter','facebook','instagram','linkedin']
         
+class Loanform(forms.ModelForm):
+    model = Loan
+    fields = ['Bank_name','Loan_Type','Loan_Amount','Interest_Rate','Re_payment_Period','Address']
+    
 # End Index....................................................................
 
 
@@ -69,35 +73,10 @@ class Portfolioform(forms.ModelForm):
         model = portfolio
         fields = ['name','sub_name','photo']        
 
-class Tech_Portfolioform(forms.ModelForm):
+class Sub_Portfolioform(forms.ModelForm):
     class meta:
-        model = tech_portfolio
-        fields = ['name','photo']        
-
-class Auto_Portfolioform(forms.ModelForm):
-    class meta:
-        model = auto_portfolio
-        fields = ['name','photo']
-               
-class Retail_Portfolioform(forms.ModelForm):
-    class meta:
-        model = retail_portfolio
-        fields = ['name','photo'] 
-               
-class Real_Portfolioform(forms.ModelForm):
-        class meta:
-            model = real_portfolio
-            fields = ['name','photo']   
-                 
-class Book_Portfolioform(forms.ModelForm):
-        class meta:
-            model = book_portfolio
-            fields = ['name','photo']        
-                       
-class Furniture_Portfolioform(forms.ModelForm):
-        class meta:
-            model = furniture_portfolio
-            fields = ['name','photo']        
+        model = sub_portfolio
+        fields = ['name','sub_name','photo']        
 
 # End Sub_Portfolio...........................................................
 
@@ -117,5 +96,8 @@ class cat_profileform(forms.ModelForm):
         fields = ['Desc','Price','photo','city']  
         
 # End Category.....................................................................           
-        
-           
+
+class Clientrequestform(forms.ModelForm):
+    class meta:
+        model = Client_Request
+        fields = ['id','email ','client_name','Desc'] 

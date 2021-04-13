@@ -21,13 +21,13 @@
             <div>
                 <!-- <label>User Name</label><br> -->
                 <span class="fa fa-user"></span>
-                <input type="text" name="username" id="name" placeholder="User Name" required=""/>{{ form.Reg }}<br><br>
+                <input type="text" name="username" id="name" placeholder="User Name" required=""/>{{ value.username }}<br><br>
                 
             </div>
             <div>
                 <!-- <label>Email</label><br> -->
                 <span class="fa fa-envelope"></span>
-                <input type="email" name="email" id="name" placeholder="example@gmail.com" required=""/>{{ form.Reg }}<br><br>
+                <input type="email" name="email" id="name" placeholder="example@gmail.com" required=""/>{{ value.email }}<br><br>
                 </div>
 
             
@@ -40,7 +40,7 @@
 
                 <input type="radio" id="ml" name="male" required=""/>  
                 <span id="other">Client</span>&nbsp;
-               {{ form.Reg }}<br><br>
+               {{ value.profile }}<br><br>
             </div>
             
             <div>
@@ -263,12 +263,12 @@
                     <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
                     
                 </select>
-                <input type="tel" name="Mnum" placeholder="********09" id="mnum"  pattern="[1-9]{1}[0-9]{9}" required=""/>{{form.Reg}}<br><br>
+                <input type="tel" name="Mnum" placeholder="********09" id="mnum"  pattern="[1-9]{1}[0-9]{9}" required=""/>{{value.phone_number}}<br><br>
                 </div>
             <div>
                 <!-- <label>Enter Your DOB</label><br> -->
                 <span class="fa fa-calendar"></span>
-                <input type="date" id="name" name="DOB" required=""/>{{ form.Reg}}<br><br>
+                <input type="date" id="name" name="DOB" required=""/>{{ value.birth_date}}<br><br>
                 
             </div> 
             <div>
@@ -283,20 +283,20 @@
 
                 <input type="radio" id="ml" name="male" >
                 <span id="other">Other</span>
-                {{ form.Reg }}<br><br>
+                {{ value.gender }}<br><br>
             </div>
             
             
             <div>
                 <!-- <label>Password</label><br> -->
                 <span class="fa fa-lock"></span>
-                <input type="password" name="password" id="name" placeholder="Enter Your Password" required=""/>{{ form.Reg }} <br><br>
+                <input type="password" name="password" id="name" placeholder="Enter Your Password" required=""/>{{ value.password }} <br><br>
                 
             </div>
             <div>
                 <!-- <label>Confirm Password</label><br> -->
                 <span class="fa fa-lock"></span>
-                <input type="password" name="pass" id="name" placeholder="Confirm Password" required=""/>{{ form.Reg }}<br><br>
+                <input type="password" name="pass" id="name" placeholder="Confirm Password" required=""/>{{ value.password }}<br><br>
                 
             </div>
             <div class="login-check">
