@@ -1,7 +1,7 @@
 from django.db import models
 from phone_field import PhoneField
 from django import forms
-from phonenumber_field.modelfields import PhoneNumberField
+# from phonenumber_field.modelfields import PhoneNumberField
 #   Start Index .........................................
 
 class slider(models.Model):
@@ -87,40 +87,70 @@ class sub_portfolio(models.Model):
 
 # Start Reg Login Forgot................................................
  
-class registartion(models.Model):
+# class registartion(models.Model):
+#     email = models.CharField(max_length=30)
+#     username=models.CharField(max_length=12)
+#     password=models.CharField(max_length=12)
+    # confirm_password=models.CharField(max_length=12)
+    # birthdate=models.DateField(auto_now=False, auto_now_add=False)    
+    # birth_date = models.DateField()
+    # GENDER_CHOICES = (
+    #     ('M', 'Male'),
+    #     ('F', 'Female'),
+    #     ('o', 'other'),
+    # )
+    # gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+        
+    
+    # PROFILE_CHOICES = (
+    #     ('B', 'Businessman'),
+    #     ('C', 'Client')
+    # )
+    # profile = models.CharField(max_length=1, choices=PROFILE_CHOICES)
+    
+    # phone_number = PhoneField(max_length=10,blank=True, help_text='Contact phone number')
+    # phone_number = models.CharField(max_length=12)
+    # phone_number = PhoneField(blank=True, help_text='Contact phone number')
+    
+    # @staticmethod
+    # def get_all_ptdata(email):
+    #     try:
+    #         return registartion.object.get(email=email)
+    #     except:
+    #         return False
+    
+    # def __str__(self):
+    #     return self.username
+    
+class reg(models.Model):
     email = models.CharField(max_length=30)
     username=models.CharField(max_length=12)
     password=models.CharField(max_length=12)
-    # confirm_password=models.CharField(max_length=12)
-    birthdate=models.DateField(auto_now=False, auto_now_add=False)    
-    # birth_date = models.DateField()
+    birthdate = models.DateField()
     GENDER_CHOICES = (
         ('M', 'Male'),
         ('F', 'Female'),
         ('o', 'other'),
     )
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-        
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES) 
     
     PROFILE_CHOICES = (
         ('B', 'Businessman'),
-        ('C', 'Client')
+        ('C', 'Client'),
     )
     profile = models.CharField(max_length=1, choices=PROFILE_CHOICES)
-    
-    phone_number = PhoneField(max_length=10,blank=True, help_text='Contact phone number')
-    # phone_number = models.CharField(max_length=12)
+    phone_number = models.CharField(max_length=12)
     # phone_number = PhoneField(blank=True, help_text='Contact phone number')
+    
+    def __str__(self):
+        return self.username
     
     @staticmethod
     def get_all_ptdata(email):
         try:
-            return registartion.object.get(email=email)
+            return reg.object.get(email = email)
         except:
             return False
-    
-    def __str__(self):
-        return self.username
     
 class login(models.Model):
     email = models.CharField(max_length=30)
@@ -167,121 +197,121 @@ class category(models.Model):
     
     SUB_CHOICES = (
         ('Technology', (
-            ('11', 'Sofware'),
-            ('12', 'Harware'),
-            ('13', 'Web Development'),
-            ('13', 'Computer Repairing'),
-            ('13', 'Digital Iteam Selling'),
+            ('Sofware', 'Sofware'),
+            ('Harware', 'Harware'),
+            ('Web Development', 'Web Development'),
+            ('Computer Repairing', 'Computer Repairing'),
+            ('Digital Iteam Selling', 'Digital Iteam Selling'),
         )),
         
         ('Architecture', (
-            ('21', 'Architectural Designer'),
-            ('22', 'Urban Plan'),
-            ('23', 'Wooden Architecture'),
+            ('Architectural Designer', 'Architectural Designer'),
+            ('Urban Plan', 'Urban Plan'),
+            ('Wooden Architecture','Wooden Architecture'),
         )),
         
         ('Agriculture', (
-            ('31', 'Farming Business'),
-            ('32', 'Equipment Resource'),
-            ('33', 'Machinery Resource'),
-            ('34', 'Products Storage'),
-            ('35', 'Prodcut Seller'),
+            ('Farming Business','Farming Business'),
+            ('Equipment Resource','Equipment Resource'),
+            ('Machinery Resource','Machinery Resource'),
+            ('Products Storage','Products Storage'),
+            ('Prodcut Seller','Prodcut Seller'),
         )),
         
         ('Book', (
-            ('41', 'Special markets booksellers'),
-            ('42', 'Big box stores'),
-            ('43', 'Price clubs'),
+            ('Special markets booksellers','Special markets booksellers'),
+            ('Big box stores','Big box stores'),
+            ('Price clubs','Price clubs'),
         )),
                 
         ('Consultants', (
-            ('51', 'Lowyer Advice'),
-            ('52', 'CA'),
-            ('53', 'Valuers'),
+            ('Lowyer Advice','Lowyer Advice'),
+            ('CA','CA'),
+            ('Valuers','Valuers'),
         )),
         
         ('Catarers', (
-            ('61', 'Birthday/Event/Function party'),
-            ('62', 'Wedding Catarers'),
+            ('Birthday/Event/Function party','Birthday/Event/Function party'),
+            ('Wedding Catarers','Wedding Catarers'),
         )),
         
         ('Carpenters', (
-            ('71', 'Home Care'),
-            ('72', 'Wood Work'),
-            ('73', 'Fabrication'),
+            ('Home Care','Home Care'),
+            ('Wood Work','Wood Work'),
+            ('Fabrication','Fabrication'),
         )),  
         
         ('Electronics_applices', (
-            ('81', 'Computers & accessories'),
-            ('82', 'Mobile'),
-            ('83', 'Tv - video - audio'),
-            ('84', 'Cameras & accessories'),
-            ('85', 'Games & Entertainment'),
-            ('86', 'Fridge - AC - Washing Machine'),
-            ('87', 'Kitchen'),
+            ('Computers & accessories','Computers & accessories'),
+            ('Mobile','Mobile'),
+            ('Tv - video - audio','Tv - video - audio'),
+            ('Cameras & accessories','Cameras & accessories'),
+            ('Games & Entertainment','Games & Entertainment'),
+            ('Fridge - AC - Washing Machine','Fridge - AC - Washing Machine'),
+            ('Kitchen','Kitchen'),
         )),
         
         ('Education', (
-            ('91', 'Classes'),
-            ('92', 'Coaching'),
-            ('93', 'Institute'),
+            ('Classes','Classes'),
+            ('Coaching','Coaching'),
+            ('Institute','Institute'),
         )), 
         
         ('Fashion', (
-            ('101', 'Clothes'),
-            ('102', 'Footwear'),
-            ('103', 'Accessories '),
+            ('Clothes','Clothes'),
+            ('Footwear','Footwear'),
+            ('Accessories','Accessories'),
         )), 
         
         ('Furnitures', (
-            ('111', 'Sofa & Dining '),
-            ('112', 'Beds & Wardrobes '),
-            ('113', 'Home Decor & Garden'),
-            ('114', 'Other Household Items'),
+            ('Sofa & Dining ','Sofa & Dining '),
+            ('Beds & Wardrobes','Beds & Wardrobes'),
+            ('Home Decor & Garden','Home Decor & Garden'),
+            ('Other Household Items','Other Household Items'),
         )), 
         
         ('Kids', (
-            ('121', 'Furniture And Toys'),
-            ('122', 'Prams & Walkers'),
-            ('123', 'Accessories'),
+            ('Furniture And Toys','Furniture And Toys'),
+            ('Prams & Walkers','Prams & Walkers'),
+            ('Accessories','Accessories'),
         )),  
         
         ('Pets', (
-            ('131', 'Dogs'),
-            ('132', 'Aquariums'),
-            ('133', 'Pet Food & Accessories'),
-            ('134', 'Other Pets'),
+            ('Dogs','Dogs'),
+            ('Aquariums','Aquariums'),
+            ('Pet Food & Accessories','Pet Food & Accessories'),
+            ('Other Pets','Other Pets'),
         )), 
         
         ('Retail', (
-            ('141', 'Grocery Store'),
-            ('142', 'Convenience Store'),
-            ('143', 'Hyper Market'),
+            ('Grocery Store','Grocery Store'),
+            ('Convenience Store','Convenience Store'),
+            ('Hyper Market','Hyper Market'),
         )),
         
         ('Real_estate', (
-            ('151', 'Residential'),
-            ('152', ' Industrial'),
-            ('153', ' Commercial'),
+            ('Residential','Residential'),
+            ('Industrial','Industrial'),
+            ('Commercial','Commercial'),
         )),
         
         ('Sell Cosmetic', (
-            ('161', 'Beauty Parlours'),
-            ('162', 'Salon'),
-            ('163', 'Spa'),
+            ('Beauty Parlours','Beauty Parlours'),
+            ('Salon','Salon'),
+            ('Spa','Spa'),
         )),
         
         ('Vehical', (
-            ('171', 'Hiring'),
-            ('172', 'Commercial Vehicles'),
-            ('173', 'Other Vehicles'),
-            ('174', 'Spare Parts'),
+            ('Hiring','Hiring'),
+            ('Commercial Vehicles','Commercial Vehicles'),
+            ('Other Vehicles','Other Vehicles'),
+            ('Spare Parts','Spare Parts'),
         )),
         
     )
     
-    category = models.CharField(max_length = 20,choices = CAT_CHOICES,default = '1') 
-    sub_category = models.CharField(max_length = 20,choices = SUB_CHOICES,default = '11')
+    category = models.CharField(max_length = 50,choices = CAT_CHOICES,default = '1') 
+    sub_category = models.CharField(max_length = 50,choices = SUB_CHOICES,default = '11')
     # sub_category = models.CharField(max_length = 20,choices = CAT_CHOICES,default = '1') 
     # sub_category = models.ForeignKey(sub,max_length=60,on_delete=models.CASCADE) 
     # sub_category = models.ForeignKey(sub,max_length = 20,choices = SUB_CHOICES,on_delete=models.CASCADE , default='11')
@@ -316,29 +346,98 @@ class sub(models.Model):
     sub_cat = models.CharField(max_length=50)
 #   End Category..........................................
     
-
-class Client_Request(models.Model):
-    ID = models.CharField(max_length=10,primary_key=True)
-    email = models.CharField(max_length=30)
-    client_name=models.CharField(max_length=12)
-    Desc = models.TextField(max_length=300)
+    
     
     
 class Loan(models.Model):
-        Bank_name=models.CharField(max_length=20)
-        Loan_Type=models.CharField(max_length=30)
-        Interest_Rate=models.CharField(max_length=50)
-        Loan_Amount=models.CharField(max_length=20)
-        Re_payment_Period=models.CharField(max_length=30)
-        Address=models.URLField(max_length = 2000)
+    Bank_name=models.CharField(max_length=20)
+    Loan_Type=models.CharField(max_length=30)
+    Interest_Rate=models.CharField(max_length=50)
+    Loan_Amount=models.CharField(max_length=20)
+    Re_payment_Period=models.CharField(max_length=30)
+    Address=models.URLField(max_length = 2000)
         
-        @staticmethod
-        def get_all_Loandata():
-            return Loan.objects.all()
+    @staticmethod
+    def get_all_Loandata():
+        return Loan.objects.all()
+    
+    def __str__(self):
+        return self.Bank_name
         
-        def __str__(self):
-            return self.Bank_name
-        
+class ClientRequest(models.Model):
+    Client_email=models.CharField(max_length=50)
+    Client_message=models.CharField(max_length=500)
+    Client_Date=models.DateTimeField()
+    Client_Mobile=models.CharField(max_length=15)
+    Client_name=models.CharField(max_length=30)
+    
+    @staticmethod
+    def get_all_cltreqdata():
+        return ClientRequest.objects.all()
+    
+    def __str__(self):
+        return self.Client_name
+
+
+class Businessdetail(models.Model):
+    
+    
+    MARKET_CHOICES = (
+        ("GOOD", "GOOD"),
+        ("AVERAGE", "AVERAGE"),
+        ("PRO","PRO"),
+        )
+    
+    BUSTYPE_CHOICES = (
+        ("Technology", "Technology"),
+        ("Agriculture", "Agriculture"),
+        ("Architecture","Architecture"),
+        ("Book","Book"),
+        ("Consultants","Consultants"),
+        ("Catarers","Catarers"),
+        ("Carpenters","Carpenters"),
+        ("Electronics_applices","Electronics_applices"),
+        ("Education","Education"),
+        ("Fashion","Fashion"),
+        ("Furnitures","Furnitures"),       
+        ("Kids","Kids"),
+        ("Pets","Pets"),
+        ("Retail","Retail"),
+        ("Real_estate","Real_estate"),
+        ("Sell Cosmetic","Sell Cosmetic"),
+        ("Vehical","Vehical"),
+        )
+  
+    
+    Business_Shortdetail=models.CharField(max_length=500)
+    Business_Detail=models.CharField(max_length=500)
+    Business_Date=models.DateTimeField()
+    Business_Brand=models.CharField(max_length=30)
+    Business_Brandweb=models.URLField(max_length = 2000)
+    Business_Mobile=models.CharField(max_length=15)
+    Business_Email=models.CharField(max_length=50)
+    Business_Type=models.CharField(max_length=30)
+    Business_Turnover = models.CharField(max_length=15)
+    Business_Type = models.CharField(max_length = 50,choices = BUSTYPE_CHOICES,default = '1')
+    Business_Marketplace = models.CharField(max_length = 50,choices = MARKET_CHOICES,default = '1')
+    Business_Features=models.CharField(max_length=800)
+    
+    @staticmethod
+    def get_all_busdetdata():
+        return Businessdetail.objects.all()
+    
+    def __str__(self):
+        return self.Business_Type
+
+class Businessslide(models.Model):
+    slide = models.ImageField(upload_to='media/Businessslide/images') 
+    
+    @staticmethod
+    def get_all_Bussliddata():
+        return Businessslide.objects.all()
+
+
+    
 
         
     

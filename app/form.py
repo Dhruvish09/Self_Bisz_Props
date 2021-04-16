@@ -2,20 +2,19 @@ from django.forms import ModelForm, fields
 from phone_field import PhoneField
 from django import forms
 # from django .contrib.auth.models import User
-from .models import registartion,login,forgot,contact,slider,subscribe,team,portfolio,category,cat_profile,client,sub_portfolio,Client_Request,Loan
-
-
+from .models import reg,login,forgot,contact,slider,subscribe,team,portfolio,category,cat_profile,client,sub_portfolio,Loan,ClientRequest,Businessdetail,Businessslide,contact
+from django.core.mail import send_mail, get_connection
 # Start Reg , Log ,Forgot........................................................
 class Regform(forms.ModelForm):
     # forms.ModelForm
-    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
-    # birth_date = forms.DateField(help_text='Required. Format: YYYY-MM-DD')
-    password = forms.CharField(widget=forms.PasswordInput)
-    confirm_password = forms.CharField(widget=forms.PasswordInput)
-    phone_number = PhoneField()
+    # email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+    # # birth_date = forms.DateField(help_text='Required. Format: YYYY-MM-DD')
+    # password = forms.CharField(widget=forms.PasswordInput)
+    # confirm_password = forms.CharField(widget=forms.PasswordInput)
+    # phone_number = PhoneField()
     class Meta:
-        model = registartion
-        fields = ['email', 'username', 'password','gender','phone_number','profile']
+        model = reg
+        fields = ['email', 'username', 'password','gender','phone_number','profile','birthdate']
 
 class Logform(forms.ModelForm):
     class Meta:
@@ -47,6 +46,7 @@ class Contactform(forms.ModelForm):
     class meta:
         model = contact
         fields = ['name','subject','email','message']
+
 
 class Subscribeform(forms.ModelForm):
     class meta:
@@ -97,7 +97,18 @@ class cat_profileform(forms.ModelForm):
         
 # End Category.....................................................................           
 
-class Clientrequestform(forms.ModelForm):
+class ClientRequestform(forms.ModelForm):
     class meta:
-        model = Client_Request
-        fields = ['id','email ','client_name','Desc'] 
+        model = ClientRequest
+        fields = ['Client_name','Client_email','Client_message','Client_Date','Client_Mobile']
+        
+class BusinessDetailform(forms.ModelForm):
+    class meta:
+        model = Businessdetail
+        fields = ['Business_Shortdetail','Business_Detail','Business_Date','Business_Brandweb','Business_Brand','Business_Mobile','Business_Email','Business_Type','Business_Turnover','Business_Marketplace','Business_Features']
+
+class Businessslideform(forms.ModelForm):
+    class meta:
+        model = Businessslide
+        fields = ['slide']
+

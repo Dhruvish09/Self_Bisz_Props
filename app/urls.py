@@ -82,8 +82,10 @@ urlpatterns = [
     # ......................................................................
     path('send',views.send),
     path('delete',views.delete),
-    path('edit',views.edit),
+    # path('edit',views.edit),
     path('RecordEdited',views.RecordEdited),
+    
+    path('Edit_Profile',views.Edit_Profile,name="Edit_Profile")
   
     
 ]

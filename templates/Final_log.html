@@ -19,19 +19,23 @@
             {% csrf_token %}
             <img src="{% static "/REG_LOG_FORGOT/images/LOGO2.JPG"%}" alt=""><br><br>
 
+{% comment %} Username {% endcomment %}
             <div>
                 <!-- <label>User Name</label><br> -->
                 <span class="fa fa-user"></span>
                 <input type="text" name="username" id="name" placeholder="User Name" required=""/><br><br>
                 {{ form.username }}
             </div>
+
+{% comment %} Email {% endcomment %}
             <div>
                 <!-- <label>Email</label><br> -->
                 <span class="fa fa-envelope"></span>
                 <input type="email" name="email" id="name" placeholder="example@gmail.com" required=""/><br><br>
                 {{ form.email }}
             </div>
-            
+
+{% comment %} Password    {% endcomment %}
             <div>
                 <!-- <label>Password</label><br> -->
                 <span class="fa fa-lock"></span>
@@ -46,8 +50,6 @@
 				<p id="new"><a href="{% url 'final_reg' %}">New User? Register</a></p>
 					<div class="clear"></div>
 			</div>
-
-
 
         </form>
 

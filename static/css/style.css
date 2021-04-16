@@ -106,11 +106,13 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
   list-style: none;
+  position: relative;
+  right: 78%;
 }
 
 .nav-menu > ul {
   display: flex;
-  right: 38%;
+  right: 71%;
   position: relative;
 }
 
@@ -234,10 +236,10 @@ h1, h2, h3, h4, h5, h6 {
 /* Get Startet Button */
 .get-started-btn {
   margin-left: 25px;
-  color: #fff;
+  color: white;
   border-radius: 21px;
   padding: 6px 25px 8px 25px;
-  white-space:nowrap;
+  white-space: nowrap;
   transition: 0.3s;
   font-size: 13px;
   display: inline-block;
@@ -246,7 +248,8 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Poppins", sans-serif;
   border: 2px solid #5c9f24;
   position: relative;
-  right: -10%;
+  right: 0%;
+  top: -1%;
   }
   .get-started-btn #story{
     position: relative;

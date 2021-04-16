@@ -1,9 +1,8 @@
 from django.contrib import admin
-from app.models import registartion,login,forgot,subscribe,team,contact,slider,portfolio,category,cat_profile,client,sub_portfolio,Client_Request,Loan
-
+from app.models import reg,login,forgot,subscribe,team,contact,slider,portfolio,category,cat_profile,client,sub_portfolio,Loan,ClientRequest,Businessdetail,Businessslide
 # Register your models here.
 
-admin.site.register(registartion)
+admin.site.register(reg)
 admin.site.register(login)
 admin.site.register(forgot)
 admin.site.register(subscribe)
@@ -19,8 +18,9 @@ admin.site.register(client)
 admin.site.register(sub_portfolio)
 
 admin.site.register(Loan)
+admin.site.register(ClientRequest)
+admin.site.register(Businessdetail)
+admin.site.register(Businessslide)
 
-
-admin.site.register(Client_Request)
 
 

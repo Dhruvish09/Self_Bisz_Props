@@ -45,9 +45,7 @@
     <div class="page-wrapper">
         <!-- HEADER DESKTOP-->
         <header class="header-desktop3 d-none d-lg-block">
-            <div class="section__content section__content
-            
-            +--p35">
+            <div class="section__content section__content +--p35">
                 <div class="header3-wrap">
                     <div class="header__logo">
                         <a href={% url 'index' %}>
@@ -100,30 +98,21 @@
                             <i class="zmdi zmdi-settings"></i>
                             <div class="setting-dropdown js-dropdown">
                                 <div class="account-dropdown__body">
+
                                     <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-account"></i>Account</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
+                                        <a href={% url 'Edit_Profile' %}>
                                             <i class="zmdi zmdi-settings"></i>Setting</a>
                                     </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                    </div>
                                 </div>
+
                                 <div class="account-dropdown__body">
+                                    
                                     <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-globe"></i>Language</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
+                                        <a href="https://maps.google.com/?saddr=My%20Location&daddr=myDestinationAddress" target="_blank">
                                             <i class="zmdi zmdi-pin"></i>Location</a>
                                     </div>
                                     <div class="account-dropdown__item">
-                                        <a href="#">
+                                        <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">
                                             <i class="zmdi zmdi-email"></i>Email</a>
                                     </div>
                                     <div class="account-dropdown__item">
@@ -159,16 +148,12 @@
                                     </div>
                                     <div class="account-dropdown__body">
                                         <div class="account-dropdown__item">
-                                            <a href="#">
+                                            <a href={% url 'Edit_Profile' %}>
                                                 <i class="zmdi zmdi-account"></i>Account</a>
                                         </div>
                                         <div class="account-dropdown__item">
-                                            <a href="#">
+                                            <a href={% url 'Edit_Profile' %}>
                                                 <i class="zmdi zmdi-settings"></i>Setting</a>
-                                        </div>
-                                        <div class="account-dropdown__item">
-                                            <a href="#">
-                                                <i class="zmdi zmdi-money-box"></i>Billing</a>
                                         </div>
                                     </div>
                                     <div class="account-dropdown__footer">
@@ -357,7 +342,7 @@
                 </div>
             </section>
             <!-- END WELCOME-->
-
+            <a href="#" class="get-started-btn scrollto" id="story">Add Your Business</a>
             <!-- STATISTIC-->
             <section class="statistic statistic2">
                 <div class="container">
@@ -492,12 +477,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3 class="title-5 m-b-35">data table</h3>
+                            <h3 class="title-5 m-b-35">Client Request</h3>
                             <div class="table-data__tool">
                                 <div class="table-data__tool-left">
                                     <div class="rs-select2--light rs-select2--md">
                                         <select class="js-select2" name="property">
-                                            <option selected="selected">All Properties</option>
+                                            <option selected="selected">All Request</option>
                                             <option value="">Option 1</option>
                                             <option value="">Option 2</option>
                                         </select>
@@ -514,17 +499,7 @@
                                     <button class="au-btn-filter">
                                         <i class="zmdi zmdi-filter-list"></i>filters</button>
                                 </div>
-                                <div class="table-data__tool-right">
-                                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                        <i class="zmdi zmdi-plus"></i>add item</button>
-                                    <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-                                        <select class="js-select2" name="type">
-                                            <option selected="selected">Export</option>
-                                            <option value="">Option 1</option>
-                                            <option value="">Option 2</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
+                       
                                 </div>
                             </div>
                             <div class="table-responsive table-responsive-data2">
@@ -539,31 +514,36 @@
                                             </th>
                                             <th>name</th>
                                             <th>email</th>
-                                            <th>description</th>
+                                            <th>Message</th>
                                             <th>date</th>
                                             <th>status</th>
-                                            <th>price</th>
+                                            <th>Mobile</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
+
+
+{%for ClientRequests in ClientRequests %}
+                                        <tr class="spacer"></tr>
                                         <tr class="tr-shadow">
+                                        
                                             <td>
                                                 <label class="au-checkbox">
                                                     <input type="checkbox">
                                                     <span class="au-checkmark"></span>
                                                 </label>
                                             </td>
-                                            <td>Patel Dhruvish</td>
+                                            <td>{{ClientRequests.Client_name}}</td>
                                             <td>
-                                                <span class="block-email">pateldhruvish612000@gmail.com</span>
+                                                <span class="block-email">{{ClientRequests.Client_email}}</span>
                                             </td>
-                                            <td class="desc">Python Programmer</td>
-                                            <td>2021-04-07 02:12</td>
+                                            <td class="desc">{{ClientRequests.Client_message}}</td>
+                                            <td>{{ClientRequests.Client_Date}}</td>
                                             <td>
                                                 <span class="status--process">Processed</span>
                                             </td>
-                                            <td>$679.00</td>
+                                            <td>{{ClientRequests.Client_Mobile}}</td>
                                             <td>
                                                 <div class="table-data-feature">
                                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
@@ -581,111 +561,8 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr class="spacer"></tr>
-                                        <tr class="tr-shadow">
-                                            <td>
-                                                <label class="au-checkbox">
-                                                    <input type="checkbox">
-                                                    <span class="au-checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td>Chavda Raj</td>
-                                            <td>
-                                                <span class="block-email">Chavdaraj@gmail.com</span>
-                                            </td>
-                                            <td class="desc">#C Programmer</td>
-                                            <td>2020-09-29 05:57</td>
-                                            <td>
-                                                <span class="status--process">Processed</span>
-                                            </td>
-                                            <td>$999.00</td>
-                                            <td>
-                                                <div class="table-data-feature">
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                        <i class="zmdi zmdi-mail-send"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                        <i class="zmdi zmdi-edit"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                        <i class="zmdi zmdi-delete"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="spacer"></tr>
-                                        <tr class="tr-shadow">
-                                            <td>
-                                                <label class="au-checkbox">
-                                                    <input type="checkbox">
-                                                    <span class="au-checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td>Patel Sonali</td>
-                                            <td>
-                                                <span class="block-email">Patelsona@gmail.com</span>
-                                            </td>
-                                            <td class="desc">.net Programmer</td>
-                                            <td>2021-01-25 19:03</td>
-                                            <td>
-                                                <span class="status--denied">Denied</span>
-                                            </td>
-                                            <td>$1199.00</td>
-                                            <td>
-                                                <div class="table-data-feature">
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                        <i class="zmdi zmdi-mail-send"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                        <i class="zmdi zmdi-edit"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                        <i class="zmdi zmdi-delete"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="spacer"></tr>
-                                        <tr class="tr-shadow">
-                                            <td>
-                                                <label class="au-checkbox">
-                                                    <input type="checkbox">
-                                                    <span class="au-checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td>Babaria Liza</td>
-                                            <td>
-                                                <span class="block-email">babarializa@gmail.com</span>
-                                            </td>
-                                            <td class="desc">Php Programmer</td>
-                                            <td>2021-02-24 19:10</td>
-                                            <td>
-                                                <span class="status--process">Processed</span>
-                                            </td>
-                                            <td>$699.00</td>
-                                            <td>
-                                                <div class="table-data-feature">
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                        <i class="zmdi zmdi-mail-send"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                        <i class="zmdi zmdi-edit"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                        <i class="zmdi zmdi-delete"></i>
-                                                    </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
+{%endfor%}
+                         
                                     </tbody>
                                 </table>
                             </div>
