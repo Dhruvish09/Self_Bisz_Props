@@ -80,8 +80,7 @@ urlpatterns = [
     # End Category
     
     # ......................................................................
-    path('send',views.send),
-    path('delete',views.delete),
+    path('delete/<int:id>/',views.delete_userdata,name='deletedata'),
     # path('edit',views.edit),
     path('RecordEdited',views.RecordEdited),
     

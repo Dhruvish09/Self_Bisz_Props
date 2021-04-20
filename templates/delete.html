@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete</title>
+<style>
+
+.btn-danger{
+    border-radius: 23px;
+}
+
+.btn-danger:hover {
+  background: #5c9f24;
+  color: #fff;
+}
+
+</style>
+
+
+</head>
+<body>
+    <br>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+
+			<p>Are you sure you want to delete?</p>
+
+			<form action="{% url 'deletedata' ClientRequests.id     %}" method="POST">
+				
+				{% csrf_token %}
+				<a class="btn btn-warning" href={% url 'Dashboard' %}>Cancel</a>
+
+				<input class="btn btn-danger" type="submit" name="Confirm">
+			</form>
+
+		</div>
+	</div>
+</div>
+</body>
+</html>

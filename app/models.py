@@ -365,6 +365,7 @@ class Loan(models.Model):
         return self.Bank_name
         
 class ClientRequest(models.Model):
+    id = models.AutoField(primary_key=True)
     Client_email=models.CharField(max_length=50)
     Client_message=models.CharField(max_length=500)
     Client_Date=models.DateTimeField()

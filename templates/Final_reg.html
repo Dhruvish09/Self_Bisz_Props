@@ -35,17 +35,19 @@
                 <input type="email" name="email" id="name" placeholder="example@gmail.com" required=""/>{{values.email}}<br><br>
             </div>       
 
+            
     <!-- Profile -->
             <div>
                 <!-- <label>Select Your Profile</label><br> -->
-                <span class="fa fa-user" ></span>
+                    <span class="fa fa-user" ></span>
 
-                <input type="radio" id="ml" name="male" required=""/>
-                <span id="male">Businessman</span>&nbsp;
+                    <input type="radio" id="ml" name="male" required=""/>
+                    <label for="Businessman">Businessman</label>
 
-                <input type="radio" id="ml" name="male" required=""/>  
-                <span id="other">Client</span>&nbsp;
-               <br><br>
+                    <input type="radio" id="ml" name="male" required=""/>  
+                    <label for="Client">Client</label>
+                    
+            <br><br>
             </div>           
 
     <!-- Mobile -->
@@ -67,17 +69,18 @@
 
     <!-- Gender -->
             <div>
-                <!-- <label>Select Your Gender</label><br> -->
-                <span class="fa fa-transgender-alt" ></span>
 
-                <input type="radio" id="ml" name="male" >
-                <span id="male">Male</span>&nbsp;
+                <span class="fa fa-user" ></span>
 
-                <input type="radio" id="ml" name="male">  
-                <span id="other">Fe-male</span>&nbsp;
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
 
-                <input type="radio" id="ml" value="{{values.gender}}" name="male" >
-                <span id="other">Other</span>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+
                <br><br>
             </div>
             

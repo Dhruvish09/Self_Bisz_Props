@@ -100,7 +100,7 @@ class cat_profileform(forms.ModelForm):
 class ClientRequestform(forms.ModelForm):
     class meta:
         model = ClientRequest
-        fields = ['Client_name','Client_email','Client_message','Client_Date','Client_Mobile']
+        fields = ['id','Client_name','Client_email','Client_message','Client_Date','Client_Mobile']
         
 class BusinessDetailform(forms.ModelForm):
     class meta:

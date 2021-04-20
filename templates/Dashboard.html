@@ -546,18 +546,21 @@
                                             <td>{{ClientRequests.Client_Mobile}}</td>
                                             <td>
                                                 <div class="table-data-feature">
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                        <i class="zmdi zmdi-mail-send"></i>
+                                                    <a href="mailto:{{ClientRequests.Client_email}}"><button class="item" data-toggle="tooltip" data-placement="top" title="Send">
+                                                        <i class="zmdi zmdi-mail-send"></i></a>
                                                     </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+
+                                                    {% comment %} <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                         <i class="zmdi zmdi-edit"></i>
-                                                    </button>
+                                                    </button> {% endcomment %}
+                                                    
+                                                    <form action="{% url 'deletedata' ClientRequests.id     %}" method="POST" class="d-inline">
+                                                    {% csrf_token %}
                                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                        <i class="zmdi zmdi-delete"></i>
+                                                    <i class="zmdi zmdi-delete"></i>
                                                     </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                        <i class="zmdi zmdi-more"></i>
-                                                    </button>
+                                                    </form>
+                           
                                                 </div>
                                             </td>
                                         </tr>

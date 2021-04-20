@@ -271,17 +271,6 @@ def Dashboard1(request):
     return render(request,'Dashboard1.html')
 
 
-# def Contactus(request):
-#     if request.method == 'POST':
-#         name = request.POST['name']
-#         subject = request.POST['email']
-#         email = request.POST['email']
-#         message = request.POST['message']
-#         contact(name = name,subject=subject,email=email,message=message).save()
-#         msg="Data Stored Successfully"
-#         return render(request,"index.html",{'msg':msg})
-#     else:
-#         return HttpResponse("<h1>404 - Not Found</h1>") 
 
 
 def Contactus(self, request):
@@ -296,22 +285,13 @@ def Contactus(self, request):
         return HttpResponseRedirect("<h1>Thanx For Contact us</h1>")
     return render(request,'index.html')    
 
-def send(request):
-    if request.method == 'POST':
-        ID = request.POST['id']
-        Email = request.POST['email']
-        Client_Name = request.POST['client_name']
-        Client_Request(ID = ID,email=Email,client_name=Client_Name).save()
-        msg="Data Stored Successfully"
-        return render(request,"index.html",{'msg':msg})
-    else:
-        return HttpResponse("<h1>404 - Not Found</h1>")
-    
-def delete(request):
-    ID = request.GET['id']
-    Client_Request.objects.filter(ID=ID).delete()
-    return HttpResponseRedirect("show")
 
+def delete_userdata(request,id):
+    if request.method == "POST":
+        pi = ClientRequest.objects.get(id=id)   
+        pi.delete()
+        return HttpResponseRedirect('/Dashboard')
+    
 def RecordEdited(request):
     
     if request.method == 'POST':
