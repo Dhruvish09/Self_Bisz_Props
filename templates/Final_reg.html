@@ -15,7 +15,7 @@
 <body>
     <h1>Registartions Form</h1>
     <div class="reg">
-        <form id="reg" action="" method="POST">
+        <form  action="/final_reg" method="POST">
             {% csrf_token %}
             <img src="{% static "/REG_LOG_FORGOT/images/LOGO2.JPG"%}" alt=""><br><br>
      
@@ -23,7 +23,7 @@
             <div>
                 <!-- <label>User Name</label><br> -->
                 <span class="fa fa-user"></span>
-                <input type="text" name="username" id="name" placeholder="User Name" required=""/>{{values.username}}<br><br>
+                <input type="text" name="username"  id="name" placeholder="User Name" required=""/><br><br>
                 
             </div>
 
@@ -32,22 +32,29 @@
             <div>
                 <!-- <label>Email</label><br> -->
                 <span class="fa fa-envelope"></span>
-                <input type="email" name="email" id="name" placeholder="example@gmail.com" required=""/>{{values.email}}<br><br>
+                <input type="email" name="email"  id="name" placeholder="example@gmail.com" required=""/><br><br>
             </div>       
 
             
     <!-- Profile -->
-            <div>
+            <div >
                 <!-- <label>Select Your Profile</label><br> -->
                     <span class="fa fa-user" ></span>
 
-                    <input type="radio" id="ml" name="male" required=""/>
+                    <!-- <input type="radio" id="ml" name="gender" required=""/>
                     <label for="Businessman">Businessman</label>
 
-                    <input type="radio" id="ml" name="male" required=""/>  
-                    <label for="Client">Client</label>
-                    
-            <br><br>
+                    <input type="radio" id="ml" name="gender" required=""/>  
+                    <label for="Client">Client</label> -->
+
+
+
+                    <input type="radio" id="bm" name="profile">
+                    <label for="Businessman">Businessman</label>
+
+                    <input type="radio" id="cl" name="profile" >
+                    <label for="client">Client</label><br>  
+                     <br>
             </div>           
 
     <!-- Mobile -->
@@ -56,14 +63,14 @@
                 <span class="fa fa-mobile"></span>
             
 
-                <input type="tel" name="Mnum" placeholder="********09" id="mnum"  pattern="[1-9]{1}[0-9]{9}" required=""/>{{values.phone_number}}<br><br>
+                <input type="tel" name="phone_number"  placeholder="********09" id="mnum"  pattern="[1-9]{1}[0-9]{9}" required=""/><br><br>
             </div>
                     
     <!-- DOB -->
             <div>
                 <!-- <label>Enter Your DOB</label><br> -->
                 <span class="fa fa-calendar"></span>
-                <input type="date" id="name" values={{values.birthdate}} name="DOB" required=""/><br><br>
+                <input type="date" id="name" name="birthdate" required=""/><br><br>
                 
             </div> 
 
@@ -72,14 +79,26 @@
 
                 <span class="fa fa-user" ></span>
 
-                <input type="radio" id="male" name="gender" value="male">
+                <!-- <input type="radio" id="male" name="gender" value="male">
                 <label for="male">Male</label>
 
                 <input type="radio" id="female" name="gender" value="female">
                 <label for="female">Female</label>
-
+                
                 <input type="radio" id="other" name="gender" value="other">
-                <label for="other">Other</label>
+                <label for="other">Other</label> -->
+
+
+
+                <!-- <label for="gender">Choose Your gender:</label> -->
+                <select id="name" name="gender">
+                  <option value="Male">male</option>
+                  <option value="Female">female</option>
+                  <option value="Other">other</option>
+                </select>
+
+
+
 
                <br><br>
             </div>
@@ -88,7 +107,7 @@
             <div>
                 <!-- <label>Password</label><br> -->
                 <span class="fa fa-lock"></span>
-                <input type="password" name="password" id="name" placeholder="Enter Your Password" required=""/> <br><br>
+                <input type="password" name="password" id="name"  placeholder="Enter Your Password" required=""/> <br><br>
                 
             </div>
 
@@ -96,15 +115,15 @@
             <div>
                 <!-- <label>Confirm Password</label><br> -->
                 <span class="fa fa-lock"></span>
-                <input type="password" name="pass" id="name" placeholder="Confirm Password" required=""/><br><br>
+                <input type="password" name="c_password" id="name"  placeholder="Confirm Password" required=""/><br><br>
                 
             </div>
-
+{% comment %} 
             <div class="login-check">
                 <label class="checkbox">
                 <input type="checkbox" name="checkbox" checked="">
                 <i> </i> Keep me logged in</label>
-           </div>
+           </div> {% endcomment %}
 
             <button type="submit" id="sub" value="Register">Register</button>
         </form>

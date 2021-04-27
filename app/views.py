@@ -2,13 +2,13 @@ from django.shortcuts import render, redirect, HttpResponse,HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib .auth import authenticate, login, logout
+from django.contrib  import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password,check_password
-from .models import reg,team,portfolio,slider,category,cat_profile,client,portfolio,sub_portfolio,Loan,ClientRequest,Businessdetail,Businessslide,contact
-
+from .models import Contactus,reg,team,portfolio,slider,category,cat_profile,client,portfolio,sub_portfolio,Loan,ClientRequest,Businessdetail,Businessslide,subscribe
 from .form import Subscribeform,Regform
+from django import forms
 
-from .models import reg
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 from django.contrib.auth.forms import PasswordResetForm
@@ -74,8 +74,10 @@ def Real_estate(request):
 def Business_Detail(request):
     Businessslides = Businessslide.get_all_Bussliddata()
     Businessdetails = Businessdetail.get_all_busdetdata()
-    return render(request,'Business_profile1.html',{'Businessslides': Businessslides,'Businessdetails': Businessdetails})
+    return render(request,'Business_profile.html',{'Businessslides': Businessslides,'Businessdetails': Businessdetails})
 
+# def Business_Detail_Form(request):
+#     return render(request,'Business_Detail_Form.html')
 # End category
 
 # ........................................................
@@ -116,44 +118,54 @@ def index(request):
     sub_portfolios = sub_portfolio.get_all_subportdata()
     sliders = slider.get_all_slidedata()
     clients = client.get_all_clntdata()
-    # name = request.user.username  
     return render(request, 'index.html',{'teams':teams,'portfolios':portfolios,'sub_portfolios':sub_portfolios,'sliders':sliders,'clients':clients})
 
-
-
 def final_reg(request):
-    if request.method == "GET":
-        return render(request, 'Final_reg.html')
-    else:
-        try:
-            if request.method == "POST":
-                email = request.POST.get('email')
-                username = request.POST.get('username')
-                password = request.POST.get('password')
-                birthdate = request.POST.get('birthdate')
-                gender = request.POST.get('gender')
-                phone_number = request.POST.get('phone')
-                profile = request.POST.get('profile')
-                hashedPassword = make_password(password=password)
-                user = reg(email=email,username=username,birthdate=birthdate,gender=gender,phone_number=phone_number, password=hashedPassword,profile=profile)
-                user.save()
+    # if request.method == "GET":
+    #     return render(request, 'Final_reg.html')
+    # else:
+    #     try:
+    if request.method == "POST":
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        c_password = request.POST.get('c_password')
+        birthdate = request.POST.get('birthdate')
+        gender = request.POST.get('gender')
+        phone_number = request.POST.get('phone_number')
+        profile = request.POST.get('profile')
+        hashedPassword = make_password(password=password)
+        
+        if password != c_password:
+            raise forms.ValidationError(
+                "password and confirm_password does not match"
+            )
+      
+        Data = reg(email=email,username=username,birthdate=birthdate,gender=gender,phone_number=phone_number, password=hashedPassword,c_password=hashedPassword,profile=profile)
+        Data.save()
+        print("user created successfully")
+        return render(request, 'Final_log.html')
                 # return render(request, 'Dashboard.html')
-                return render(request, 'Final_log.html')
+        
+        
                 # return redirect('Dashboard')
-        except:
-            return render(request, 'Final_reg.html', {'error': "User Already Registered..."})
+        # except:
+        print("something missing")
+    return render(request, 'Final_reg.html', {'error': "User Already Registered..."})
         
 def final_log(request):
     if request.method == "POST":
+        email = request.POST.get('email')
         username = request.POST.get('username')
         password = request.POST.get('password')
         
-        registartion = authenticate(request, username=username, password=password)
-        if registartion is not None:
-            login(request, registartion)
+        user = auth.authenticate(request,email=email, username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
             return redirect('Dashboard')
         else:
-            messages.info(request, 'username or password in wrong')
+            messages.info(request, 'username or password is wrong')
+            return redirect('final_log')
     context = {}
     return render(request, 'Final_log.html',context)
 
@@ -241,14 +253,7 @@ def Sub_Portfolio(request):
 # End Sub_Portfolio
 
 
-def subscribe(request):
-    form = Subscribeform()
-    if request.method == 'POST':
-        form = Subscribeform(request.POST)
-        form.save()
-        return redirect('index')
-    context = {'form': form}
-    return render(request, 'final_reg.html', context)
+
 
 def profile(request):
     return render(request,'profile.html')
@@ -266,24 +271,41 @@ def Dashboard(request):
     ClientRequests = ClientRequest.get_all_cltreqdata()
     return render(request,'Dashboard.html',{'ClientRequests':ClientRequests})
 
-
-def Dashboard1(request):
-    return render(request,'Dashboard1.html')
-
+# def Client_request(request):
+#     return render(request,'client_request.html')
 
 
+def contact(request):
+    all_data = Contactus.objects.all().order_by("-id")
+    
+    # if request.method == 'GET':
+    #     return render(request,"contact.html")
+    
+    # else:
+    if request.method=="POST":
+        nm = request.POST.get('name')
+        em = request.POST.get('email')
+        mb = request.POST.get('mobile')
+        sub = request.POST.get('subject')
+        msz = request.POST.get('message')
+        
+        data = Contactus(name=nm,email=em,mobile=mb,subject=sub,message=msz)
+        data.save()
+        data.clean_fields()
+        return HttpResponse("Success! Thanx For Yor Response")
+   
+    return render(request,"contact.html")
 
-def Contactus(self, request):
-    if request.method == 'POST':
-        contact=contact()
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        subject = request.POST.get("subject")
-        message = request.POST.get("message")
-        contact = contact(name=name,email=email,subject=subject,message=message)
-        contact.save()
-        return HttpResponseRedirect("<h1>Thanx For Contact us</h1>")
-    return render(request,'index.html')    
+def subs(request):
+    if request.method == "POST":
+        email = request.POST.get('email')
+        data = subscribe(email=email)
+        data.save()
+        res = "Dear {} Thanks for Connect With Us".format(email)
+        return render(request,"index.html",{"status":res})
+        # return HttpResponse("Thanx For Your Support")
+    return render(request,"index.html")
+
 
 
 def delete_userdata(request,id):
@@ -314,3 +336,72 @@ def Edit_Profile(request):
     #     client_name = client_name
     # return render(request,"edit.html",{'ID':ID,'email':Email,'client_name':client_name})
     return render(request,'Edit_Profile.html')
+
+  
+# Business_Shortdetail Business_Detail Business_Date Business_Brand Business_Brandweb Business_Mobile Business_Email 
+# Business_Type Business_Turnover Business_Type Business_Marketplace  Business_Features  
+
+def Business_Detail_Form(request):
+    all_data = Businessdetail.objects.all().order_by("-id")
+    if request.method=="POST":
+        Business_Shortdetail = request.POST.get('Business_Shortdetail')
+        Business_Detail = request.POST.get('Business_Detail')
+        Business_Date = request.POST.get('Business_Date')
+        Business_Brand = request.POST.get('Business_Brand')
+        Business_Brandweb = request.POST.get('Business_Brandweb')
+        Business_Mobile = request.POST.get('Business_Mobile')
+        Business_Email = request.POST.get('Business_Email')
+        Business_Type = request.POST.get('Business_Type')
+        Business_Turnover = request.POST.get('Business_Turnover')
+        Business_Marketplace = request.POST.get('Business_Marketplace')
+        Business_Features = request.POST.get('Business_Features')
+
+
+        data = Businessdetail(Business_Shortdetail=Business_Shortdetail,Business_Detail=Business_Detail,Business_Date=Business_Date,
+                              Business_Brand=Business_Brand,Business_Brandweb=Business_Brandweb,
+                              Business_Mobile=Business_Mobile,Business_Email=Business_Email,Business_Type=Business_Type,
+                              Business_Turnover=Business_Turnover,Business_Marketplace=Business_Marketplace,Business_Features=Business_Features)
+        data.save()
+        res = "Dear {} Thanks for Added Your Business".format(Business_Brand)
+        return render(request,"Dashboard.html",{"status":res,"messages":all_data})       
+        # return HttpResponse("Best Of Luck for Your Business")
+    return render(request,"Business_Detail_Form.html",{"messages":all_data})
+
+def Client_request(request):
+    all_data = Businessdetail.objects.all().order_by("-id")
+    if request.method == "POST":
+        id = request.POST.get('id')
+        Client_name=request.POST.get('Client_name')
+        Client_email=request.POST.get('Client_email')
+        Client_message=request.POST.get('Client_message')
+        Client_Date=request.POST.get('Client_Date')
+        Client_Mobile=request.POST.get('Client_Mobile')
+        
+        Data = ClientRequest(id=id,Client_name=Client_name,Client_email=Client_email,Client_message=Client_message,Client_Date=Client_Date,Client_Mobile=Client_Mobile)
+        Data.save()
+        res = "Dear {} All The best for Your Request,we will notify you".format(Client_name)
+        return render(request,"Business_profile.html",{"status":res,"messages":all_data})
+    return render(request,'client_request.html')
+
+
+# def subs(request):
+#     if request.method == "POST":
+#         email = request.POST.get('email')
+#         data = subscribe(email=email)
+#         data.save()
+        # res = "Dear {} Thanks for Connect With Us".format(email)
+        # return render(request,"index.html",{"status":res})
+    #     return HttpResponse("Thanx For Your Support")
+    # return render(request,"index.html")
+    
+def update_userdata(request,id):
+    if request.method == "POST":
+        pi= reg.objects.get(id=id)
+        fm = Regform(request.POST,instance=pi)
+        if fm.is_valid():
+            fm.save()
+            print("successfully updated")
+    else:
+        pi = reg.objects.get(id=id)
+        fm = Regform(instance=pi) 
+        return render(request,'Edit_Profile.html',{'form':fm})

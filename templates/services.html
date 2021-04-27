@@ -1,4 +1,4 @@
-{% extends 'cat_main.html' %}
+{% extends 'base.html' %}
 {% block title %}Services{% endblock  %}
 {% block body %}
 {% load static %}
@@ -57,7 +57,7 @@
           </div>
           <div class="col-lg-4 col-md-6 icon-box">
             <div class="icon"><i class="icofont-earth"></i></div>
-            <h4 class="title"><a href="">Gov News</a></h4>
+            <h4 class="title"><a href={% url 'index' %}>Gov News</a></h4>
             <p class="description">We are provide all update business related news which is going on trending in market.</p>
           </div>
           <!-- <div class="row">

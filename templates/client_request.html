@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Client Request Form</title>
+	<link rel="stylesheet" href="{%static "css/Business_Detail_Form.css"%}">
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="title">
+      Client Request
+    </div>
+
+
+<div class="form">
+        
+<form action="/Client_request" method="post">
+{% csrf_token %}
+
+  <div class="inputfield">
+    <label>Name</label>
+    <input type="text" name="Client_name" class="input" placeholder="Enter Your Name">
+  </div>   
+  
+  <div class="inputfield">
+    <label>Email</label>
+    <input type="email" name="Client_email" class="input" placeholder="Enter Your Email ">
+  </div>    
+  
+  <div class="inputfield">
+    <label>Message</label>
+    <textarea class="textarea" name="Client_message" placeholder="Enter Your Business Detail"></textarea>
+  </div> 
+  
+  <div class="inputfield">
+    <label>Date</label>
+    <input type="date" name="Client_Date" class="input">
+  </div>
+
+  <div class="inputfield">
+    <label>Phone Number</label>
+    <input type="text" name="Client_Mobile" class="input" placeholder="********14">
+  </div> 
+  
+  
+  <div class="inputfield">
+    <input type="submit" value="Submit" class="btn">
+  </div>
+
+  </form>
+  
+</div>
+
+
+</div>	
+	
+{% if status %}
+<script>
+alert("{{status}}");
+</script>
+{% endif %}
+
+</body>
+</html>

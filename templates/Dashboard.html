@@ -39,9 +39,24 @@
     <!-- Main CSS-->
     <link href="{% static "Dashboard/css/theme.css"%}" rel="stylesheet" media="all">
 
+<style>
+ #add{
+      color:#865257;
+    }
+{% comment %} 
+      .alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}
+
+.alert.success {background-color: #4CAF50;} {% endcomment %}
+</style>
+
 </head>
 
 <body >
+
     <div class="page-wrapper">
         <!-- HEADER DESKTOP-->
         <header class="header-desktop3 d-none d-lg-block">
@@ -342,7 +357,15 @@
                 </div>
             </section>
             <!-- END WELCOME-->
-            <a href="#" class="get-started-btn scrollto" id="story">Add Your Business</a>
+
+    {% comment %} <div class="alert success">
+  <span class="closebtn">&times;</span>  
+  <strong>Success!</strong> Business Added Sucessfully.
+</div> {% endcomment %}
+
+            {{status}}<br>
+            <a href={% url 'Business_Detail_Form' %} class="get-started-btn scrollto" id="add">Add Your Business</a>
+            
             <!-- STATISTIC-->
             <section class="statistic statistic2">
                 <div class="container">

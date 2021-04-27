@@ -2,7 +2,7 @@ from django.forms import ModelForm, fields
 from phone_field import PhoneField
 from django import forms
 # from django .contrib.auth.models import User
-from .models import reg,login,forgot,contact,slider,subscribe,team,portfolio,category,cat_profile,client,sub_portfolio,Loan,ClientRequest,Businessdetail,Businessslide,contact
+from .models import reg,login,forgot,Contactus,slider,subscribe,team,portfolio,category,cat_profile,client,sub_portfolio,Loan,ClientRequest,Businessdetail,Businessslide
 from django.core.mail import send_mail, get_connection
 # Start Reg , Log ,Forgot........................................................
 class Regform(forms.ModelForm):
@@ -14,7 +14,7 @@ class Regform(forms.ModelForm):
     # phone_number = PhoneField()
     class Meta:
         model = reg
-        fields = ['email', 'username', 'password','gender','phone_number','profile','birthdate']
+        fields = ['photo','email', 'username', 'password','c_password','gender','phone_number','profile','birthdate']
 
 class Logform(forms.ModelForm):
     class Meta:
@@ -44,8 +44,8 @@ class Clientform(forms.ModelForm):
 
 class Contactform(forms.ModelForm):
     class meta:
-        model = contact
-        fields = ['name','subject','email','message']
+        model = Contactus
+        fields = ['name','subject','email','mobile','message','added_on']
 
 
 class Subscribeform(forms.ModelForm):

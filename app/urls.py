@@ -3,7 +3,8 @@ from app import views
 
 urlpatterns = [
     path('',views.index,name='index'),
-    
+    path('contact',views.contact,name='contact'),
+    path('subs',views.subs,name='subs'),
     
     
     # .....................................................    
@@ -11,11 +12,12 @@ urlpatterns = [
     # START
     
     path('Dashboard/',views.Dashboard,name='Dashboard'),
-    path('Dashboard1/',views.Dashboard1,name='Dashboard1'),
+    path('Client_request',views.Client_request,name='Client_request'),
     
     path('inner',views.inner_page,name='inner'),
     path('business_profile',views.business_profile,name='business_profile'),
     path('Business_Detail',views.Business_Detail,name='Business_Detail'),
+    path('Business_Detail_Form',views.Business_Detail_Form,name='Business_Detail_Form'),
    
      
     
@@ -45,9 +47,9 @@ urlpatterns = [
     
     
     # Log Reg Forgot Start
-    
-    path('final_reg/',views.final_reg,name='final_reg'),
-    path('final_log/',views.final_log,name='final_log'),
+    path('final_reg',views.final_reg,name='final_reg'),
+    # path('final_reg/',views.final_reg,name='final_reg'),
+    path('final_log',views.final_log,name='final_log'),
     path('password_reset_request/',views.password_reset_request,name='password_reset_request'),
     path('logoutuser/',views.logoutuser,name='logoutuser'),
     
@@ -84,7 +86,8 @@ urlpatterns = [
     # path('edit',views.edit),
     path('RecordEdited',views.RecordEdited),
     
-    path('Edit_Profile',views.Edit_Profile,name="Edit_Profile")
+    path('Edit_Profile',views.Edit_Profile,name="Edit_Profile"),
+    path('update_userdata',views.update_userdata,name="update_userdata"),
   
     
 ]

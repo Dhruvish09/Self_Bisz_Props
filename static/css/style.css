@@ -112,7 +112,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-menu > ul {
   display: flex;
-  right: 71%;
+  right: 141%;
   position: relative;
 }
 
@@ -248,7 +248,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Poppins", sans-serif;
   border: 2px solid #5c9f24;
   position: relative;
-  right: 0%;
+  right: -6%;
   top: -1%;
   }
   .get-started-btn #story{
@@ -884,7 +884,7 @@ section {
 .contact .php-email-form .error-message {
   display: none;
   color: #fff;
-  background: #ed3c0d;
+  background: #028133;
   text-align: left;
   padding: 15px;
   font-weight: 600;
@@ -897,7 +897,7 @@ section {
 .contact .php-email-form .sent-message {
   display: none;
   color: #fff;
-  background: #18d26e;
+  background: #55aa56;
   text-align: center;
   padding: 15px;
   font-weight: 600;

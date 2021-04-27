@@ -62,6 +62,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //language-select -->
 
 <link rel="stylesheet" href="{% static "category/css/flexslider.css"%}" media="screen" /><!-- flexslider css -->
+
+
+<style>
+#add{
+	color:#865257;
+	}
+
+</style>
+
 </head>
 <body>
 	<!-- breadcrumbs -->
@@ -97,6 +106,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 
 {% comment %} {% endfor %} {% endcomment %}
+{{status}}<br>
+<a href={% url 'Client_request' %} class="get-started-btn scrollto" id="add">Business Request</a>
 
 {%for Businessdetails in Businessdetails %}
 	<div class="single-page main-grid-border">

@@ -39,16 +39,51 @@ class client(models.Model):
     def __str__(self):
         return self.photo.name
     
-class contact(models.Model):
+# class contact(models.Model):
+#     name = models.CharField(max_length=100)
+#     subject = models.CharField(max_length=100)
+#     email = models.CharField(max_length=30)
+#     message = models.CharField(max_length=300)
+#     # added_on =models.DateTimeField(auto_now_add=True)
+#     def __str__(self):
+#         return self.name
+    
+    
+    
+    
+# class Contact_Us(models.Model):
+#     name = models.CharField(max_length=250)
+#     contact_number = models.IntegerField(blank=True,unique=True)
+#     subject = models.CharField(max_length=250)
+#     message = models.TextField()
+#     added_on =models.DateTimeField(auto_now_add=True)
+
+#     def __str__(self):
+#         return self.name
+
+#     class Meta:
+#         verbose_name_plural = "Contact Us"
+        
+class Contactus(models.Model):
     name = models.CharField(max_length=100)
-    subject = models.CharField(max_length=100)
-    email = models.CharField(max_length=30)
-    message = models.CharField(max_length=300)
+    email = models.EmailField(max_length=250,null=True, blank=True)
+    mobile = models.CharField(max_length=12,null=True, blank=True)
+    subject = models.CharField(max_length=300)
+    message = models.TextField()
+    added_on = models.DateTimeField(auto_now_add=True)
+    
     def __str__(self):
         return self.name
     
+    class Meta:
+        verbose_name_plural = "Contact Us"
+    
+
 class subscribe(models.Model):
     email = models.CharField(max_length=30)
+    
+    def __str__(self):
+        return   'email id'+ ':' + self.email
 
 class portfolio(models.Model):
     name = models.CharField(max_length=20)
@@ -123,9 +158,11 @@ class sub_portfolio(models.Model):
     #     return self.username
     
 class reg(models.Model):
+    photo = models.ImageField(upload_to='media/profilephoto/images')
     email = models.CharField(max_length=30)
     username=models.CharField(max_length=12)
-    password=models.CharField(max_length=12)
+    password=models.CharField(max_length=264)
+    c_password=models.CharField(max_length=264)
     birthdate = models.DateField()
     GENDER_CHOICES = (
         ('M', 'Male'),
@@ -151,6 +188,8 @@ class reg(models.Model):
             return reg.object.get(email = email)
         except:
             return False
+        
+        
     
 class login(models.Model):
     email = models.CharField(max_length=30)
@@ -377,7 +416,8 @@ class ClientRequest(models.Model):
         return ClientRequest.objects.all()
     
     def __str__(self):
-        return self.Client_name
+        return 'You Have Request From' + ':' + self.Client_name
+
 
 
 class Businessdetail(models.Model):
@@ -417,11 +457,14 @@ class Businessdetail(models.Model):
     Business_Brandweb=models.URLField(max_length = 2000)
     Business_Mobile=models.CharField(max_length=15)
     Business_Email=models.CharField(max_length=50)
-    Business_Type=models.CharField(max_length=30)
+    # Business_Type=models.CharField(max_length=30)
     Business_Turnover = models.CharField(max_length=15)
     Business_Type = models.CharField(max_length = 50,choices = BUSTYPE_CHOICES,default = '1')
     Business_Marketplace = models.CharField(max_length = 50,choices = MARKET_CHOICES,default = '1')
     Business_Features=models.CharField(max_length=800)
+
+  
+# Business_Shortdetail Business_Detail Business_Date Business_Brand Business_Brandweb Business_Mobile Business_Email Business_Type Business_Turnover Business_Type Business_Marketplace  Business_Features  
     
     @staticmethod
     def get_all_busdetdata():

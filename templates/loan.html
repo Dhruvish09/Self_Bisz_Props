@@ -1,7 +1,7 @@
+{% extends 'base.html' %}
+{% comment %} {% block title %}Activity{% endblock  %} {% endcomment %}
+{% block body %}
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -11,9 +11,17 @@
     {% comment %} <link rel="stylesheet" href="loan1.css"> {% endcomment %}
     <link href="  {% static "/css/loan.css"%}" rel="stylesheet">
 
-</head>
+<style>
+  .loan{
+    position: relative;
+    top: 10%;
+  }
+
+</style>
+</head> 
 
 <body>
+<div class="loan">
     <table>
         <thead>
           <tr>
@@ -45,6 +53,8 @@
 
         </tbody>
       </table>
+
+</div>
 </body>
 
-</html>
+{% endblock %}
