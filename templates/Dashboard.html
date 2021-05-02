@@ -138,9 +138,10 @@
                         <div class="account-wrap">
                             <div class="account-item account-item--style2 clearfix js-item-menu">
                                 <div class="image">
-                                    <img src="{% static "img/dash.jpg"%}" alt="Patel Dhruvish" />
+                                 <img src="{% static "img/dash.jpg"%}" alt="Patel Dhruvish" />
                                     
                                 </div>
+                                
                                 <div class="content">
                                     <a class="js-acc-btn" href="#">{{request.user.username}}</a>
                                 </div>
@@ -170,7 +171,7 @@
                                         </div>
                                     </div>
                                     <div class="account-dropdown__footer">
-                                        <a href={% url 'final_log' %}>
+                                        <a href={% url 'index' %}>
                                             <i class="zmdi zmdi-power"></i>Logout</a>
                                     </div>
                                 </div>
@@ -320,7 +321,7 @@
                                     <span class="au-breadcrumb-span">You are here:</span>
                                     <ul class="list-unstyled list-inline au-breadcrumb__list">
                                         <li class="list-inline-item active">
-                                            <a href={% url 'index' %}>Home</a>
+                                            <li class="list-inline-item">Home</li>
                                         </li>
                                         <li class="list-inline-item seprate">
                                             <span>/</span>

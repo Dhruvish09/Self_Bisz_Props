@@ -108,7 +108,7 @@
         <ul>
           <li class="active"><a href="{% url 'index' %}">Home</a></li>
       
-          <li><a href={% url 'loan' %}>Activity</a></li>
+          <li><a href={% url 'news' %}>Activity</a></li>
           <li ><a  href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'services' %}">Services</a></li>
 
@@ -157,9 +157,9 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'index' %}">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href={% url 'index' %}>Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href={% url 'about' %}>About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href={% url 'services' %}>Services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href={% url 'faq' %}>FAQ</a></li>
@@ -171,7 +171,7 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Gov Politcy</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href={% url 'loan' %}>Bank Loan</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#news">News</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href={% url 'news' %}>News</a></li>
             </ul>
           </div>
 

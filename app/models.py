@@ -423,9 +423,8 @@ class Businessdetail(models.Model):
     
     
     MARKET_CHOICES = (
-        ("GOOD", "GOOD"),
-        ("AVERAGE", "AVERAGE"),
-        ("PRO","PRO"),
+        ("Monopolic", "Monopolic"),
+        ("Non-Monopolic", "Non-Monopolic"),
         )
 
     # BUSMARKET_CHOICES = (
