@@ -76,7 +76,7 @@
         <ul>
           {% comment %} <li class="active"><a href="{% url 'index' %}">Home</a></li> {% endcomment %}
 
-          <li class="drop-down"><a href="{% url 'category' %}">Business</a>
+          <li class="drop-down"><a href="{% url 'category1' %}">Business</a>
             <ul>
 
               <li><a href="{% url 'Technology' %}">Technology</a></li>
@@ -113,7 +113,7 @@
   
 
  <!-- ======= Footer ======= -->
-  <footer id="footer">
+  {% comment %} <footer id="footer">
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -186,7 +186,8 @@
         Designed by <a href="#">DSLR</a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer> {% endcomment %}
+  <!-- End Footer -->
 
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>

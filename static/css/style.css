@@ -1116,6 +1116,8 @@ section {
   padding: 0 0 30px 0;
   color: #fff;
   font-size: 14px;
+  position: relative;
+  bottom: auto;
 }
 
 #footer .footer-top {

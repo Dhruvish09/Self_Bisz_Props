@@ -64,9 +64,7 @@
                 <div class="header3-wrap">
                     <div class="header__logo">
                         <a href="">
-                        <h1>SBP</h1>
-                            {% comment %} <img src="{% static "Dashboard/images/icon/logo-white.png"%}" alt="CoolAdmin" /> {% endcomment %}
-                            
+                        <h1>SBP</h1> 
                         </a>
                     </div>
 
@@ -268,9 +266,9 @@
                             <img src="{% static "Dashboard/images/icon/avatar-01.jpg"%}" alt="John Doe" />
                             
                         </div>
-                        <div class="content">
+                        {% comment %} <div class="content">
                             <a class="js-acc-btn" href="#">Dhruvish</a>
-                        </div>
+                        </div> {% endcomment %}
                         <div class="account-dropdown js-dropdown">
                             <div class="info clearfix">
                                 <div class="image">
@@ -372,8 +370,11 @@
                     <div class="row">
                         <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--green">
-                                <h2 class="number">103</h2>
-                                <span class="desc">members online</span>
+                                <h2 class="number">{{byte}}</h2>
+                               <span class="desc">Your Business:</span><br>
+                                <a href={% url 'Business_Detail' %}><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                <a href={% url 'edit_business' %}><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                          
                                 <div class="icon">
                                     <i class="zmdi zmdi-account-o"></i>
                                 </div>
@@ -381,8 +382,8 @@
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--orange">
-                                <h2 class="number">388</h2>
-                                <span class="desc">Product sold</span>
+                                <h2 class="number">{{req_count}}</h2>
+                                <a href="#cr"><span class="desc">Client Request</span></a> 
                                 <div class="icon">
                                     <i class="zmdi zmdi-shopping-cart"></i>
                                 </div>
@@ -390,7 +391,7 @@
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--blue">
-                                <h2 class="number">1,086</h2>
+                                <h2 class="number">5</h2>
                                 <span class="desc">client</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-calendar-note"></i>
@@ -399,7 +400,7 @@
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--red">
-                                <h2 class="number">$1,06,203</h2>
+                                <h2 class="number">$1,062</h2>
                                 <span class="desc">total earnings</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-money"></i>
@@ -500,7 +501,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3 class="title-5 m-b-35">Client Request</h3>
+                            <h3 class="title-5 m-b-35" id="cr">Client Request</h3>
                             <div class="table-data__tool">
                                 <div class="table-data__tool-left">
                                     <div class="rs-select2--light rs-select2--md">

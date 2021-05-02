@@ -18,16 +18,18 @@ urlpatterns = [
     path('business_profile',views.business_profile,name='business_profile'),
     path('Business_Detail',views.Business_Detail,name='Business_Detail'),
     path('Business_Detail_Form',views.Business_Detail_Form,name='Business_Detail_Form'),
+    path('edit_business',views.Edit_Business_Detail_Form,name='edit_business'),
    
      
     
-    path('main_after/',views.main_after,name='main_after'),
-    path('profile/',views.profile,name='profile'),
+    path('main_after',views.main_after,name='main_after'),
+    path('profile',views.profile,name='profile'),
    
-    path('loan/',views.loan,name='loan'),
+    path('loan',views.loan,name='loan'),
+    path('news',views.News,name='news'),
     
-    path('Data/',views.Data,name='Data'),
-    path('faq/',views.FAQ,name='faq'),
+    path('Data',views.Data,name='Data'),
+    path('faq',views.FAQ,name='faq'),
     
     # End
     
@@ -82,7 +84,8 @@ urlpatterns = [
     # End Category
     
     # ......................................................................
-    path('delete/<int:id>/',views.delete_userdata,name='deletedata'),
+    path('delete/<int:id>/',views.delete_clientdata,name='deletedata'),
+    path('deletebusiness/<int:id>/',views.delete_businessdata,name='deletebusiness'),
     # path('edit',views.edit),
     path('RecordEdited',views.RecordEdited),
     

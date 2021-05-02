@@ -31,6 +31,9 @@ def inner_page(request):
 def business_profile(request):
     return render(request,'business profile.html')
 
+def News(request):
+    return render(request,'news.html')
+
 # ........................................................
 
 # category
@@ -75,6 +78,7 @@ def Business_Detail(request):
     Businessslides = Businessslide.get_all_Bussliddata()
     Businessdetails = Businessdetail.get_all_busdetdata()
     return render(request,'Business_profile.html',{'Businessslides': Businessslides,'Businessdetails': Businessdetails})
+
 
 # def Business_Detail_Form(request):
 #     return render(request,'Business_Detail_Form.html')
@@ -268,8 +272,10 @@ def main_after(request):
 
 def Dashboard(request):
     # name = request.user.username
+    req_count = ClientRequest.objects.filter().count()
+    byte = Businessdetail.objects.filter().count()
     ClientRequests = ClientRequest.get_all_cltreqdata()
-    return render(request,'Dashboard.html',{'ClientRequests':ClientRequests})
+    return render(request,'Dashboard.html',{'ClientRequests':ClientRequests,'byte':byte,'req_count':req_count})
 
 # def Client_request(request):
 #     return render(request,'client_request.html')
@@ -308,9 +314,15 @@ def subs(request):
 
 
 
-def delete_userdata(request,id):
+def delete_clientdata(request,id):
     if request.method == "POST":
         pi = ClientRequest.objects.get(id=id)   
+        pi.delete()
+        return HttpResponseRedirect('/Dashboard')
+    
+def delete_businessdata(request,id):
+    if request.method == "POST":
+        pi = Businessdetail.objects.get(id=id)   
         pi.delete()
         return HttpResponseRedirect('/Dashboard')
     
@@ -366,6 +378,10 @@ def Business_Detail_Form(request):
         return render(request,"Dashboard.html",{"status":res,"messages":all_data})       
         # return HttpResponse("Best Of Luck for Your Business")
     return render(request,"Business_Detail_Form.html",{"messages":all_data})
+
+def Edit_Business_Detail_Form(request):
+    Businessdetails = Businessdetail.get_all_busdetdata()
+    return render(request,'Edit_Business_Detail_Form.html',{'Businessdetails': Businessdetails})
 
 def Client_request(request):
     all_data = Businessdetail.objects.all().order_by("-id")

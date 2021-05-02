@@ -1,0 +1,104 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit_Business_Data</title>
+
+    <link href="  {% static "/css/loan.css"%}" rel="stylesheet">
+      <link rel="stylesheet" href="{% static "category/css/font-awesome.min.css"%}" /><!-- fontawesome-CSS -->
+      
+
+<style>
+  .edit{
+    position: relative;
+    top: 10%;
+  }
+
+.edit h4{ 
+  font-style:italic;
+  color: rgb(58, 57, 57);
+}
+
+a:visited {
+  color: rgb(58, 57, 57);
+}
+a:hover, a:active, a:focus {
+  color:rgb(14, 107, 110);
+}
+
+</style>
+</head> 
+
+<body>
+<div class="edit">
+<h4>You are here: 
+			<a href={% url 'Dashboard' %}><i class="fa fa-tachometer"></i>Dashboard</a> /
+			<a href="">Edit_Business_Data</a>
+    </h4>
+
+
+    <table>
+        <thead>
+          <tr>
+            <th>Action</th>
+            <th>Business_Brand</th>
+            <th>Business_Brandweb</th>
+            <th>Business_Mobile</th>
+            <th>Business_Email</th>
+            <th>Business_Turnover</th>       
+            <th>Business_Type</th>
+            <th>Business_Marketplace</th>
+            <th>Business_Shortdetail</th>
+            <th>Business_Detail</th>
+            <th>Business_Features</th>
+          </tr>
+        </thead>
+        <tbody>
+         
+{%for Businessdetails in Businessdetails %}
+          <tr>
+            <td>
+            
+              <form action="{% url 'deletebusiness' Businessdetails.id  %}" method="POST" class="d-inline">
+                  {% csrf_token %}
+
+                  <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                     <i class="fa fa-trash" aria-hidden="true"></i>
+                  </button>
+
+                  <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  </button>
+
+              </form>
+
+            </td>
+
+
+
+
+            <td><strong>{{Businessdetails.Business_Brand}}</strong></td>
+            <td data-title="Link"><a href="{{Businessdetails.Business_Brandweb}}" target="_blank">{{Businessdetails.Business_Brandweb}}</a></td> 
+            {% comment %} <td>{{Businessdetails.Business_Brandweb}}</td> {% endcomment %}
+            <td>{{Businessdetails.Business_Mobile}}</td>
+            <td>{{Businessdetails.Business_Email}}</td>
+            <td>₹{{Businessdetails.Business_Turnover}}</td>
+            <td>{{Businessdetails.Business_Type}} </td>
+            <td>{{Businessdetails.Business_Marketplace}}</td>
+            <td>{{Businessdetails.Business_Shortdetail}}</td>
+            <td>{{Businessdetails.Business_Detail}}</td>
+            <td>{{Businessdetails.Business_Features}}</td>
+
+            
+          </tr>
+{% endfor %}
+
+        </tbody>
+      </table>
+
+</div>
+</body>
+<html>
+

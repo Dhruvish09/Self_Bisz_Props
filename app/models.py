@@ -419,7 +419,6 @@ class ClientRequest(models.Model):
         return 'You Have Request From' + ':' + self.Client_name
 
 
-
 class Businessdetail(models.Model):
     
     
@@ -428,6 +427,11 @@ class Businessdetail(models.Model):
         ("AVERAGE", "AVERAGE"),
         ("PRO","PRO"),
         )
+
+    # BUSMARKET_CHOICES = (
+    #     ("Monopolistic", "Monopolistic"),
+    #     ("Non-Monopolistic", "Non-Monopolistic"),
+    #     )
     
     BUSTYPE_CHOICES = (
         ("Technology", "Technology"),
@@ -457,8 +461,8 @@ class Businessdetail(models.Model):
     Business_Brandweb=models.URLField(max_length = 2000)
     Business_Mobile=models.CharField(max_length=15)
     Business_Email=models.CharField(max_length=50)
-    # Business_Type=models.CharField(max_length=30)
     Business_Turnover = models.CharField(max_length=15)
+    # Business_Market_Type = models.CharField(max_length = 50,choices = BUSMARKET_CHOICES,default = '1')
     Business_Type = models.CharField(max_length = 50,choices = BUSTYPE_CHOICES,default = '1')
     Business_Marketplace = models.CharField(max_length = 50,choices = MARKET_CHOICES,default = '1')
     Business_Features=models.CharField(max_length=800)
@@ -473,12 +477,24 @@ class Businessdetail(models.Model):
     def __str__(self):
         return self.Business_Type
 
+
+
 class Businessslide(models.Model):
     slide = models.ImageField(upload_to='media/Businessslide/images') 
     
     @staticmethod
     def get_all_Bussliddata():
         return Businessslide.objects.all()
+
+
+
+
+class demo(models.Model):
+    demo = models.CharField(max_length=13) 
+    
+    @staticmethod
+    def get_all_dmodata():
+        return demo.objects.all()
 
 
     

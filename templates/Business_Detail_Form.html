@@ -6,20 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Business Registration Form</title>
 	<link rel="stylesheet" href="{%static "css/Business_Detail_Form.css"%}">
+  <link rel="stylesheet" href="{% static "category/css/font-awesome.min.css"%}" /><!-- fontawesome-CSS -->
 
   <style>
-  {% comment %} .alert {
-  padding: 20px;
-  background-color: #f44336;
-  color: white;
+.hyper h4{ 
+  font-style:italic;
+  color: rgb(58, 57, 57);
 }
 
-.alert.success {background-color: #4CAF50;} {% endcomment %}
+a:visited {
+  color: rgb(58, 57, 57);
+}
+a:hover, a:active, a:focus {
+  color:rgb(14, 107, 110);
+}
+  
   </style>
 </head>
 <body>
 
 
+<div class="hyper">
+<h4>You are here: 
+			<a href={% url 'Dashboard' %}><i class="fa fa-tachometer"></i>Dashboard</a> / 
+			<a href="">Business_Detail_Form</a>
+    </h4>
+</div>
 
 <div class="wrapper">
     <div class="title">

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app.models import Contactus,reg,login,forgot,subscribe,team,slider,portfolio,category,cat_profile,client,sub_portfolio,Loan,ClientRequest,Businessdetail,Businessslide
+from app.models import Contactus,reg,login,forgot,subscribe,team,slider,portfolio,category,cat_profile,client,sub_portfolio,Loan,ClientRequest,Businessdetail,Businessslide,demo
 # Register your models here.
 
 admin.site.register(reg)
@@ -21,6 +21,7 @@ admin.site.register(Loan)
 admin.site.register(ClientRequest)
 admin.site.register(Businessdetail)
 admin.site.register(Businessslide)
+admin.site.register(demo)
 
 
 

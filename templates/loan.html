@@ -1,8 +1,5 @@
-{% extends 'base.html' %}
-{% comment %} {% block title %}Activity{% endblock  %} {% endcomment %}
-{% block body %}
 {% load static %}
-
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +7,7 @@
     <title>Loan</title>
     {% comment %} <link rel="stylesheet" href="loan1.css"> {% endcomment %}
     <link href="  {% static "/css/loan.css"%}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "category/css/font-awesome.min.css"%}" /><!-- fontawesome-CSS -->
 
 <style>
   .loan{
@@ -17,11 +15,31 @@
     top: 10%;
   }
 
+  .loan h4{ 
+    font-style:italic;
+    color: rgb(58, 57, 57);
+  }
+
+  a:visited {
+    color: rgb(58, 57, 57);
+  }
+  
+  a:hover, a:active, a:focus {
+    color:rgb(14, 107, 110);
+  }
 </style>
 </head> 
 
 <body>
 <div class="loan">
+
+<h4>You are here: 
+			<a href={% url 'index' %}><i class="fa fa-home home_1"></i>Home</a> / 
+			<a href="">Business Loan</a>
+    </h4>
+</div>
+
+
     <table>
         <thead>
           <tr>
@@ -56,5 +74,4 @@
 
 </div>
 </body>
-
-{% endblock %}
+</html>
