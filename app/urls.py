@@ -2,69 +2,94 @@ from django.urls import path
 from app import views
 
 urlpatterns = [
+
+    # (1) Start Index Area:-
+
     path('',views.index,name='index'),
+    path('news',views.News,name='news'),
+    path('Sub_Portfolio/',views.Sub_Portfolio,name='Sub_Portfolio'),
     path('contact',views.contact,name='contact'),
     path('subs',views.subs,name='subs'),
-    
-    
-    # .....................................................    
-    
-    # START
-    
-    path('Dashboard/',views.Dashboard,name='Dashboard'),
-    path('Client_request',views.Client_request,name='Client_request'),
-    
-    path('inner',views.inner_page,name='inner'),
-    path('business_profile',views.business_profile,name='business_profile'),
-    path('Business_Detail',views.Business_Detail,name='Business_Detail'),
-    path('Business_Detail_Form',views.Business_Detail_Form,name='Business_Detail_Form'),
-    path('edit_business',views.Edit_Business_Detail_Form,name='edit_business'),
-   
-     
-    
-    path('main_after',views.main_after,name='main_after'),
-    path('profile',views.profile,name='profile'),
-   
     path('loan',views.loan,name='loan'),
-    path('news',views.News,name='news'),
-    
-    path('Data',views.Data,name='Data'),
     path('faq',views.FAQ,name='faq'),
-    
-    # End
-    
+
+    # End Index Area
+
+
     # .....................................................   
-    
-        
-    # Navigation Start
+    # .....................................................  
+
+       
+    # (2) Start Navigation Area:-
     
     path('about/',views.About,name='about'),
     path('services/',views.Services,name='services'), 
     path('Activity/',views.Activity,name='Activity'),
  
-    # Navigation End
+    # End Navigation Area
     
+    # ..................................................... 
+    # .....................................................
+
+    # (3) Start Businessmen Dashboard Area:- 
     
+    path('Dashboard/',views.Dashboard,name='Dashboard'),
+    path('Business_Detail_Form',views.Business_Detail_Form,name='Business_Detail_Form'),
+    path('edit_business',views.Edit_Business_Detail_Form,name='edit_business'),
+    path('Buslide',views.Buslide,name='Buslide'), 
+    path('editslide',views.Edit_Business_Slide_Form,name='editslide'),
+    path('Client_request',views.Client_request,name='Client_request'),
+
+
+    # ......................................................
+            # (3.1)Start Delete Operation:
+    path('delete/<int:id>/',views.delete_clientdata,name='deletedata'),
+    path('deletebusiness/<int:id>/',views.delete_businessdata,name='deletebusiness'),
+    path('deletebuslide/<int:id>/',views.delete_businessslide,name='deletebusslide'),
+            # End Delete Operation
+    # ........................................................
+
+    # ........................................................
+            #(3.2) Edit Operation Start:
+    path('Edit_Profile',views.Edit_Profile,name="Edit_Profile"),
+            # End Edit Operation:
+    # ..........................................................
+
+
+    # End Businessmen Dashboard Area:
+    
+    # .....................................................   
+    # .....................................................  
+
+    
+    # (4) Start Clint Dashboard Area:
+
+    path('Business_Detail',views.Business_Detail,name='Business_Detail'),
+    path('cdash/',views.Dashboard_C,name='cdash'), 
+
+    # Clent Dashboard Area End
+
+ 
+    
+    # .....................................................
     # .....................................................
     
     
-    # Log Reg Forgot Start
+    # (5) Start Log Reg Forgot:
     path('final_reg',views.final_reg,name='final_reg'),
-    # path('final_reg/',views.final_reg,name='final_reg'),
     path('final_log',views.final_log,name='final_log'),
-    path('password_reset_request/',views.password_reset_request,name='password_reset_request'),
+    path('forgot',views.forgot,name='forgot'),
     path('logoutuser/',views.logoutuser,name='logoutuser'),
     
-    # Log Reg Forgot End
-    
-    
-    
-    # ...................................................................
+    # Log Reg Forgot Area End
+        
+    # .........................................................
+    # .........................................................
        
-    # category
+
+    # (6) Start Category Area:
     
-    path('category/',views.categories,name='category'),
-    path('category1/',views.category1,name='category1'),
+    path('category/',views.category,name='category'),
     path('all_classifieds_cat/',views.all_classifieds_cat,name='all_classifieds_cat'),
     
     path('Technology/',views.Technology,name='Technology'),
@@ -76,23 +101,11 @@ urlpatterns = [
     path('Pets/',views.Pets,name='Pets'),
     path('Real_estate/',views.Real_estate,name='Real_estate'),
     
-    # sub_category..........
-    path('Sub_Portfolio/',views.Sub_Portfolio,name='Sub_Portfolio'),
-
-    # End sub_category..........
     
-    # End Category
+    # Category Area End
     
     # ......................................................................
-    path('delete/<int:id>/',views.delete_clientdata,name='deletedata'),
-    path('deletebusiness/<int:id>/',views.delete_businessdata,name='deletebusiness'),
-    # path('edit',views.edit),
-    path('RecordEdited',views.RecordEdited),
-    
-    path('Edit_Profile',views.Edit_Profile,name="Edit_Profile"),
-    path('update_userdata',views.update_userdata,name="update_userdata"),
-  
-    
+    # ......................................................................  
 ]
 
 

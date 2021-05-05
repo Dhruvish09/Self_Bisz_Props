@@ -15,7 +15,7 @@
 
     <h1>Login Form</h1>
     <div class="log">
-        <form id="log" action="/final_log" method="POST">
+        <form  action="/final_log" method="POST">
             {% csrf_token %}
             <img src="{% static "/REG_LOG_FORGOT/images/LOGO2.JPG"%}" alt=""><br><br>
 
@@ -46,10 +46,12 @@
             <button type="submit" id="sub" value="login">Login</button><br><br>
             					
             <div class="links">
-				<p id="forgot"><a href="{% url 'password_reset_request' %} ">Forgot Password?</a></p><br>
+				<p id="forgot"><a href="{% url 'forgot' %} ">Forgot Password?</a></p><br>
 				<p id="new"><a href="{% url 'final_reg' %}">New User? Register</a></p>
 					<div class="clear"></div>
-			</div>
+			</div><br>
+            {{success}}
+            {{error}}
             
 {% for message in messages %}
 {{message}}

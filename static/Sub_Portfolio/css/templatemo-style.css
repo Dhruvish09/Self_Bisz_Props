@@ -319,6 +319,9 @@ nav {
 .portfolio-item img {
   width: 100%;
   overflow: hidden;
+  height: 257px;
+  margin: 3px;
+  padding: 5px;
 }
 
 .portfolio-item .thumb {

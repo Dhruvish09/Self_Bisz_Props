@@ -43,25 +43,10 @@
  #add{
       color:#865257;
     }
-
-#img{
-    border-radius: 17px;
-    background-color: #f0726c;
-    width: 94%;
-    margin: 2px;
-}
-
-#up{
-    border-radius: 17px;
-    background-color: #f0726c;
-    width: 35%;
-    margin: 2px;
-}
-
 {% comment %} 
       .alert {
   padding: 20px;
-  background-color: #f0726c;
+  background-color: #f44336;
   color: white;
 }
 
@@ -78,7 +63,7 @@
             <div class="section__content section__content +--p35">
                 <div class="header3-wrap">
                     <div class="header__logo">
-                        <a href={% url 'Dashboard' %}>
+                        <a href="">
                         <h1>SBP</h1> 
                         </a>
                     </div>
@@ -341,7 +326,7 @@
                                         <li class="list-inline-item seprate">
                                             <span>/</span>
                                         </li>
-                                        <li class="list-inline-item">Dashboard</li>
+                                        <li class="list-inline-item">Client Dashboard</li>
                                     </ul>
                                 </div>
                                 <form class="au-form-icon--sm" action="" method="post">
@@ -377,77 +362,57 @@
   <strong>Success!</strong> Business Added Sucessfully.
 </div> {% endcomment %}
 
-            <!-- {{status}}<br> -->
-          
+            {% comment %} {{status}}<br> {% endcomment %}
+            {% comment %} <a href={% url 'Business_Detail_Form' %} class="get-started-btn scrollto" id="add">Add Your Business</a> {% endcomment %}
+            
             <!-- STATISTIC-->
             <section class="statistic statistic2">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6 col-lg-3">
+
+                    {% comment %} <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--green">
                                 <h2 class="number">{{byte}}</h2>
                                <span class="desc">Your Business:</span><br>
-                                <a href={% url 'Business_Detail' %}><i class="fa fa-eye" aria-hidden="true" title="View"></i></a>
-                                <a href={% url 'edit_business' %}><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></i></a>
+                                <a href={% url 'Business_Detail' %}><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                <a href={% url 'edit_business' %}><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                           
                                 <div class="icon">
-                                    {% comment %} <i class="zmdi zmdi-account-o"></i> {% endcomment %}
-                                    <i class="fa fa-briefcase"></i>
+                                    <i class="zmdi zmdi-account-o"></i>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-md-6 col-lg-3">
-                            <div class="statistic__item statistic__item--blue">
-                                <h2 class="number">{{byte}}</h2>
-                                <span class="desc">Add Your Business</span><br>
-                                <a href={% url 'Business_Detail_Form' %}><i class="fa fa-plus" aria-hidden="true"></i></a><br>
-                                {{status}}
-                                <div class="icon">
-                            
-                            <i class="fa fa-medkit" aria-hidden="true"></i>
-
-                                </div>
-                            </div>
-                        </div>
-
+                        </div> {% endcomment %}
+                        
                         <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--orange">
                                 <h2 class="number">{{req_count}}</h2>
-                                <a href="#cr"><span class="desc">Client Request</span></a> 
+                                <a href="#cr"><span class="desc">Your Request</span></a> 
                                 <div class="icon">
-                                    <i class="fa fa-users" aria-hidden="true"></i>
-
+                                    <i class="zmdi zmdi-calendar-note"></i>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-6 col-lg-3">
+                        {% comment %} <div class="col-md-6 col-lg-3">
+                            <div class="statistic__item statistic__item--blue">
+                                <h2 class="number">5</h2>
+                                <span class="desc">client</span>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-calendar-note"></i>
+                                </div>
+                            </div>
+                        </div> {% endcomment %}
+
+                        {% comment %} <div class="col-md-6 col-lg-3">
                             <div class="statistic__item statistic__item--red">
-                                <h2 class="number">{{img}}</h2>
-                                <!-- <span class="desc">Upload Images</span> -->
-
-<!-- <form action="/">
-  <input type="file" id="myFile" name="filename" placeholder="submit">
-  <input type="submit" >
-</form> -->
-
-<form action="/Buslide" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <!-- <label for="img">Select image:</label><br> -->
-    <span class="desc">Your Images</span><br>
-    <input type="file" id="img" name="slide"  accept="image/*">
-    <input type="submit" id="up" value="Upload">
-
-    <a href={% url 'editslide' %}><i class="fa fa-eye" aria-hidden="true" title="Edit"></i></a>
-    
-</form>
-
+                                <h2 class="number">$1,062</h2>
+                                <span class="desc">total earnings</span>
                                 <div class="icon">
-                                    <i class="fa fa-picture-o"></i>
+                                    <i class="zmdi zmdi-money"></i>
                                 </div>
                             </div>
-                        </div>
+                        </div> {% endcomment %}
+
                     </div>
                 </div>
             </section>
@@ -611,13 +576,13 @@
                                             <td>{{ClientRequests.Client_Mobile}}</td>
                                             <td>
                                                 <div class="table-data-feature">
-                                                    <a href="mailto:{{ClientRequests.Client_email}}"><button class="item" data-toggle="tooltip" data-placement="top" title="Send">
+                                                    {% comment %} <a href="mailto:{{ClientRequests.Client_email}}"><button class="item" data-toggle="tooltip" data-placement="top" title="Send">
                                                         <i class="zmdi zmdi-mail-send"></i></a>
-                                                    </button>
+                                                    </button> {% endcomment %}
 
                                                     {% comment %} <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                         <i class="zmdi zmdi-edit"></i>
-                                                    </button> {% endcomment %}
+                                                    </button>  {% endcomment %}
                                                     
                                                     <form action="{% url 'deletedata' ClientRequests.id     %}" method="POST" class="d-inline">
                                                     {% csrf_token %}

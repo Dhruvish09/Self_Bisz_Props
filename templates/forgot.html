@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,8 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/forgot.css">
-    <link rel="stylesheet" href="/font-awesome.min.css">
+     <link rel="stylesheet" href="{% static "/REG_LOG_FORGOT/css/forgot.css"%}">
+    <link rel="stylesheet" href="{% static "/REG_LOG_FORGOT/css/font-awesome.min.css"%}">
     <title>Forgott</title>
 </head>
 
@@ -14,7 +15,7 @@
     <h1>Forgot Password</h1>
     <div class="log">
         <form id="log" action="" method="post">
-            <img src="/images/LOGO2.JPG" alt=""><br><br>
+            <img src="{% static "/REG_LOG_FORGOT/images/LOGO2.JPG"%}" alt=""><br><br>
 
             <!-- <div> -->
                 <!-- <label>User Name</label><br> -->

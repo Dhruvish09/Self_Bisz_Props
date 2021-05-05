@@ -62,14 +62,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //language-select -->
 
 <link rel="stylesheet" href="{% static "category/css/flexslider.css"%}" media="screen" /><!-- flexslider css -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+ 
+<style media="screen">
+  .carousel-cell {
+    position: relative;
+    width: 100%;
+    top: 11%;
+    }
 
+    /* cell number */
+    .carousel-cell:before {
+      display: block;
+    }
 
-<style>
-#add{
+    .carousel-inner {
+      position: relative;
+      width: 138%;
+      overflow: hidden;
+      left: -250px;
+      height: 100%;
+    }
+    .map iframe{
+      width: 1110px;
+      height: 320px;
+      position: relative;
+      top: -26px;
+    }
+    .w3-image{
+		width: 90%;
+		height: 638px;
+		position: relative;
+		left: 5%;
+    }
+
+	#add{
 	color:#865257;
 	}
 
 </style>
+
 
 </head>
 <body>
@@ -78,15 +111,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<span class="agile-breadcrumbs">
 			<a href={% url 'Dashboard' %}><i class="fa fa-home home_1"></i></a> / 
-			<a href={% url 'category1' %}>All Business</a> / 
+			<a href={% url 'category' %}>All Business</a> / 
 		</div>
 	</div>
 	<!-- //breadcrumbs -->
 	<!--single-page-->
 
 
-{% comment %} {% for Businessslides in  %} {% endcomment %}
-<div class="flexslider">
+{% comment %} <div class="flexslider">
 
 					<ul class="slides">
 							<li data-thumb="{%static "category/images/cloud1.png"%}">
@@ -103,9 +135,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</li>
 					</ul>
 
-					</div>
+					</div> {% endcomment %}
 
-{% comment %} {% endfor %} {% endcomment %}
+
+<!-- slider -->
+
+<div class="carousel" data-flickity='{ "wrapAround": true, "autoPlay": true, "imagesLoaded":true }'>
+
+{%for Businessslides in Businessslides %}
+      <div class="carousel-cell">
+        <img class="w3-image" src="{{ Businessslides.slide.url }}">
+      </div>
+{% endfor %}
+
+
+</div>
+
+
+
+<!-- End slider -->
 {{status}}<br>
 <a href={% url 'Client_request' %} class="get-started-btn scrollto" id="add">Business Request</a>
 
@@ -173,6 +221,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	{% endfor %}
 	<!--//single-page-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
 
 </body>
 		

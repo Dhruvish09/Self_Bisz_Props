@@ -109,7 +109,7 @@ var elem=$('#container ul');
 		<div class="container">
 			<span class="agile-breadcrumbs">
 			<span class="agile-breadcrumbs"><a href="{% url 'Dashboard' %}"><i class="fa fa-home home_1"></i></a> / 
-			<a href="{% url 'category1' %}"><span>Categories</span></a></span> / 
+			<a href="{% url 'category' %}"><span>Categories</span></a></span> / 
 			<span>Technology</span></span>
 		</div>
 	</div>
@@ -274,26 +274,24 @@ var elem=$('#container ul');
 				<div class="browse-category ads-list">
 					<label>Browse Categories</label>
 					<select class="selectpicker show-tick" data-live-search="true">
-					  <option data-tokens="Mobiles">Mobiles</option>
+					  <option data-tokens="Mobiles">Technology</option>
 					  <option data-tokens="Electronics & Appliances">Electronics & Appliances</option>
-					  <option data-tokens="Cars">Cars</option>
-					  <option data-tokens="Bikes">Bikes</option>
+					  <option data-tokens="Cars">Auto</option>
 					  <option data-tokens="Furniture">Furniture</option>
 					  <option data-tokens="Pets">Pets</option>
 					  <option data-tokens="Books, Sports & Hobbies">Books, Sports & Hobbies</option>
 					  <option data-tokens="Fashion">Fashion</option>
 					  <option data-tokens="Kids">Kids</option>
-					  <option data-tokens="Services">Services</option>
-					  <option data-tokens="Jobs">Jobs</option>
 					  <option data-tokens="Real Estate">Real Estate</option>
 					</select>
 				</div>
-			<div class="search-product ads-list">
+				
+				<div class="search-product ads-list">
 					<label>Search for a specific Businesss</label>
 					<div class="search">
 						<div id="custom-search-input">
-						<div class="input-group">
-							<input type="text" class="form-control input-lg" placeholder="Business" />
+							<div class="input-group">
+							<input type="text" class="form-control input-lg" />
 							<span class="input-group-btn">
 								<button class="btn btn-info btn-lg" type="button">
 									<i class="glyphicon glyphicon-search"></i>
@@ -301,257 +299,190 @@ var elem=$('#container ul');
 							</span>
 						</div>
 					</div>
-					</div>
 				</div>
+			</div>
+			
 				<div class="clearfix"></div>
 			</div>
-			<div class="ads-grid">
-				<div class="side-bar col-md-3">
-					<div class="search-hotel">
-					<h3 class="agileits-sear-head">Name contains</h3>
-					<form>
-						<input type="text" value="Product name..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Product name...';}" required="">
-						<input type="submit" value=" ">
-					</form>
-				</div>
-				
-				<div class="range">
-					<h3 class="agileits-sear-head">Price range</h3>
-							<ul class="dropdown-menu6">
-								<li>
-									                
-									<div id="slider-range"></div>							
-										<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
-									</li>			
-							</ul>
-							<!---->
-							<script type="text/javascript" src="{%static "js/jquery-ui.js"%}"></script>
-							<script type='text/javascript'>//<![CDATA[ 
-							$(window).load(function(){
-							 $( "#slider-range" ).slider({
-										range: true,
-										min: 0,
-										max: 9000,
-										values: [ 50, 6000 ],
-										slide: function( event, ui ) {  $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-										}
-							 });
-							$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
-							});//]]>  
-
-							</script>
-							
-				</div>
-				<div class="w3-brand-select">
-					<h3 class="agileits-sear-head">Tech Brand Name</h3>
-					  <select class="selectpicker" data-live-search="true">
-					  <option data-tokens="All">All</option>
-					  <option data-tokens="Front">Front</option>
-					  <option data-tokens="Birdeye">Birdeye</option>
-					  <option data-tokens="1Password">1Password</option>
-					  <option data-tokens="Docebo">Docebo</option>
-					  <option data-tokens="WD">WD</option>
-					  <option data-tokens="Intel">Intel</option>
-					  <option data-tokens="Sony">Sony</option>
-					  <option data-tokens="PC DOCTOR LAPTOP">PC DOCTOR LAPTOP</option>
-					  <option data-tokens="Liberty Laptop Service">Liberty Laptop Service</option>
-					  <option data-tokens="Digiman">Digiman</option>
-					</select>
-				</div>
-				<div class="w3ls-featured-ads">
-					<h2 class="sear-head fer">Featured Business</h2>
-					<div class="w3l-featured-ad">
-						<a href={% url 'Business_Detail' %}>
-							<div class="w3-featured-ad-left">
-								<img src="{% static "category/images/f1.jpg"%}" title="ad image" alt="" />
-							</div>
-							<div class="w3-featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>$ 450</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="w3l-featured-ad">
-						<a href={% url 'Business_Detail' %}>
-							<div class="w3-featured-ad-left">
-								<img src="{% static "category/images/f2.jpg"%}" title="ad image" alt="" />
-							</div>
-							<div class="w3-featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>$ 380</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="w3l-featured-ad">
-						<a href={% url 'Business_Detail' %}>
-							<div class="w3-featured-ad-left">
-								<img src="{% static "category/images/f3.jpg"%}" title="ad image" alt="" />
-							</div>
-							<div class="w3-featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>$ 560</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				</div>
+		</div>
+		
 				<div class="agileinfo-ads-display col-md-9">
 					<div class="wrapper">					
-					<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-					  <ul id="myTab" class="nav nav-tabs nav-tabs-responsive" role="tablist">
-						<li role="presentation" class="active">
-						  <a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
-							<span class="text">All Business</span>
-						  </a>
-						</li>
-						<li role="presentation" class="next">
-						  <a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">
-							<span class="text">Business with Monopoly</span>
-						  </a>
-						</li>
-						<li role="presentation">
-						  <a href="#samsa" role="tab" id="samsa-tab" data-toggle="tab" aria-controls="samsa">
-							<span class="text">Company</span>
-						  </a>
-						</li>
-					  </ul>
-					  <div id="myTabContent" class="tab-content">
-						<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
-						   <div>
-												<div id="container">
+						<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+							<ul id="myTab" class="nav nav-tabs nav-tabs-responsive" role="tablist">
+								<li role="presentation" class="active">
+									<a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+										<span class="text">All Business</span>
+						  			</a>
+								</li>
+							
+								<li role="presentation" class="next">
+						  			<a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">
+										<span class="text">Business with Monopoly</span>
+						  			</a>
+								</li>
+						
+							</ul>
+				<div id="myTabContent" class="tab-content">
+					<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+						<div>
+							<div id="container">
 								<div class="view-controls-list" id="viewcontrols">
 									<label>view :</label>
-									<a class="gridview"><i class="glyphicon glyphicon-th"></i></a>
-									<a class="listview active"><i class="glyphicon glyphicon-th-list"></i></a>
+										<a class="gridview"><i class="glyphicon glyphicon-th"></i></a>
+										<a class="listview active"><i class="glyphicon glyphicon-th-list"></i></a>
 								</div>
+									
 								<div class="sort">
-								   <div class="sort-by">
+									<div class="sort-by">
 										<label>Sort By : </label>
-										<select>
-														<option value="">Most recent</option>
-														<option value="">Turnover: Rs Low to High</option>
-														<option value="">Turnover: Rs High to Low</option>
-										</select>
-									   </div>
-									 </div>
-								<div class="clearfix"></div>
-							<ul class="list">
+											<select>
+												<option value="">Most recent</option>
+												<option value="">Turnover: Rs Low to High</option>
+												<option value="">Turnover: Rs High to Low</option>
+											</select>
+									</div>
+								</div>
 
-{% for cat_profiles in cat_profiles %}
-								<a href={% url 'Business_Detail' %}>
-									<li>
-									<img src="{{ cat_profiles.photo.url }}" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">{{ cat_profiles.Desc }}</h5>
-									<span class="adprice">{{ cat_profiles.price }}</span>
-									<p class="catpath">Mobile Phones » Brand</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:55</span>
-									<span class="cityname">{{ cat_profiles.city }}</span>
-									</section>
-									<div class="clearfix"></div>
-									</li> 
-								</a>
+							<div class="clearfix"></div>
+	<ul class="list">
+
+{%for Businessdetails in Businessdetails %}
+		
+		<a href={% url 'Business_Detail' %}>
+			<li>
+
+				{%for Businessslides in Businessslides %}
+					<img src="{{ Businessslides.slide.url }}" title="" alt="" />
+				{% endfor %}
+							
+							<section class="list-left">
+							<h5 class="title">{{ Businessdetails.Business_Shortdetail }}</h5>
+							<span class="adprice">Business_Turnover: ₹{{ Businessdetails.Business_Turnover }}</span>
+							<p class="catpath">Business_Brand:{{ Businessdetails.Business_Brand }}</p>
+							</section>
+							<section class="list-right">
+							<span class="date">Business_Date:{{Businessdetails.Business_Date}}</span>
+							<span class="cityname">city</span>
+							</section>
+							<div class="clearfix"></div>
+			</li> 
+		</a>
+
 {%endfor%}
-								
-
-							</ul>
-						</div>
+	
+	</ul>
+								</div>
 							</div>
 						</div>
+						
 						<div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
 						 <div>
-												<div id="container">
+							<div id="container">
 								<div class="view-controls-list" id="viewcontrols">
 									<label>view :</label>
-									<a class="gridview"><i class="glyphicon glyphicon-th"></i></a>
-									<a class="listview active"><i class="glyphicon glyphicon-th-list"></i></a>
+										<a class="gridview"><i class="glyphicon glyphicon-th"></i></a>
+										<a class="listview active"><i class="glyphicon glyphicon-th-list"></i></a>
 								</div>
+								
 								<div class="sort">
 								   <div class="sort-by">
 										<label>Sort By : </label>
-										<select>
-														<option value="">Most recent</option>
-														<option value="">Turnover: Rs Low to High</option>
-														<option value="">Turnover: Rs High to Low</option>
-										</select>
-									   </div>
-									 </div>
-								<div class="clearfix"></div>
-							<ul class="list">
+											<select>
+												<option value="">Most recent</option>
+												<option value="">Turnover: Rs Low to High</option>
+												<option value="">Turnover: Rs High to Low</option>
+											</select>
+									</div>
+								</div>
+								
+							<div class="clearfix"></div>
+	
+	<ul class="list">
 
-{% for cat_profiles in cat_profiles %}
-								<a href={% url 'Business_Detail' %}>
-									<li>
-									<img src="{{ cat_profiles.photo.url }}" title="" alt="" />
-									<section class="list-left">
-									<h5 class="title">{{ cat_profiles.Desc }}</h5>
-									<span class="adprice">{{ cat_profiles.price }}</span>
-									<p class="catpath">Mobile Phones » Brand</p>
-									</section>
-									<section class="list-right">
-									<span class="date">Today, 17:55</span>
-									<span class="cityname">{{ cat_profiles.city }}</span>
-									</section>
-									<div class="clearfix"></div>
-									</li> 
-								</a>
+{%for Businessdetails in Businessdetails %}
+	
+	<a href={% url 'Business_Detail' %}>
+		<li>
+					{%for Businessslides in Businessslides %}
+						<img src="{{ Businessslides.slide.url }}" title="" alt="" />
+					{% endfor %}
+
+							<section class="list-left">
+								<h5 class="title">{{ Businessdetails.Business_Shortdetail }}</h5>
+								<span class="adprice">Business_Turnover: ₹{{ Businessdetails.Business_Turnover }}</span>
+								<p class="catpath">Business_Brand:{{ Businessdetails.Business_Brand }}</p>
+							</section>
+			
+							<section class="list-right">
+								<span class="date">Business_Date:{{Businessdetails.Business_Date}}</span>
+								<span class="cityname">city</span>
+							</section>
+			
+								<div class="clearfix"></div>
+		</li> 
+	</a>
 {%endfor%}
 
-							</ul>
-						</div>
+	</ul>
+								</div>
 							</div>
 						</div>
+
 						<div role="tabpanel" class="tab-pane fade" id="samsa" aria-labelledby="samsa-tab">
 						  <div>
-												<div id="container">
-								<div class="view-controls-list" id="viewcontrols">
-									<label>view :</label>
-									<a class="gridview"><i class="glyphicon glyphicon-th"></i></a>
-									<a class="listview active"><i class="glyphicon glyphicon-th-list"></i></a>
-								</div>
+								<div id="container">
+									<div class="view-controls-list" id="viewcontrols">
+										<label>view :</label>
+										<a class="gridview"><i class="glyphicon glyphicon-th"></i></a>
+										<a class="listview active"><i class="glyphicon glyphicon-th-list"></i></a>
+									</div>
+								
 								<div class="sort">
 								   <div class="sort-by">
 										<label>Sort By : </label>
 										<select>
-														<option value="">Most recent</option>
-														<option value="">Turnover: Rs Low to High</option>
-														<option value="">Turnover: Rs High to Low</option>
+											<option value="">Most recent</option>
+											<option value="">Turnover: Rs Low to High</option>
+											<option value="">Turnover: Rs High to Low</option>
 										</select>
-									   </div>
-									 </div>
+									</div>
+								 </div>
+								
 								<div class="clearfix"></div>
-							<ul class="list">
+	
+	<ul class="list">
 
 {% for cat_profiles in cat_profiles %}
+	
+	<a href={% url 'Business_Detail' %}>
+		<li>
+							{%for Businessslides in Businessslides %}
+								<img src="{{ Businessslides.slide.url }}" title="" alt="" />
+							{% endfor %}
 
-								<a href={% url 'Business_Detail' %}>
-									<li>
-									<img src="{{ cat_profiles.photo.url }}" title="" alt="" />
-									<section class="list-left">
+								<section class="list-left">
 									<h5 class="title">{{ cat_profiles.Desc }}</h5>
 									<span class="adprice">{{ cat_profiles.price }}</span>
-									<p class="catpath">Mobile Phones » Brand</p>
-									</section>
-									<section class="list-right">
+									<p class="catpath">Technology » Brand</p>
+								</section>
+						
+								<section class="list-right">
 									<span class="date">Today, 17:55</span>
 									<span class="cityname">{{ cat_profiles.city }}</span>
-									</section>
+								</section>
+						
 									<div class="clearfix"></div>
-									</li> 
-								</a>
+		</li> 
+	</a>
+
 {%endfor%}
 
-							</ul>
-						</div>
+	</ul>
+								</div>
 							</div>
 						</div>
+
 						<ul class="pagination pagination-sm">
 							<li><a href="#">Prev</a></li>
 							<li><a href="#">1</a></li>
@@ -559,14 +490,14 @@ var elem=$('#container ul');
 							<li><a href="#">3</a></li>
 							<li><a href="#">Next</a></li>
 						</ul>
-					  </div>
 					</div>
 				</div>
-				</div>
-				<div class="clearfix"></div>
 			</div>
-		</div>	
+		</div>
+		<div class="clearfix"></div>
 	</div>
+</div>	
+</div>
 
 
 {% endblock  %}

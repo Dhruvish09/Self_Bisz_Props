@@ -21,14 +21,16 @@ https://templatemo.com/tm-520-highway
         <link rel="stylesheet" href="{% static "Sub_Portfolio/css/fontAwesome.css"%}">
         <link rel="stylesheet" href="{% static "Sub_Portfolio/css/light-box.css"%}">
         <link rel="stylesheet" href="{% static "Sub_Portfolio/css/templatemo-style.css"%}">
+        <link rel="stylesheet" href="{% static "category/css/font-awesome.min.css"%}" /><!-- fontawesome-CSS -->
+
 
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
         <script src="{% static "Sub_Portfolio/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"%}"></script>
+          
     </head>
 
 <body>
-
 
     <div id="video-container">
         <div class="video-overlay"></div>
@@ -38,8 +40,9 @@ https://templatemo.com/tm-520-highway
               {% comment %} <p>FREE CSS TEMPLATE by templatemo</p>
               <p>Homepage with full-width image gallery</p> {% endcomment %}
                 <div class="scroll-icon">
-
+                    <a  href={% url 'index' %}><i class="fa fa-home" aria-hidden="true"></i></a><br>
                     <a class="scrollTo" data-scrollTo="portfolio" href="#"><img src="{%static "Sub_Portfolio/img/scroll-icon.png"%}" alt=""></a>
+
                 </div>    
             </div>
         </div>

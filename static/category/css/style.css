@@ -2930,6 +2930,7 @@ h2.sear-head.fer {
 
 .wrapper {
   padding: 15px 0;
+  width: 135%;
 }
 
 .bs-example-tabs .nav-tabs {
@@ -2963,11 +2964,13 @@ h2.sear-head.fer {
 }
 .agileinfo-ads-display.col-md-9 {
     padding-left: 40px;
+	width: 131%;
 }
 div#myTabContent {
     border: 1px solid #CCCCCC !important;
     padding: 15px;
-	    position: relative;
+	position: relative;
+	width: 100%;
 }
 .nav-tabs>li>a {
     line-height: 1.42857143;
@@ -3030,12 +3033,14 @@ div#myTabContent {
 }
 #container .list li img{
 	float: left;
-    margin-right: 0;
-    padding-bottom: 0;
-    border: 1px solid #D1E0EE;
-    padding: 0;
-    width: 20%;
-    background-color: #fff;
+	margin-right: 0;
+	padding-bottom: 0;
+	border: 1px solid #D1E0EE;
+	padding: 5px;
+	width: 20%;
+	background-color: #fff;
+	height: 125px;
+	margin: 0px;
 }
 #container ul.list li.alt{ background:gray; }
 #container .list li p {

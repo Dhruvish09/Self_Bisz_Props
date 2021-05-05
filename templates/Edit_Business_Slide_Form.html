@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  		<title>Highway - Free CSS Template</title>
+  		<title>Business Images</title>
 <!-- 
 
 Highway Template
@@ -21,32 +21,37 @@ https://templatemo.com/tm-520-highway
         <link rel="stylesheet" href="{% static "Sub_Portfolio/css/fontAwesome.css"%}">
         <link rel="stylesheet" href="{% static "Sub_Portfolio/css/light-box.css"%}">
         <link rel="stylesheet" href="{% static "Sub_Portfolio/css/templatemo-style.css"%}">
+        <link rel="stylesheet" href="{% static "category/css/font-awesome.min.css"%}" /><!-- fontawesome-CSS -->
+
 
         <link href="https://fonts.googleapis.com/css?family=Kanit:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
         <script src="{% static "Sub_Portfolio/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"%}"></script>
+          
     </head>
 
 <body>
 
-
     <div id="video-container">
-        <div class="video-overlay"></div>
+      <div class="video-overlay"></div>
         <div class="video-content">
-            <div class="inner">
-              <h1>Welcome to <em>Tech-Port</em></h1>
-              {% comment %} <p>FREE CSS TEMPLATE by templatemo</p>
-              <p>Homepage with full-width image gallery</p> {% endcomment %}
-                <div class="scroll-icon">
+          <div class="inner">
+            
+            <h1>Welcome to Your<em> Portfolio</em></h1>
+              
+              <div class="scroll-icon">
+                
+                <a href={% url 'Dashboard' %}><i class="fa fa-home" aria-hidden="true"></i></a><br>
+                <a class="scrollTo" data-scrollTo="portfolio" href="#"><img src="{%static "Sub_Portfolio/img/scroll-icon.png"%}" alt=""></a>
 
-                    <a class="scrollTo" data-scrollTo="portfolio" href="#"><img src="{%static "Sub_Portfolio/img/scroll-icon.png"%}" alt=""></a>
-                </div>    
-            </div>
+              </div>    
+          </div>
         </div>
-        <video autoplay="" loop="" muted>
-        	<source src="{%static "Sub_Portfolio/highway-loop.mp4"%}" type="video/mp4" />
-        </video>
-    </div>
+        
+              <video autoplay="" loop="" muted>
+        	      <source src="{%static "Sub_Portfolio/tech.mp4"%}" type="video/mp4" />
+              </video>
+      </div>
 
 
     <div class="full-screen-portfolio" id="portfolio">
@@ -54,23 +59,33 @@ https://templatemo.com/tm-520-highway
 
 
 
-{% for retail_portfolio in retail_portfolio %}
+{% for Businessslides in Businessslides %}
 
-            <div class="col-md-4 col-sm-6">
-                <div class="portfolio-item">
-                    <a href="{{ retail_portfolio.photo.url }}" data-lightbox="image-1"><div class="thumb">
-                        <div class="hover-effect">
-                            <div class="hover-content">
-                                <h1><em>Retail</em></h1>
-                                <p>Awesome Retail port Goes Here</p>
-                            </div>
-                        </div>
-                        <div class="image">
-                            <img src="{{ retail_portfolio.photo.url }}">
-                        </div>
-                    </div></a>
-                </div>
+    <div class="col-md-4 col-sm-6">
+      <div class="portfolio-item">
+        
+        <a href="{{ Businessslides.slide.url }}" data-lightbox="image-1">
+        
+          <div class="thumb">
+            <div class="image">
+              
+              <img src="{{Businessslides.slide.url}}">           
+                            
             </div>
+          </div>
+        
+        </a>
+                       
+    <form action="{% url 'deletebusslide' Businessslides.id  %}" method="POST" class="d-inline">
+        {% csrf_token %}
+                  
+          <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+    </form>
+
+      </div>
+    </div>
         
 {% endfor %}
 
