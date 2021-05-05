@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Page{% endblock %}
+
+{% block body %}
+<form id="updateProductForm" action="" method="POST">
+    {% csrf_token %}
+    <label type="text" >Business Shortdetail : </label>
+    {{ BusinessDetailform.Business_Shortdetail }}
+    <br>
+    <label type="text" >Business Detail : </label>
+    {{ BusinessDetailform.Business_Detail }}
+    <br>
+    <label type="text" >Business Date : </label>
+    {{ BusinessDetailform.Business_Date }}
+    <br>
+    <label type="text" >Business Brand : </label>
+    {{ BusinessDetailform.Business_Brand }}
+    <br>
+    <label type="text" >Business Brandweb : </label>
+    {{ BusinessDetailform.Business_Brandweb }}
+    <br>
+    <label type="text" >Business Mobile : </label>
+    {{ BusinessDetailform.Business_Mobile }}
+    <br>
+    <label type="text" >Business Email : </label>
+    {{ BusinessDetailform.Business_Email }}
+    <br>
+    <label type="text" >Business Turnover : </label>
+    {{ BusinessDetailform.Business_Turnover }}
+    <br>
+    <label type="text" >Business Type : </label>
+    {{ BusinessDetailform.Business_Type }}
+    <br>
+    <label type="text" >Business Marketplace : </label>
+    {{ BusinessDetailform.Business_Marketplace }}
+    <br>
+    <label type="text" >Business Features : </label>
+    {{ BusinessDetailform.Business_Features }}
+    <br>
+    <input type="submit" value="Update">
+</form>
+{% endblock %}
+
+{% comment %} 
+    Business_Shortdetail Business_Detail Business_Date
+    Business_Brand Business_Brandweb Business_Mobile Business_Email
+    Business_Turnover Business_Market_Type Business_City Business_Country 
+    Business_Address Business_Type Business_Marketplace Business_Features {% endcomment %}

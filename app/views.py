@@ -5,7 +5,7 @@ from django.contrib  import auth,messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password,check_password
 from .models import Contactus,reg,team,portfolio,slider,client,portfolio,sub_portfolio,Loan,ClientRequest,Businessdetail,Businessslide,subscribe
-from .form import Subscribeform,Regform
+from .form import Subscribeform,Regform,BusinessDetailform
 from django.core.files.storage import FileSystemStorage
 from django import template,forms
 
@@ -49,11 +49,16 @@ def contact(request):
     return render(request,"contact.html")
 
 def subs(request):
+    teams = team.get_all_tmdata()
+    portfolios = portfolio.get_all_portdata()
+    sub_portfolios = sub_portfolio.get_all_subportdata()
+    sliders = slider.get_all_slidedata()
+    clients = client.get_all_clntdata()
     if request.method == "POST":
         email = request.POST.get('email')
         data = subscribe(email=email)
         data.save()
-        return render(request,"index.html")
+        return render(request,"index.html",{'teams':teams,'portfolios':portfolios,'sub_portfolios':sub_portfolios,'sliders':sliders,'clients':clients})
     return render(request,"index.html")
 
 # End Index  Area   
@@ -175,22 +180,31 @@ def final_reg(request):
     return render(request, 'Final_reg.html', {'error': "User Already Registered..."})
         
 def final_log(request):
-    if request.method =='POST':
-        username = request.POST.get('username')
+    if request.method == "POST":
         email = request.POST.get('email')
+        username = request.POST.get('username')
         password = request.POST.get('password')
+        
+        user = auth.authenticate(request,email=email, username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            return redirect('Dashboard')
+        else:
+            messages.info(request, 'username or password is wrong')
+            return redirect('final_log')
+    context = {}
+    return render(request, 'Final_log.html',context)
 
-        try:
-            user = reg.empAuth_objects.get(username=username,email=email,password=password)
-            if user is not None:
-                print("Login Succesfful")
-                return render(request,'Dashboard.html',{})
-            else:
-                return redirect('/')
-        except Exception as identifier:
-            return redirect('/Dashboard')
-    else:
-        return render(request,'Final_log.html')
+# def final_log(request):
+#     if request.method == "POST":
+#         print("something happen")
+#         if reg.objects.filter(username=request.POST['username'],email=request.POST['email'],password=request.POST['password']).exists():
+#             log = reg.objects.get(username=request.POST['username'],email=request.POST['email'],password=request.POST['password'])
+#             return render(request,'Dashboard.html',{'log':log})
+#         else:
+#             return render(request,'Final_log.html',{'error':"Invalid Username or Password"})
+
+#     return render(request,'Final_log.html')
 
 def forgot(request):
     return render(request,'forgot.html')
@@ -248,7 +262,8 @@ def Buslide(request):
         s = request.FILES['slide'];
         data = Businessslide(slide=s)
         data.save();
-        return render(request,"Dashboard.html")
+        data.clean()
+        return redirect('/Dashboard')
     return render(request,"Dashboard.html")
 
     # ..............................................
@@ -286,6 +301,25 @@ def Edit_Business_Slide_Form(request):
 
 def Edit_Profile(request):
     return render(request,'Edit_Profile.html')
+
+
+# def edit(request,id):
+#     detail = Businessdetail.objects.get(id=id)
+#     if(request.method == "POST"):
+#         form = BusinessDetailform(request.POST, instance=detail)
+#         if(form.is_valid):
+#             form.save()
+#             return redirect("/")
+
+#     else:
+#         form = BusinessDetailform()
+        
+#     context = {
+#         "BusinessDetailform":BusinessDetailform,
+#         "Businessdetail":Businessdetail.objects.get(id=id),
+#     }
+    
+#     return render(request,"edit.html",context) 
 
 
 # End Dashboard Area

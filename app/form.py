@@ -72,7 +72,7 @@ class Sub_Portfolioform(forms.ModelForm):
 class BusinessDetailform(forms.ModelForm):
     class meta:
         model = Businessdetail
-        fields = ['Business_Shortdetail','Business_City','Business_Detail','Business_Date','Business_Brandweb','Business_Brand','Business_Mobile','Business_Email','Market_Type','Business_Type','Business_Turnover','Business_Marketplace','Business_Features']
+        fields = ['Business_Shortdetail','Business_Detail','Business_Date','Business_Brandweb','Business_Brand','Business_Mobile','Business_Email','Market_Type','Business_Type','Business_Turnover','Business_Marketplace','Business_Features']
 
 class Businessslideform(forms.ModelForm):
     class meta:

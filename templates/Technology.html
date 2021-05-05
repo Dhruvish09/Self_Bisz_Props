@@ -353,7 +353,10 @@ var elem=$('#container ul');
 			<li>
 
 				{%for Businessslides in Businessslides %}
+					{% comment %} {% if forloop.counter|divisibleby:5 %} {% endcomment %}
+					{% comment %} {% if forloop.first %} {% endcomment %}
 					<img src="{{ Businessslides.slide.url }}" title="" alt="" />
+				    {% comment %} {% endif %} {% endcomment %}
 				{% endfor %}
 							
 							<section class="list-left">

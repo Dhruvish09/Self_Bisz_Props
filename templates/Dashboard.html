@@ -401,7 +401,7 @@
                             <div class="statistic__item statistic__item--blue">
                                 <h2 class="number">{{byte}}</h2>
                                 <span class="desc">Add Your Business</span><br>
-                                <a href={% url 'Business_Detail_Form' %}><i class="fa fa-plus" aria-hidden="true"></i></a><br>
+                                <a href={% url 'Business_Detail_Form' %}><i class="fa fa-plus" aria-hidden="true" title="Add"></i></a><br>
                                 {{status}}
                                 <div class="icon">
                             
@@ -439,7 +439,7 @@
     <input type="file" id="img" name="slide"  accept="image/*">
     <input type="submit" id="up" value="Upload">
 
-    <a href={% url 'editslide' %}><i class="fa fa-eye" aria-hidden="true" title="Edit"></i></a>
+    <a href={% url 'editslide' %}><i class="fa fa-eye" aria-hidden="true" title="View"></i></a>
     
 </form>
 
@@ -545,14 +545,8 @@
                             <h3 class="title-5 m-b-35" id="cr">Client Request</h3>
                             <div class="table-data__tool">
                                 <div class="table-data__tool-left">
-                                    <div class="rs-select2--light rs-select2--md">
-                                        <select class="js-select2" name="property">
-                                            <option selected="selected">All Request</option>
-                                            <option value="">Option 1</option>
-                                            <option value="">Option 2</option>
-                                        </select>
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
+
+
                                     <div class="rs-select2--light rs-select2--sm">
                                         <select class="js-select2" name="time">
                                             <option selected="selected">Today</option>
