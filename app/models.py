@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import BLANK_CHOICE_DASH
 from phone_field import PhoneField
 from django import forms
 
@@ -78,6 +79,20 @@ class Contactus(models.Model):
     
     class Meta:
         verbose_name_plural = "Contact Us"
+
+class ShareStory(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=250,null=True, blank=True)
+    story = models.TextField()
+    added_on = models.DateTimeField(auto_now_add=True)
+
+    @staticmethod
+    def get_all_sstydata():
+        return ShareStory.objects.all()
+    
+    def __str__(self):
+        return 'Visitor name :'+ self.name
+
     
 
 class subscribe(models.Model):
@@ -107,7 +122,7 @@ class Loan(models.Model):
 #   Start Reg Area................................................
      
 class reg(models.Model):
-    photo = models.ImageField(upload_to='media/profilephoto/images')
+    photo = models.ImageField(upload_to='media/profilephoto/images',default="profile1.png", null=True, blank=True)
     email = models.CharField(max_length=30)
     username=models.CharField(max_length=12)
     password=models.CharField(max_length=264)
@@ -118,13 +133,13 @@ class reg(models.Model):
         ('F', 'Female'),
         ('o', 'other'),
     )
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES) 
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES,default='FEMALE') 
     
     PROFILE_CHOICES = (
         ('B', 'Businessman'),
         ('C', 'Client'),
     )
-    profile = models.CharField(max_length=1, choices=PROFILE_CHOICES)
+    profile = models.CharField(max_length=1, choices=PROFILE_CHOICES,default="Businessman")
     phone_number = models.CharField(max_length=12)
     # phone_number = PhoneField(blank=True, help_text='Contact phone number')
     
@@ -137,7 +152,6 @@ class reg(models.Model):
             return reg.object.get(email = email)
         except:
             return False
-    empAuth_objects = models.Manager()
         
     
 #   End Reg Area ................................................
@@ -154,21 +168,20 @@ class Businessdetail(models.Model):
         ("Non-Monopolic", "Non-Monopolic"),
         )
 
-    # CITY_CHOICES = (
-    #     ("Ahmedabad", "Ahmedabad"),
-    #     ("Surat", "Surat"),
-    #     )
+    STATE_CHOICES = (
+        ("GUJRAT", "GUJRAT"),
+        ("DELHI", "DELHI"),
+        ("Maharashtra", "Maharashtra"),
+        ("PANJAB", "PANJAB"),
+        )
 
-    # COUNTRY_CHOICES = (
-    #     ("IND", "IND"),
-    #     ("USA", "USA"),
-    #     )
+    COUNTRY_CHOICES = (
+        ("INDIA", "INDIA"),
+        ("US", "US"),
+        ("CANADA", "CANADA"),
+        ("RUSSIA", "RUSSIA"),
+        )
 
-    # BUSMARKET_CHOICES = (
-    #     ("Monopolistic", "Monopolistic"),
-    #     ("Non-Monopolistic", "Non-Monopolistic"),
-    #     )
-    
     BUSTYPE_CHOICES = (
         ("Technology", "Technology"),
         ("Agriculture", "Agriculture"),
@@ -198,15 +211,17 @@ class Businessdetail(models.Model):
     Business_Mobile=models.CharField(max_length=15)
     Business_Email=models.CharField(max_length=50)
     Business_Turnover = models.CharField(max_length=15)
-    # Business_Market_Type = models.CharField(max_length = 50,choices = BUSMARKET_CHOICES,default = '1')
-    # Business_City = models.CharField(max_length = 60,choices = CITY_CHOICES,default = '1')
-    # Business_Country = models.CharField(max_length = 60,choices = COUNTRY_CHOICES,default = '1')
-    # Business_Address=models.TextField(max_length=500)
+    Business_State = models.CharField(max_length = 60,choices = STATE_CHOICES,default = '1')
+    Business_Country = models.CharField(max_length = 60,choices = COUNTRY_CHOICES,default = '1')
+    Business_Address=models.TextField(max_length=500)
+    Business_Location=models.URLField(max_length = 2000)
     Business_Type = models.CharField(max_length = 50,choices = BUSTYPE_CHOICES,default = '1')
     Business_Marketplace = models.CharField(max_length = 50,choices = MARKET_CHOICES,default = '1')
     Business_Features=models.CharField(max_length=800)
+    Business_Photo = models.ImageField(upload_to='media/Business/category/images')
 
-  
+    # Business_Location,Business_Sate,Business_Country,Business_Photo,Business_Address
+
     @staticmethod
     def get_all_busdetdata():
         return Businessdetail.objects.all()

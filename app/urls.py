@@ -6,6 +6,7 @@ urlpatterns = [
     # (1) Start Index Area:-
 
     path('',views.index,name='index'),
+    path('story',views.Story,name='story'),
     path('news',views.News,name='news'),
     path('Sub_Portfolio/',views.Sub_Portfolio,name='Sub_Portfolio'),
     path('contact',views.contact,name='contact'),
@@ -36,6 +37,7 @@ urlpatterns = [
     path('Dashboard/',views.Dashboard,name='Dashboard'),
     path('Business_Detail_Form',views.Business_Detail_Form,name='Business_Detail_Form'),
     path('edit_business',views.Edit_Business_Detail_Form,name='edit_business'),
+    path('<int:id>/',views.update_userdata,name='updatedata'),
     path('Buslide',views.Buslide,name='Buslide'), 
     path('editslide',views.Edit_Business_Slide_Form,name='editslide'),
     path('Client_request',views.Client_request,name='Client_request'),
@@ -103,6 +105,7 @@ urlpatterns = [
     
     
     # Category Area End
+    path('account/', views.accountSettings, name="account"),
     
     # ......................................................................
     # ......................................................................  

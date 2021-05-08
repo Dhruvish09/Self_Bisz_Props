@@ -402,7 +402,13 @@
                                 <h2 class="number">{{byte}}</h2>
                                 <span class="desc">Add Your Business</span><br>
                                 <a href={% url 'Business_Detail_Form' %}><i class="fa fa-plus" aria-hidden="true" title="Add"></i></a><br>
-                                {{status}}
+                                {% comment %} {{status}} {% endcomment %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div>{{ message }}</div>
+    {% endfor %}
+{% endif %}<br>
                                 <div class="icon">
                             
                             <i class="fa fa-medkit" aria-hidden="true"></i>
@@ -436,7 +442,7 @@
     {% csrf_token %}
     <!-- <label for="img">Select image:</label><br> -->
     <span class="desc">Your Images</span><br>
-    <input type="file" id="img" name="slide"  accept="image/*">
+    <input type="file" id="img" name="slide"  accept="image/*" multiple>
     <input type="submit" id="up" value="Upload">
 
     <a href={% url 'editslide' %}><i class="fa fa-eye" aria-hidden="true" title="View"></i></a>

@@ -47,14 +47,17 @@
                     <input type="radio" id="ml" name="gender" required=""/>  
                     <label for="Client">Client</label> -->
 
+                    <select id="name" name="profile">
+                        <option value="Male">Businessman</option>
+                        <option value="Female">Client</option>
+                    </select><br><br>
 
-
-                    <input type="radio" id="bm" name="profile">
+                    {% comment %} <input type="radio" id="bm" name="profile">
                     <label for="Businessman">Businessman</label>
 
                     <input type="radio" id="cl" name="profile" >
                     <label for="client">Client</label><br>  
-                     <br>
+                     <br> {% endcomment %}
             </div>           
 
     <!-- Mobile -->
@@ -102,10 +105,16 @@
 
                <br><br>
             </div>
-            
+ 
+
+    <!-- Image Upload     -->
+            <div>
+                <span class="fa fa-image"></span>
+                <input type="file" id="name" name="photo"><br><br>        
+            </div>
+
     <!-- Password     -->
             <div>
-                <!-- <label>Password</label><br> -->
                 <span class="fa fa-lock"></span>
                 <input type="password" name="password" id="name"  placeholder="Enter Your Password" required=""/> <br><br>
                 

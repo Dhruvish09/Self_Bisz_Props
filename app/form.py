@@ -1,7 +1,7 @@
 from django.forms import ModelForm, fields
 from phone_field import PhoneField
 from django import forms
-from .models import slider,team,portfolio,sub_portfolio,Contactus,subscribe,Loan,reg,Businessdetail,Businessslide,client,ClientRequest
+from .models import slider,team,portfolio,sub_portfolio,Contactus,subscribe,Loan,reg,Businessdetail,Businessslide,client,ClientRequest,ShareStory
 from django.core.mail import send_mail, get_connection
 
 
@@ -31,6 +31,11 @@ class Contactform(forms.ModelForm):
     class meta:
         model = Contactus
         fields = ['name','subject','email','mobile','message','added_on']
+
+class storyform(forms.ModelForm):
+    class meta:
+        model = ShareStory
+        fields = ['name','email','story','added_on']
 
 
 class Subscribeform(forms.ModelForm):
@@ -69,10 +74,11 @@ class Sub_Portfolioform(forms.ModelForm):
 
 # Start Business Area............................................................... 
 
-class BusinessDetailform(forms.ModelForm):
-    class meta:
-        model = Businessdetail
-        fields = ['Business_Shortdetail','Business_Detail','Business_Date','Business_Brandweb','Business_Brand','Business_Mobile','Business_Email','Market_Type','Business_Type','Business_Turnover','Business_Marketplace','Business_Features']
+class BusinessDetailform(forms.Form):
+    class Meta:
+        Model = Businessdetail
+        fields = ['Business_Shortdetail','Business_Detail','Business_Date','Business_Brandweb','Business_Brand','Business_Mobile','Business_Email','Market_Type','Business_Type','Business_Turnover','Business_Marketplace','Business_Features',' Business_Address','Business_Country','Business_Location','Business_State','Business_Photo']
+
 
 class Businessslideform(forms.ModelForm):
     class meta:

@@ -112,7 +112,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-menu > ul {
   display: flex;
-  right: 141%;
+  right: 100%;
   position: relative;
 }
 
@@ -249,7 +249,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Poppins", sans-serif;
   border: 2px solid #5c9f24;
   position: relative;
-  right: -6%;
+  right: -9%;
   top: -1%;
   }
   .get-started-btn #story{

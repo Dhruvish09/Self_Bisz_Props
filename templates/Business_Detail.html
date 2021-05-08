@@ -152,9 +152,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 
 
-
+{% if messages %}
+    {% for message in messages %}
+        <div>{{ message }}</div>
+    {% endfor %}
+{% endif %}<br>
 <!-- End slider -->
-{{status}}<br>
+{% comment %} {{status}}<br> {% endcomment %}
 <a href={% url 'Client_request' %} class="get-started-btn scrollto" id="add">Business Request</a>
 
 {%for Businessdetails in Businessdetails %}
@@ -163,7 +167,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="product-desc">
 				<div class="col-md-7 product-view">
 					<h2>{{Businessdetails.Business_Shortdetail}} </h2>
-					<p> <i class="glyphicon glyphicon-map-marker"></i><a href="#">state</a>, <a href="#">city</a>| Added at {{Businessdetails.Business_Date}}</p>
+					<p> <a href="{{Businessdetails.Business_Location}}" target="_blank"><i class="glyphicon glyphicon-map-marker"></i></a> {{Businessdetails.Business_State}},{{Businessdetails.Business_Country}}| Added at {{Businessdetails.Business_Date}}</p>
 										<!-- FlexSlider -->
 					  <script defer src="{%static "category/js/jquery.flexslider.js"%}"></script>
 
@@ -181,7 +185,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h4><span class="w3layouts-agileinfo">Brand </span> : <a href="{{Businessdetails.Business_Brandweb}}" target="_blank">{{Businessdetails.Business_Brand}}</a><div class="clearfix"></div></h4>
 						<h4><span class="w3layouts-agileinfo">Views </span> : <strong>150</strong></h4>
 						<h4><span class="w3layouts-agileinfo">Industry </span> : {{Businessdetails.Business_Type}}</h4>
-						<h4><span class="w3layouts-agileinfo">Summary</span> :<p>{{Businessdetails.Business_Detail}}</p><div class="clearfix"></div></h4>
+						<h4><span class="w3layouts-agileinfo">Summary</span>:<p>{{Businessdetails.Business_Detail}}</p><div class="clearfix"></div></h4>
+						<h4><span class="w3layouts-agileinfo">Address</span> :<p>{{Businessdetails.Business_Address}}</p><div class="clearfix"></div></h4>
 					
 					</div>
 				</div>
@@ -204,7 +209,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					</div>
 					<div class="interested text-center">
-						<h4>Interested in this Business?<small> Contact the Seller!</small></h4>
+						<h4>Interested in Business?<small> Contact the Seller!</small></h4>
 						<p><i class="glyphicon glyphicon-earphone"></i><a href="tel:+91 {{Businessdetails.Business_Mobile}}"><strong>Phone:</strong>{{Businessdetails.Business_Mobile}}</a></p>
 						<p><i class="fa fa-envelope"></i><a href="mailto:{{Businessdetails.Business_Email}}"><strong>Email:</strong> {{Businessdetails.Business_Email}}</a></p>
 					</div>

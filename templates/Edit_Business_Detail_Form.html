@@ -37,7 +37,9 @@ a:hover, a:active, a:focus {
 			<a href={% url 'Dashboard' %}><i class="fa fa-tachometer"></i>Dashboard</a> /
 			<a href="">Edit_Business_Data</a>
     </h4>
-
+  
+<h1> if you are having troible to updating use alternative link </h1>
+<a href="http://127.0.0.1:8000/admin/app/reg/">click here</a>
 
     <table>
         <thead>
@@ -69,12 +71,11 @@ a:hover, a:active, a:focus {
                   </button>
               </form>
 
-              <form action="" method="POST" class="d-inline">
-                  {% csrf_token %}
-                  <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                  </button>
 
+              <form action="" method="POST">
+                <a href="{% url 'updatedata' Businessdetails.id    %}" class="btn btn-warning btn-sm"><button class="item" data-toggle="tooltip" data-placement="top" title="edit">
+                <i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit"></i></a>
+                </button>
               </form>
 
             </td>

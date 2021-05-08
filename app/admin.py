@@ -1,8 +1,9 @@
 from django.contrib import admin
-from app.models import reg,slider,team,client,portfolio,sub_portfolio,Loan,Contactus,subscribe,ClientRequest,Businessdetail,Businessslide
+from app.models import reg,slider,team,client,portfolio,sub_portfolio,Loan,Contactus,subscribe,ClientRequest,Businessdetail,Businessslide,ShareStory
 # Register your models here.
 
 admin.site.register(reg)
+admin.site.register(ShareStory)
 admin.site.register(slider)
 admin.site.register(team)
 admin.site.register(client)

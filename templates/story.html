@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Share Your Story</title>
+	<link rel="stylesheet" href="{%static "css/Business_Detail_Form.css"%}">
+    <link rel="stylesheet" href="{% static "category/css/font-awesome.min.css"%}" /><!-- fontawesome-CSS -->
+    
+<style>
+.hyper h4{ 
+  font-style:italic;
+  color: rgb(58, 57, 57);
+}
+
+a:visited {
+  color: rgb(58, 57, 57);
+}
+a:hover, a:active, a:focus {
+  color:rgb(14, 107, 110);
+}
+  </style>
+
+</head>
+<body>
+
+<div class="hyper">
+<h4>You are here: 
+			<a href={% url 'index' %}><i class="fa fa-industry"></i>index</a> / 
+			<a href="">Share Story</a>
+    </h4>
+</div>
+
+<div class="wrapper">
+    <div class="title">
+      Share Your Story
+    </div>
+
+
+<div class="form">
+        
+<form action="/Story" method="post">
+{% csrf_token %}
+
+  <div class="inputfield">
+    <label>Name</label>
+    <input type="text" name="name" class="input" placeholder="Enter Your Name" required=""/>
+  </div>   
+  
+  <div class="inputfield">
+    <label>Email</label>
+    <input type="email" name="email" class="input" placeholder="Enter Your Email ">
+  </div>    
+  
+  <div class="inputfield">
+    <label>Story</label>
+    <textarea class="textarea" name="story" placeholder="Share Your Story Here" required=""/> </textarea>
+  </div> 
+  
+  {% comment %} <div class="inputfield">
+    <label>Date</label>
+    <input type="date" name="Client_Date" class="input">
+  </div> {% endcomment %}
+
+
+  
+  
+  <div class="inputfield">
+    <input type="submit" value="Submit" class="btn">
+  </div>
+
+  </form>
+  
+</div>
+
+
+</div>	
+	
+</body>
+</html>
