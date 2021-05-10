@@ -137,13 +137,13 @@ class reg(models.Model):
         ('Female', 'Female'),
         ('Other', 'Other'),
     )
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES,default='Male') 
+    gender = models.CharField(max_length=20, choices=GENDER_CHOICES,default='Male') 
     
     PROFILE_CHOICES = (
         ('Businessman', 'Businessman'),
         ('Client', 'Client'),
     )
-    profile = models.CharField(max_length=1, choices=PROFILE_CHOICES,default="Businessman")
+    profile = models.CharField(max_length=20, choices=PROFILE_CHOICES,default="Businessman")
     phone_number = models.CharField(max_length=12)
     # phone_number = PhoneField(blank=True, help_text='Contact phone number')
     
