@@ -256,24 +256,6 @@ var elem=$('#container ul');
 													
 
 
-{% comment %} 													
-												<optgroup label="Another Contry">
-													<option selected style="display:none;color:#eee;">Entire USA</option>
-													<option>Birmingham</option>
-													<option>Anchorage</option>
-													<option>Phoenix</option>
-													<option>Little Rock</option>
-													<option>Los Angeles</option>
-													<option>Denver</option>
-													<option>Bridgeport</option>
-													<option>Wilmington</option>
-													<option>Jacksonville</option>
-													<option>Atlanta</option>
-													<option>Honolulu</option>
-													<option>Boise</option>
-													<option>Chicago</option>
-													<option>Indianapolis</option>
-												</optgroup>			 {% endcomment %}
 												</optgroup>
 			            </select>
 				</div>
@@ -312,91 +294,7 @@ var elem=$('#container ul');
 				<div class="clearfix"></div>
 			</div>
 			<div class="ads-grid">
-				<div class="side-bar col-md-3">
-					<div class="search-hotel">
-					<h3 class="agileits-sear-head">Name contains</h3>
-					<form>
-						<input type="text" value="Product name..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Product name...';}" required="">
-						<input type="submit" value=" ">
-					</form>
-				</div>
 				
-				<div class="range">
-					<h3 class="agileits-sear-head">Price range</h3>
-							<ul class="dropdown-menu6">
-								<li>
-									                
-									<div id="slider-range"></div>							
-										<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
-									</li>			
-							</ul>
-							<!---->
-							<script type="text/javascript" src="{%static "js/jquery-ui.js"%}"></script>
-							<script type='text/javascript'>//<![CDATA[ 
-							$(window).load(function(){
-							 $( "#slider-range" ).slider({
-										range: true,
-										min: 0,
-										max: 9000,
-										values: [ 50, 6000 ],
-										slide: function( event, ui ) {  $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-										}
-							 });
-							$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
-							});//]]>  
-
-							</script>
-							
-				</div>
-				<div class="w3-brand-select">
-					<h3 class="agileits-sear-head">Category</h3>
-					  <select class="selectpicker" data-live-search="">
-					  <option data-tokens="All">All</option>
-					  <option data-tokens="Rent">Rent</option>
-					  <option data-tokens="Sale">Sale</option>
-					</select>
-				</div>
-				<div class="w3ls-featured-ads">
-					<h2 class="sear-head fer">Featured Ads</h2>
-					<div class="w3l-featured-ad">
-						<a href="single.html">
-							<div class="w3-featured-ad-left">
-								<img src="{% static "category/images/f1.jpg"%}" title="ad image" alt="" />
-							</div>
-							<div class="w3-featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>$ 450</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="w3l-featured-ad">
-						<a href="single.html">
-							<div class="w3-featured-ad-left">
-								<img src="{% static "category/images/f2.jpg"%}" title="ad image" alt="" />
-							</div>
-							<div class="w3-featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>$ 380</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="w3l-featured-ad">
-						<a href="single.html">
-							<div class="w3-featured-ad-left">
-								<img src="{% static "category/images/f3.jpg"%}" title="ad image" alt="" />
-							</div>
-							<div class="w3-featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>$ 560</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="clearfix"></div>
-				</div>
 				</div>
 				<div class="agileinfo-ads-display col-md-9">
 					<div class="wrapper">					
@@ -404,12 +302,12 @@ var elem=$('#container ul');
 					  <ul id="myTab" class="nav nav-tabs nav-tabs-responsive" role="tablist">
 						<li role="presentation" class="active">
 						  <a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
-							<span class="text">All Ads</span>
+							<span class="text">All Business</span>
 						  </a>
 						</li>
 						<li role="presentation" class="next">
 						  <a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">
-							<span class="text">Ads with Photos</span>
+							<span class="text">Business With Monopoly</span>
 						  </a>
 						</li>
 					  </ul>

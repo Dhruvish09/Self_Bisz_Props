@@ -280,17 +280,14 @@ var elem=$('#container ul');
 				<div class="browse-category ads-list">
 					<label>Browse Categories</label>
 					<select class="selectpicker show-tick" data-live-search="true">
-					  <option data-tokens="Bikes">Bikes</option>
-					  <option data-tokens="Mobiles">Mobiles</option>
+					  <option data-tokens="Bikes">Vehical</option>
+					  <option data-tokens="Mobiles">Technology</option>
 					  <option data-tokens="Electronics & Appliances">Electronics & Appliances</option>
-					  <option data-tokens="Cars">Cars</option>
 					  <option data-tokens="Furniture">Furniture</option>
 					  <option data-tokens="Pets">Pets</option>
 					  <option data-tokens="Books, Sports & Hobbies">Books, Sports & Hobbies</option>
 					  <option data-tokens="Fashion">Fashion</option>
 					  <option data-tokens="Kids">Kids</option>
-					  <option data-tokens="Services">Services</option>
-					  <option data-tokens="Jobs">Jobs</option>
 					  <option data-tokens="Real Estate">Real Estate</option>
 					</select>
 				</div>
@@ -312,119 +309,21 @@ var elem=$('#container ul');
 				<div class="clearfix"></div>
 			</div>
 			<div class="ads-grid">
-				<div class="side-bar col-md-3">
-					<div class="search-hotel">
-					<h3 class="agileits-sear-head">Name contains</h3>
-					<form>
-						<input type="text" value="Product name..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Product name...';}" required="">
-						<input type="submit" value=" ">
-					</form>
-				</div>
 				
-				<div class="range">
-					<h3 class="agileits-sear-head">Price range</h3>
-							<ul class="dropdown-menu6">
-								<li>
-									                
-									<div id="slider-range"></div>							
-										<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
-									</li>			
-							</ul>
-							<!---->
-							<script type="text/javascript" src="{%static "js/jquery-ui.js"%}"></script>
-							<script type='text/javascript'>//<![CDATA[ 
-							$(window).load(function(){
-							 $( "#slider-range" ).slider({
-										range: true,
-										min: 0,
-										max: 9000,
-										values: [ 50, 6000 ],
-										slide: function( event, ui ) {  $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-										}
-							 });
-							$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
-							});//]]>  
-
-							</script>
-							
-				</div>
-				<div class="w3-brand-select">
-					<h3 class="agileits-sear-head">Brand name</h3>
-					  <select class="selectpicker" data-live-search="true">
-					  <option data-tokens="All">All</option>
-					  <option data-tokens="Bajaj">Bajaj</option>
-					  <option data-tokens="Harley Davidson">Harley Davidson</option>
-					  <option data-tokens="Hero">Hero</option>
-					  <option data-tokens="Hero Honda">Hero Honda</option>
-					  <option data-tokens="Honda">Honda</option>
-					  <option data-tokens="Kawasaki">Kawasaki</option>
-					  <option data-tokens="KTM">KTM</option>
-					  <option data-tokens="Mahindra">Mahindra</option>
-					  <option data-tokens="Royal Enfield">Royal Enfield</option>
-					  <option data-tokens="Suzuki">Suzuki</option>
-					  <option data-tokens="Yamaha">Yamaha</option>
-					  <option data-tokens="Other Brands">Other Brands</option>
-					</select>
-				</div>
-				<div class="w3ls-featured-ads">
-					<h2 class="sear-head fer">Featured Ads</h2>
-					<div class="w3l-featured-ad">
-						<a href={% url 'Business_Detail' %}>
-							<div class="w3-featured-ad-left">
-								<img src="{%static "category/images/f1.jpg"%}" title="ad image" alt="" />
-							</div>
-							<div class="w3-featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>$ 450</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="w3l-featured-ad">
-						<a href={% url 'Business_Detail' %}>
-							<div class="w3-featured-ad-left">
-								<img src="{%static "category/images/f2.jpg"%}" title="ad image" alt="" />
-							</div>
-							<div class="w3-featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>$ 380</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="w3l-featured-ad">
-						<a href={% url 'Business_Detail' %}>
-							<div class="w3-featured-ad-left">
-								<img src="{%static "category/images/f3.jpg"%}" title="ad image" alt="" />
-							</div>
-							<div class="w3-featured-ad-right">
-								<h4>Lorem Ipsum is simply dummy text of the printing industry</h4>
-								<p>$ 560</p>
-							</div>
-							<div class="clearfix"></div>
-						</a>
-					</div>
-					<div class="clearfix"></div>
-				</div>
 				</div>
 				<div class="agileinfo-ads-display col-md-9">
 					<div class="wrapper">					
 					<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 					  <ul id="myTab" class="nav nav-tabs nav-tabs-responsive" role="tablist">
+						
 						<li role="presentation" class="active">
-						  <a href={% url 'index' %} id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+						  <a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">
 							<span class="text">All Business</span>
 						  </a>
 						</li>
-						<li role="presentation" class="next">
-						  <a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">
-							<span class="text">Business with Photos</span>
-						  </a>
-						</li>
-						<li role="presentation">
+						<li role="presentation" class="Next">
 						  <a href="#samsa" role="tab" id="samsa-tab" data-toggle="tab" aria-controls="samsa">
-							<span class="text">Company</span>
+							<span class="text">Business with Monopoly</span>
 						  </a>
 						</li>
 					  </ul>

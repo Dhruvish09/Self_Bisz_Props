@@ -333,8 +333,8 @@ def update_userdata(request,id):
         if fm.is_valid():
             fm.save()
     else:
-            pi = Businessdetail.objects.get(id=id)
-            fm = BusinessDetailform() 
+        pi = Businessdetail.objects.get(id=id)
+        fm = BusinessDetailform() 
     return render(request,'Edit_Business_Detail_Form.html',{'form':fm})
 
 def Edit_Business_Detail_Form(request):
@@ -400,3 +400,32 @@ def accountSettings(request):
 
 	context = {'form':form}
 	return render(request, 'accounts/account_settings.html', context)
+
+
+def updatebus(request,id):
+    if request.method == "POST":
+        Business_Shortdetail = request.POST['Business_Shortdetail']
+        Business_Detail = request.POST['Business_Detail']
+        Business_Date = request.POST['Business_Date']
+        Business_Brand = request.POST['Business_Brand']
+        Business_Brandweb = request.POST['Business_Brandweb']
+        Business_Mobile = request.POST['Business_Mobile']
+        Business_Email = request.POST['Business_Email']
+        Business_Type = request.POST['Business_Type']
+        Business_Turnover = request.POST['Business_Turnover']
+        Business_Marketplace = request.POST['Business_Marketplace']
+        Business_Features = request.POST['Business_Features']
+        Business_Location = request.POST['Business_Location']
+        Business_State = request.POST['Business_State']
+        Business_Country = request.POST['Business_Country']
+        Business_Address = request.POST['Business_Address']
+        Business_Photo = request.FILES['Business_Photo']
+        Businessdetail.objects.filter(id=id).update(Business_Shortdetail=Business_Shortdetail,Business_Detail=Business_Detail,Business_Date=Business_Date,
+                              Business_Brand=Business_Brand,Business_Brandweb=Business_Brandweb,
+                              Business_Mobile=Business_Mobile,Business_Email=Business_Email,Business_Type=Business_Type,
+                              Business_Turnover=Business_Turnover,Business_Marketplace=Business_Marketplace,Business_Features=Business_Features,
+                              Business_Location=Business_Location,Business_State=Business_State,Business_Country=Business_Country,
+                              Business_Address=Business_Address,Business_Photo=Business_Photo)
+    dp = Businessdetail.objects.get(id=id)
+    return render(request,'Update_Business_Detail_Form.html',{'dp':dp})
+
