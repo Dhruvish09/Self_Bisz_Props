@@ -27,7 +27,7 @@ a:hover, a:active, a:focus {
 
 <div class="hyper">
 <h4>You are here: 
-			<a href={% url 'index' %}><i class="fa fa-industry"></i>index</a> / 
+			<a href={% url 'index' %}><i class="fa fa-home"></i>Home</a> / 
 			<a href="">Share Story</a>
     </h4>
 </div>
@@ -40,7 +40,7 @@ a:hover, a:active, a:focus {
 
 <div class="form">
         
-<form action="/Story" method="post">
+<form action="/story" method="post">
 {% csrf_token %}
 
   <div class="inputfield">

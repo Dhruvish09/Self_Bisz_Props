@@ -15,7 +15,7 @@
 <body>
     <h1>Registartions Form</h1>
     <div class="reg">
-        <form  action="/final_reg" method="POST">
+        <form  action="/final_reg" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <img src="{% static "/REG_LOG_FORGOT/images/LOGO2.JPG"%}" alt=""><br><br>
      
@@ -41,23 +41,11 @@
                 <!-- <label>Select Your Profile</label><br> -->
                     <span class="fa fa-user" ></span>
 
-                    <!-- <input type="radio" id="ml" name="gender" required=""/>
-                    <label for="Businessman">Businessman</label>
-
-                    <input type="radio" id="ml" name="gender" required=""/>  
-                    <label for="Client">Client</label> -->
-
                     <select id="name" name="profile">
-                        <option value="Male">Businessman</option>
-                        <option value="Female">Client</option>
+                        <option value="Businessman">Businessman</option>
+                        <option value="Client">Client</option>
                     </select><br><br>
 
-                    {% comment %} <input type="radio" id="bm" name="profile">
-                    <label for="Businessman">Businessman</label>
-
-                    <input type="radio" id="cl" name="profile" >
-                    <label for="client">Client</label><br>  
-                     <br> {% endcomment %}
             </div>           
 
     <!-- Mobile -->
@@ -82,27 +70,11 @@
 
                 <span class="fa fa-user" ></span>
 
-                <!-- <input type="radio" id="male" name="gender" value="male">
-                <label for="male">Male</label>
-
-                <input type="radio" id="female" name="gender" value="female">
-                <label for="female">Female</label>
-                
-                <input type="radio" id="other" name="gender" value="other">
-                <label for="other">Other</label> -->
-
-
-
-                <!-- <label for="gender">Choose Your gender:</label> -->
                 <select id="name" name="gender">
-                  <option value="Male">male</option>
-                  <option value="Female">female</option>
-                  <option value="Other">other</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
                 </select>
-
-
-
-
                <br><br>
             </div>
  

@@ -17,7 +17,9 @@ def index(request):
     sub_portfolios = sub_portfolio.get_all_subportdata()
     sliders = slider.get_all_slidedata()
     clients = client.get_all_clntdata()
-    return render(request, 'index.html',{'teams':teams,'portfolios':portfolios,'sub_portfolios':sub_portfolios,'sliders':sliders,'clients':clients})
+    sub = subscribe.objects.filter().count()
+    story = ShareStory.objects.filter().count()
+    return render(request, 'index.html',{'teams':teams,'portfolios':portfolios,'sub_portfolios':sub_portfolios,'sliders':sliders,'clients':clients,'sub':sub,'story':story})
 
 def News(request):
     return render(request,'news.html')
@@ -48,27 +50,23 @@ def contact(request):
    
     return render(request,"contact.html")
 
-def Story(request):
+def story(request):
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
         story = request.POST.get('story')
         Data = ShareStory(name=name,email=email,story=story)
         Data.save()
-        return redirect('/index')
+        return redirect('/')
+        # return render(request,"index.html")
     return render(request,"story.html")
 
 def subs(request):
-    teams = team.get_all_tmdata()
-    portfolios = portfolio.get_all_portdata()
-    sub_portfolios = sub_portfolio.get_all_subportdata()
-    sliders = slider.get_all_slidedata()
-    clients = client.get_all_clntdata()
     if request.method == "POST":
         email = request.POST.get('email')
         data = subscribe(email=email)
         data.save()
-        return render(request,"index.html",{'teams':teams,'portfolios':portfolios,'sub_portfolios':sub_portfolios,'sliders':sliders,'clients':clients})
+        return redirect('/')
     return render(request,"index.html")
 
 # End Index  Area   
@@ -176,7 +174,7 @@ def final_reg(request):
         gender = request.POST.get('gender')
         phone_number = request.POST.get('phone_number')
         profile = request.POST.get('profile')
-        photo =   request.FILES.get('photo')
+        photo = request.FILES['photo']
         hashedPassword = make_password(password=password)
         
         if password != c_password:
@@ -275,7 +273,8 @@ def Business_Detail_Form(request):
         Business_State = request.POST.get('Business_State')
         Business_Country = request.POST.get('Business_Country')
         Business_Address = request.POST.get('Business_Address')
-        Business_Photo = request.FILES.get('Business_Photo')
+        # Business_Photo = request.FILES.get('Business_Photo')
+        Business_Photo = request.FILES['Business_Photo']
 
         data = Businessdetail(Business_Shortdetail=Business_Shortdetail,Business_Detail=Business_Detail,Business_Date=Business_Date,
                               Business_Brand=Business_Brand,Business_Brandweb=Business_Brandweb,

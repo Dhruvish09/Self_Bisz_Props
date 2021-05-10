@@ -305,6 +305,9 @@ var elem=$('#container ul');
 				<div class="clearfix"></div>
 			</div>
 		</div>
+		<div class="ads-grid">
+
+				</div>
 		
 				<div class="agileinfo-ads-display col-md-9">
 					<div class="wrapper">					
@@ -351,13 +354,14 @@ var elem=$('#container ul');
 		
 		<a href={% url 'Business_Detail' %}>
 			<li>
+			<img src="{{ Businessdetails.Business_Photo.url }}" title="" alt="" />
 
-				{%for Businessslides in Businessslides %}
+				{% comment %} {%for Businessslides in Businessslides %} {% endcomment %}
 					{% comment %} {% if forloop.counter|divisibleby:5 %} {% endcomment %}
 					{% comment %} {% if forloop.first %} {% endcomment %}
-					<img src="{{ Businessslides.slide.url }}" title="" alt="" />
+					{% comment %} <img src="{{ Businessslides.slide.url }}" title="" alt="" /> {% endcomment %}
 				    {% comment %} {% endif %} {% endcomment %}
-				{% endfor %}
+				{% comment %} {% endfor %} {% endcomment %}
 							
 							<section class="list-left">
 							<h5 class="title">{{ Businessdetails.Business_Shortdetail }}</h5>
@@ -366,7 +370,7 @@ var elem=$('#container ul');
 							</section>
 							<section class="list-right">
 							<span class="date">Business_Date:{{Businessdetails.Business_Date}}</span>
-							<span class="cityname">city</span>
+							<span class="cityname">{{ Businessdetails.Business_Country }}</span>
 							</section>
 							<div class="clearfix"></div>
 			</li> 

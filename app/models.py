@@ -97,6 +97,10 @@ class ShareStory(models.Model):
 
 class subscribe(models.Model):
     email = models.CharField(max_length=30)
+
+    @staticmethod
+    def get_all_subsdata():
+        return subscribe.objects.all()
     
     def __str__(self):
         return   'email id'+ ':' + self.email
@@ -124,20 +128,20 @@ class Loan(models.Model):
 class reg(models.Model):
     photo = models.ImageField(upload_to='media/profilephoto/images',default="profile1.png", null=True, blank=True)
     email = models.CharField(max_length=30)
-    username=models.CharField(max_length=12)
+    username=models.CharField(max_length=40)
     password=models.CharField(max_length=264)
     c_password=models.CharField(max_length=264)
     birthdate = models.DateField()
     GENDER_CHOICES = (
-        ('M', 'Male'),
-        ('F', 'Female'),
-        ('o', 'other'),
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Other', 'Other'),
     )
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES,default='FEMALE') 
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES,default='Male') 
     
     PROFILE_CHOICES = (
-        ('B', 'Businessman'),
-        ('C', 'Client'),
+        ('Businessman', 'Businessman'),
+        ('Client', 'Client'),
     )
     profile = models.CharField(max_length=1, choices=PROFILE_CHOICES,default="Businessman")
     phone_number = models.CharField(max_length=12)
@@ -211,12 +215,12 @@ class Businessdetail(models.Model):
     Business_Mobile=models.CharField(max_length=15)
     Business_Email=models.CharField(max_length=50)
     Business_Turnover = models.CharField(max_length=15)
-    Business_State = models.CharField(max_length = 60,choices = STATE_CHOICES,default = '1')
-    Business_Country = models.CharField(max_length = 60,choices = COUNTRY_CHOICES,default = '1')
+    Business_State = models.CharField(max_length = 60,choices = STATE_CHOICES,default = 'GUJRAT')
+    Business_Country = models.CharField(max_length = 60,choices = COUNTRY_CHOICES,default = 'INDIA')
     Business_Address=models.TextField(max_length=500)
     Business_Location=models.URLField(max_length = 2000)
-    Business_Type = models.CharField(max_length = 50,choices = BUSTYPE_CHOICES,default = '1')
-    Business_Marketplace = models.CharField(max_length = 50,choices = MARKET_CHOICES,default = '1')
+    Business_Type = models.CharField(max_length = 50,choices = BUSTYPE_CHOICES,default = 'Technology')
+    Business_Marketplace = models.CharField(max_length = 50,choices = MARKET_CHOICES,default = 'Monopolic')
     Business_Features=models.CharField(max_length=800)
     Business_Photo = models.ImageField(upload_to='media/Business/category/images')
 

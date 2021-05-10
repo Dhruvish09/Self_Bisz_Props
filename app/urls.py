@@ -6,7 +6,7 @@ urlpatterns = [
     # (1) Start Index Area:-
 
     path('',views.index,name='index'),
-    path('story',views.Story,name='story'),
+    path('story',views.story,name='story'),
     path('news',views.News,name='news'),
     path('Sub_Portfolio/',views.Sub_Portfolio,name='Sub_Portfolio'),
     path('contact',views.contact,name='contact'),
