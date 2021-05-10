@@ -37,12 +37,11 @@ urlpatterns = [
     path('Dashboard/',views.Dashboard,name='Dashboard'),
     path('Business_Detail_Form',views.Business_Detail_Form,name='Business_Detail_Form'),
     path('edit_business',views.Edit_Business_Detail_Form,name='edit_business'),
-    path('<int:id>/',views.update_userdata,name='updatedata'),
+    path('<int:id>/',views.updatebuss,name='updatebuss'),
     path('Buslide',views.Buslide,name='Buslide'), 
     path('editslide',views.Edit_Business_Slide_Form,name='editslide'),
     path('Client_request',views.Client_request,name='Client_request'),
-#     path('edit/<int:id>/',views.edit,name="edit"),
-
+    path('<int:id>/',views.updatebuss,name='updatebuss'),
     # ......................................................
             # (3.1)Start Delete Operation:
     path('delete/<int:id>/',views.delete_clientdata,name='deletedata'),

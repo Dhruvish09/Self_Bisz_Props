@@ -325,17 +325,18 @@ def delete_businessslide(request,id):
     # ...................................................
         # (6.2) Dashboard Edit Operation
         
-
-def update_userdata(request,id):
+def updatebuss(request,id):
     if request.method == "POST":
         pi = Businessdetail.objects.get(id=id)
-        fm = BusinessDetailform(request.POST)
+        fm = BusinessDetailform(request.POST,instance=pi)
         if fm.is_valid():
             fm.save()
     else:
         pi = Businessdetail.objects.get(id=id)
-        fm = BusinessDetailform() 
-    return render(request,'Edit_Business_Detail_Form.html',{'form':fm})
+        fm = BusinessDetailform(instance=pi) 
+        return render(request,'update_buss.html',{'form':fm})
+    return redirect('/Dashboard')
+
 
 def Edit_Business_Detail_Form(request):
     Businessdetails = Businessdetail.get_all_busdetdata()

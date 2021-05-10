@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "category/css/font-awesome.min.css"%}" /><!-- fontawesome-CSS -->
+
+    <title>Document</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-sm-8 offset 2">
+        <h1 class="alert alert-info"> Edit Business Details</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}} 
+        <input type="submit" class="btn btn-success" value="update">
+        <button><a href={% url 'Dashboard' %}><i class="fa fa-tachometer"></i>Dashboard</a></button>
+    </form>
+
+    </div>
+</div>
+
+</body>
+</html>

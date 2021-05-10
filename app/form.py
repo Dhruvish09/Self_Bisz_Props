@@ -74,10 +74,15 @@ class Sub_Portfolioform(forms.ModelForm):
 
 # Start Business Area............................................................... 
 
-class BusinessDetailform(forms.Form):
-    class Meta:
-        Model = Businessdetail
-        fields = ['Business_Shortdetail','Business_Detail','Business_Date','Business_Brandweb','Business_Brand','Business_Mobile','Business_Email','Market_Type','Business_Type','Business_Turnover','Business_Marketplace','Business_Features',' Business_Address','Business_Country','Business_Location','Business_State','Business_Photo']
+# class BusinessDetailform(forms.ModelForm):
+#     model = Businessdetail
+#     fields = ['Business_Shortdetail','Business_Detail','Business_Date','Business_Brandweb','Business_Brand','Business_Mobile','Business_Email','Market_Type','Business_Type','Business_Turnover','Business_Marketplace','Business_Features',' Business_Address','Business_Country','Business_Location','Business_State','Business_Photo']
+
+class BusinessDetailform(ModelForm):
+  class Meta:
+    model = Businessdetail
+    fields = "__all__"
+
 
 
 class Businessslideform(forms.ModelForm):
