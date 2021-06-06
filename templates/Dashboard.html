@@ -96,6 +96,7 @@
                                     </div>
                                     <div class="content">
                                         <p>You got a email notification</p>
+                                        <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">
                                         <span class="date">April 12, 2018 06:50</span>
                                     </div>
                                 </div>
@@ -158,7 +159,7 @@
                                 </div>
                                 
                                 <div class="content">
-                                    <a class="js-acc-btn" href="#">{{request.user.username}}</a>
+                                    <a class="js-acc-btn" href="#">{{username}}</a>
                                 </div>
                                 <div class="account-dropdown js-dropdown">
                                     <div class="info clearfix">
@@ -170,9 +171,9 @@
                                         
                                         <div class="content">
                                             <h5 class="name">
-                                                <a href="#">{{request.user.username}}</a>
+                                                <a href="#">{{username}}</a>
                                             </h5>
-                                            <span class="email">{{request.user.email}}</span>
+                                            <span class="email">{{email}}</span>
                                         </div>
                                     </div>
                                     <div class="account-dropdown__body">
@@ -282,9 +283,9 @@
                                 </div>
                                 <div class="content">
                                     <h5 class="name">
-                                        <a href="#">{{request.user.username}}</a>
+                                        <a href="#">{{username}}</a>
                                     </h5>
-                                    <span class="email">{{request.email.emailid}}</span>
+                                    <span class="email">{{email}}</span>
                                 </div>
                             </div>
                             <div class="account-dropdown__body">
@@ -343,7 +344,9 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h1 class="title-4">Welcome back
-                                <span>{{request.user.username}}</span>
+                                <span>{{username}}</span>
+                                
+                      
                             </h1>
                             <hr class="line-seprate">
                         </div>

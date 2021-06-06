@@ -160,12 +160,32 @@ def Client_request(request):
 # .....................................................................
 
 
+
+def Validateuser(user):
+    error_message = None
+
+    if len(user.username) < 5:
+        error_message = "username must be long 5 or  morethan 5!!"
+
+    elif user.isExists():
+        error_message = "Email Address Already Registered..."
+
+    elif len(user.phone_number) < 10:
+        error_message = "Please enter 10 digit of your mobile number!!"
+    elif len(user.password) < 6:
+        error_message = "password Must be more than 8 character!!"
+    
+    elif user.password != user.c_password:
+        error_message  =  "password and confirm_password does not match"
 #(5) Login Registartion Forgot Start:-
 
 # @login_required(login_url='final_log')
 
 def final_reg(request):
-    if request.method == "POST":
+    if request.method == 'GET':
+        return render(request,"Final_reg.html")
+
+    else:
         email = request.POST.get('email')
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -175,36 +195,101 @@ def final_reg(request):
         phone_number = request.POST.get('phone_number')
         profile = request.POST.get('profile')
         photo = request.FILES['photo']
-        hashedPassword = make_password(password=password)
+        hashedPassword = make_password(password=password)      
+
+        user = reg(email=email,
+                    username=username,
+                    birthdate=birthdate,
+                    gender=gender,
+                    phone_number=phone_number,
+                    password=hashedPassword,
+                    c_password=hashedPassword,
+                    profile=profile,
+                    photo=photo)
+
+        value = {
+            'username':username,
+            'email':email,
+            'birthdate':birthdate,
+            'gender':gender,
+            'phone_number':phone_number,
+            'profile':profile,
+            'photo':photo,
+        }
+        # error_message = Validateuser(user)
+        error_message = None
+
+        if len(username) < 5:
+            error_message = "username must be long 5 or  morethan 5!!"
+
+        elif user.isExists():
+            error_message = "Email Address Already Registered..."
+
+        elif len(phone_number) < 10:
+            error_message = "Please enter 10 digit of your mobile number!!"
         
-        if password != c_password:
-            raise forms.ValidationError(
-                "password and confirm_password does not match"
-            )
-      
-        Data = reg(email=email,username=username,birthdate=birthdate,gender=gender,phone_number=phone_number, password=hashedPassword,c_password=hashedPassword,profile=profile,photo=photo)
-        Data.save()
-        return render(request, 'Final_log.html',{'success':"user created successfully"})
-    return render(request, 'Final_reg.html', {'error': "User Already Registered..."})
+        elif not photo:
+            error_message = "Please Select Your Photo"
+
+        elif len(password) < 6:
+            error_message = "password Must be more than 8 character!!"
+
+        elif password != c_password:
+            error_message  =  "password and confirm_password does not match"
+        
+        if not error_message:
+            user.register()
+            messages.success(request, 'Dear {}, Your Account is created Successfully'.format(username))
+            return redirect('final_log')
+        else:
+            data = {
+                'value' : value,
+                'error': error_message
+                }
+            return render(request, 'Final_reg.html',data)
+  
+
+# def final_log(request):
+#     if request.method =='POST':
+#         username = request.POST.get('username')
+#         email = request.POST.get('email')
+#         password = request.POST.get('password')
+
+#         try:
+#             user = reg.empAuth_objects.get(username=username,email=email,password=password)
+#             if user is not None:
+#                 print("Login Succesfful")
+#                 return render(request,'Dashboard.html',{})
+#             else:
+#                 return redirect('/')
+#         except Exception as identifier:
+#             return redirect('/Dashboard')
+#     else:
+#         return render(request,'Final_log.html')  
+
 
 def final_log(request):
-    if request.method =='POST':
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-
-        try:
-            user = reg.empAuth_objects.get(username=username,email=email,password=password)
-            if user is not None:
-                print("Login Succesfful")
-                return render(request,'Dashboard.html',{})
-            else:
-                return redirect('/')
-        except Exception as identifier:
-            return redirect('/Dashboard')
+    if request.method == "GET":
+        return render(request,'Final_log.html')
     else:
-        return render(request,'Final_log.html')  
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        client = reg.get_client_by_email(email)
+        error_message = None
+        if client:
+            flag = check_password(password,client.password)
+            if flag:
+                return render(request,'Dashboard.html',{'username':username,'email':email})
+                # return redirect('/Dashboard',{"username":username,"email":email})
+            else:
 
+                error_message = 'Email Or Password Invalid!!'
+        else:
+            error_message = 'Email Or Password Invalid!!'
+        return render(request,'Final_log.html',{'error':error_message})
+
+      
 # def final_log(request):
 #     if request.method == "GET":
 #         return render(request,'final_log.html')

@@ -128,7 +128,7 @@ class Loan(models.Model):
 class reg(models.Model):
     photo = models.ImageField(upload_to='media/profilephoto/images',default="profile1.png", null=True, blank=True)
     email = models.CharField(max_length=30)
-    username=models.CharField(max_length=40)
+    username =models.CharField(max_length=40)
     password=models.CharField(max_length=264)
     c_password=models.CharField(max_length=264)
     birthdate = models.DateField()
@@ -146,18 +146,37 @@ class reg(models.Model):
     profile = models.CharField(max_length=20, choices=PROFILE_CHOICES,default="Businessman")
     phone_number = models.CharField(max_length=12)
     # phone_number = PhoneField(blank=True, help_text='Contact phone number')
+    def register(self):
+        self.save()
+    
+    def isExists(self):
+        if reg.objects.filter(email = self.email):
+            return True
+        return False
     
     def __str__(self):
         return self.username
     
+    # @staticmethod
+    # def get_all_ptdata(email):
+    #     try:
+    #         return reg.object.get(email = email)
+    #     except:
+    #         return False
+
     @staticmethod
-    def get_all_ptdata(email):
+    def get_client_by_email(email):
         try:
-            return reg.object.get(email = email)
+            return reg.objects.get(email=email)
         except:
             return False
-        
-    
+
+
+    def isExists(self):
+        if reg.objects.filter(email = self.email):
+            return True
+
+        return  False   
 #   End Reg Area ................................................
 
 

@@ -14,16 +14,22 @@
 
 <body>
     <h1>Registartions Form</h1>
+    
+
+    
     <div class="reg">
         <form  action="/final_reg" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <img src="{% static "/REG_LOG_FORGOT/images/LOGO2.JPG"%}" alt=""><br><br>
+            <img src="{% static "/REG_LOG_FORGOT/images/LOGO2.JPG"%}" alt=""><br>
+            {% if error %}
+            <div>{{error}}</div>
+            {% endif %}<br>
      
     <!-- Username -->
             <div>
                 <!-- <label>User Name</label><br> -->
                 <span class="fa fa-user"></span>
-                <input type="text" name="username"  id="name" placeholder="User Name" required=""/><br><br>
+                <input type="text" name="username" value="{{value.username}}" id="name" placeholder="User Name" required=""/><br><br>
                 
             </div>
 
@@ -32,7 +38,7 @@
             <div>
                 <!-- <label>Email</label><br> -->
                 <span class="fa fa-envelope"></span>
-                <input type="email" name="email"  id="name" placeholder="example@gmail.com" required=""/><br><br>
+                <input type="email" name="email"  value="{{value.email}}" id="name" placeholder="example@gmail.com" required=""/><br><br>
             </div>       
 
             
@@ -41,9 +47,9 @@
                 <!-- <label>Select Your Profile</label><br> -->
                     <span class="fa fa-user" ></span>
 
-                    <select id="name" name="profile">
-                        <option value="Businessman">Businessman</option>
-                        <option value="Client">Client</option>
+                    <select id="name"  name="profile">
+                        <option value="{{value.profile}}">Businessman</option>
+                        <option value="{{value.profile}}">Client</option>
                     </select><br><br>
 
             </div>           
@@ -54,14 +60,14 @@
                 <span class="fa fa-mobile"></span>
             
 
-                <input type="tel" name="phone_number"  placeholder="********09" id="mnum"  pattern="[1-9]{1}[0-9]{9}" required=""/><br><br>
+                <input type="tel" name="phone_number" value="{{value.phone_number}}"  placeholder="********09" id="mnum"  pattern="[1-9]{1}[0-9]{9}" required=""/><br><br>
             </div>
                     
     <!-- DOB -->
             <div>
                 <!-- <label>Enter Your DOB</label><br> -->
                 <span class="fa fa-calendar"></span>
-                <input type="date" id="name" name="birthdate" required=""/><br><br>
+                <input type="date" id="name" value="{{value.birthdate}}" name="birthdate" required=""/><br><br>
                 
             </div> 
 
@@ -70,10 +76,10 @@
 
                 <span class="fa fa-user" ></span>
 
-                <select id="name" name="gender">
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
+                <select id="name"  name="gender">
+                  <option value="{{value.gender}}">Male</option>
+                  <option value="{{value.gender}}">Female</option>
+                  <option value="{{value.gender}}">Other</option>
                 </select>
                <br><br>
             </div>
@@ -82,7 +88,7 @@
     <!-- Image Upload     -->
             <div>
                 <span class="fa fa-image"></span>
-                <input type="file" id="name" name="photo"><br><br>        
+                <input type="file" value="{{value.photo}}" id="name" name="photo" required=""><br><br>        
             </div>
 
     <!-- Password     -->
@@ -108,6 +114,7 @@
 
             <button type="submit" id="sub" value="Register">Register</button>
         </form>
+        
         {% comment %} <label >Login using Below:-</label>
         <div class="social">
             <ul>
