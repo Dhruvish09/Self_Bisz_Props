@@ -146,6 +146,7 @@ class reg(models.Model):
     profile = models.CharField(max_length=20, choices=PROFILE_CHOICES,default="Businessman")
     phone_number = models.CharField(max_length=12)
     # phone_number = PhoneField(blank=True, help_text='Contact phone number')
+    
     def register(self):
         self.save()
     
@@ -154,16 +155,6 @@ class reg(models.Model):
             return True
         return False
     
-    def __str__(self):
-        return self.username
-    
-    # @staticmethod
-    # def get_all_ptdata(email):
-    #     try:
-    #         return reg.object.get(email = email)
-    #     except:
-    #         return False
-
     @staticmethod
     def get_client_by_email(email):
         try:
@@ -171,12 +162,9 @@ class reg(models.Model):
         except:
             return False
 
+    def __str__(self):
+        return self.username
 
-    def isExists(self):
-        if reg.objects.filter(email = self.email):
-            return True
-
-        return  False   
 #   End Reg Area ................................................
 
 
