@@ -41,8 +41,7 @@ urlpatterns = [
     path('Buslide',views.Buslide,name='Buslide'), 
     path('editslide',views.Edit_Business_Slide_Form,name='editslide'),
     path('Client_request',views.Client_request,name='Client_request'),
-    path('<int:id>/',views.updatebuss,name='updatebuss'),
-    # ......................................................
+        # ......................................................
             # (3.1)Start Delete Operation:
     path('delete/<int:id>/',views.delete_clientdata,name='deletedata'),
     path('deletebusiness/<int:id>/',views.delete_businessdata,name='deletebusiness'),
