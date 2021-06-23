@@ -4,8 +4,8 @@ from django.contrib .auth import authenticate, login, logout
 from django.contrib  import auth,messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password,check_password
-from .models import Contactus,reg,team,portfolio,slider,client,portfolio,sub_portfolio,Loan,ClientRequest,Businessdetail,Businessslide,subscribe,ShareStory
-from .form import Subscribeform,Regform,BusinessDetailform
+from .models import *
+from .form import *
 from django.core.files.storage import FileSystemStorage
 from django import template,forms
 
