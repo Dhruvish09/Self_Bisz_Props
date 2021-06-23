@@ -268,26 +268,44 @@ def final_reg(request):
 #         return render(request,'Final_log.html')  
 
 
-def final_log(request):
-    if request.method == "GET":
-        return render(request,'Final_log.html')
-    else:
-        email = request.POST.get('email')
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        client = reg.get_client_by_email(email)
-        error_message = None
-        if client:
-            flag = check_password(password,client.password)
-            if flag:
-                return render(request,'Dashboard.html',{'username':username,'email':email})
-                # return redirect('/Dashboard',{"username":username,"email":email})
-            else:
+# def final_log(request):
+    # if request.method == "GET":
+        # return render(request,'Final_log.html')
+    # else:
+        # email = request.POST.get('email')
+        # username = request.POST.get('username')
+        # password = request.POST.get('password')
+        # client = reg.get_client_by_email(email)
+        # error_message = None
+        # if client:
+            # flag = check_password(password,client.password)
+            # if flag:
+                # return render(request,'Dashboard.html',{'username':username,'email':email})
+                # # return redirect('/Dashboard',{"username":username,"email":email})
+            # else:
 
-                error_message = 'Email Or Password Invalid!!'
+                # error_message = 'Email Or Password Invalid!!'
+        # else:
+            # error_message = 'Email Or Password Invalid!!'
+        # return render(request,'Final_log.html',{'error':error_message})
+        
+def final_log(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = auth.authenticate(username=username,password=password)
+
+        if user is  not None:
+            auth.login(request, user)
+            return redirect('Dashboard')
+            
         else:
-            error_message = 'Email Or Password Invalid!!'
-        return render(request,'Final_log.html',{'error':error_message})
+            messages.info(request,'Invalid credential')
+            return redirect('final_log')
+    else:
+        return render(request,'Final_log.html')
+
 
       
 # def final_log(request):
